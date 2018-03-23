@@ -1,0 +1,2 @@
+class SeaTour < ApplicationRecord
+end
