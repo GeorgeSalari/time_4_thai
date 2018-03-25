@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :evening_shows
   resources :avia_tours
   resources :land_tours
   resources :phuket_tours

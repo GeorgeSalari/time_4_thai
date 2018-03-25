@@ -1,0 +1,17 @@
+<%= form_with(model: evening_show, local: true) do |form| %>
+  <% if evening_show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evening_show.errors.count, "error") %> prohibited this evening_show from being saved:</h2>
+
+      <ul>
+      <% evening_show.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
