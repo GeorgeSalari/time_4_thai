@@ -1,0 +1,2 @@
+class PhuketTour < ApplicationRecord
+end

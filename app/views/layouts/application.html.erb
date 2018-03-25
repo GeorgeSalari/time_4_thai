@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>BestTours</title>
     <%= csrf_meta_tags %>
 
@@ -9,6 +11,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/header' %>
+    <div class="container" >
+
+      <%= yield %>
+    </div>
   </body>
 </html>

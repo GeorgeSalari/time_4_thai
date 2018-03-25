@@ -1,0 +1,2 @@
+module PhuketToursHelper
+end
