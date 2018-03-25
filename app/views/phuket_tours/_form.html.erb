@@ -1,0 +1,17 @@
+<%= form_with(model: phuket_tour, local: true) do |form| %>
+  <% if phuket_tour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(phuket_tour.errors.count, "error") %> prohibited this phuket_tour from being saved:</h2>
+
+      <ul>
+      <% phuket_tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,6 +10,7 @@ class SeaToursController < ApplicationController
   # GET /sea_tours/1
   # GET /sea_tours/1.json
   def show
+    @sea_tour = SeaTour.find(params[:id])
   end
 
   # GET /sea_tours/new
@@ -69,6 +70,6 @@ class SeaToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sea_tour_params
-      params.fetch(:sea_tour, {})
+      params.require(:sea_tour).permit(:title, :short_content, :content, :adult_price, :child_price)
     end
 end

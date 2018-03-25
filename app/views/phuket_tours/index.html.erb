@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Phuket Tours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phuket_tours.each do |phuket_tour| %>
+      <tr>
+        <td><%= link_to 'Show', phuket_tour %></td>
+        <td><%= link_to 'Edit', edit_phuket_tour_path(phuket_tour) %></td>
+        <td><%= link_to 'Destroy', phuket_tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Phuket Tour', new_phuket_tour_path %>
