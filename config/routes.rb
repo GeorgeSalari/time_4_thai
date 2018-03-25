@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :avia_tours
+  resources :land_tours
   resources :phuket_tours
   resources :sea_tours
   root 'welcome#index'

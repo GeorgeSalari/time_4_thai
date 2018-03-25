@@ -1,0 +1,17 @@
+<%= form_with(model: avia_tour, local: true) do |form| %>
+  <% if avia_tour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(avia_tour.errors.count, "error") %> prohibited this avia_tour from being saved:</h2>
+
+      <ul>
+      <% avia_tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
