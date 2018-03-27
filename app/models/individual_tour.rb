@@ -1,0 +1,2 @@
+class IndividualTour < ApplicationRecord
+end

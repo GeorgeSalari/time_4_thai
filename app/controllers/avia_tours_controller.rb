@@ -69,6 +69,6 @@ class AviaToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def avia_tour_params
-      params.fetch(:avia_tour, {})
+      params.require(:avia_tour).permit(:title, :short_content, :content, :adult_price, :child_price)
     end
 end

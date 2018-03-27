@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-xl" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light navbar-expand-xl">
   <!-- Navbar content -->
   <%= link_to image_tag('logo.png'), root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,8 +24,7 @@
           <%= link_to "Сухопутные", land_tours_path, class: "dropdown-item" %>
           <%= link_to "Авиатуры", avia_tours_path, class: "dropdown-item" %>
           <%= link_to "Вечерние шоу", evening_shows_path, class: "dropdown-item" %>
-          <a class="dropdown-item" href="#"></a>
-          <a class="dropdown-item" href="#">Индивидупльные</a>
+          <%= link_to "Индивидупльные", individual_tours_path, class: "dropdown-item" %>
         </div>
       </li>
       <li class="nav-item">

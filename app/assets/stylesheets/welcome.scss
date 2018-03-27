@@ -1,5 +1,8 @@
 nav.navbar {
   padding: 5px 60px;
+  background-image: url('nav_bar.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .navbar-brand img {
@@ -10,6 +13,7 @@ nav.navbar {
 #navbarNavDropdown {
   margin-left: 40px;
   justify-content: space-between;
+  color: white;
 }
 
 .nav-item {
@@ -65,4 +69,38 @@ nav.navbar {
 
 #contacts .col-sm-4 img{
   margin-top: 10px;
+}
+
+.form-inline button {
+  background-color: #c9c9c9;
+}
+
+.navbar-nav li a {
+  color: black!important;
+  font-weight: 900;
+  padding: 8px 0!important;
+  font-size: 18px;
+}
+
+.main_page_background {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+}
+
+.container {
+  width: 100%;
+  height: 400px;
+}
+
+#facebook_baner {
+  background-image: url(facebook.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 380px;
+  height: 150px;
+  float: right;
 }
