@@ -16,3 +16,33 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('.calc_price').each(function(){
+    $(this).click(function(e){
+      var total = 0
+      e.preventDefault();
+      var id = this.id.match(/\d+/)[0]
+      var adult = $('#adult_'+id).val();
+      var child = $('#child_'+id).val();
+      var adult_price = $($('#adult_price_'+id)[0]).text().match(/\d+/)[0]
+      var child_price = $($('#child_price_'+id)[0]).text().match(/\d+/)[0]
+      total = adult * adult_price + child * child_price
+      $('#total_price_'+id).val(total)
+    })
+  })
+  $('.asana-banner .main-container').height( $('.asana-banner img').height() );
+  $('.asana-banner').height( $('.asana-banner img').height() );
+  $('#second-menu.main-menu').css('padding-top', $('.asana-banner img').height() )
+
+  $('.dropdown').click(function(e){
+    var clicked_menu_class = $(this).attr('class')
+    e.preventDefault();
+    $.each($('.dropdown-menu'), function( index, value ) {
+      if ($(this).attr('class').includes('display-dropdown-menu') && $(this).parent().attr('class') != clicked_menu_class) {
+        $(value).removeClass('display-dropdown-menu')
+      }
+    });
+    $($(this).find('.dropdown-menu')[0]).toggleClass('display-dropdown-menu');
+  })
+})

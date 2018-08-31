@@ -28,7 +28,7 @@ class PhuketToursController < ApplicationController
 
     respond_to do |format|
       if @phuket_tour.save
-        format.html { redirect_to @phuket_tour, notice: 'Phuket tour was successfully created.' }
+        format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully created.' }
         format.json { render :show, status: :created, location: @phuket_tour }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PhuketToursController < ApplicationController
   def update
     respond_to do |format|
       if @phuket_tour.update(phuket_tour_params)
-        format.html { redirect_to @phuket_tour, notice: 'Phuket tour was successfully updated.' }
+        format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully updated.' }
         format.json { render :show, status: :ok, location: @phuket_tour }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PhuketToursController < ApplicationController
   def destroy
     @phuket_tour.destroy
     respond_to do |format|
-      format.html { redirect_to phuket_tours_url, notice: 'Phuket tour was successfully destroyed.' }
+      format.html { redirect_to phuket_tours_url, notice: 'phuket tour was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class PhuketToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phuket_tour_params
-      params.fetch(:phuket_tour, {})
+      params.require(:phuket_tour).permit(:title, :short_content, :content, :adult_price, :child_price)
     end
 end

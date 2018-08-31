@@ -1,4 +1,30 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_phuket_tour_path(@phuket_tour) %> |
-<%= link_to 'Back', phuket_tours_path %>
+<div class="text-center">
+  <h2>
+    <%= @phuket_tour.title %>
+    <button class="btn btn-primary btn-lg float-right" id="order_tour_button" >Заказать</button>
+  </h2>
+  <div class="row">
+    <div class="col-6 text-right">
+      <p>
+        <%= image_tag("adult.png", style: "width: 25px;") %> ->
+        <%= @phuket_tour.adult_price %>
+      </p>
+    </div>
+    <div class="col-6 text-left">
+      <p>
+        <%= image_tag("child.png", style: "width: 25px;") %> ->
+        <%= @phuket_tour.child_price %>
+      </p>
+    </div>
+  </div>
+  <h4 class="text-left" >Краткое описание:</h4>
+  <p>
+    <%= @phuket_tour.short_content %>
+  </p>
+  <h4 class="text-left">Полное описание:</h4>
+  <p><%= @phuket_tour.content %></p>
+</div>
+<%= link_to 'Редактировать', edit_phuket_tour_path(@phuket_tour), class: "btn btn-warning" %>
+<%= link_to 'Удалить тур', @phuket_tour, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', phuket_tours_path, class: "btn btn-primary float-right" %>

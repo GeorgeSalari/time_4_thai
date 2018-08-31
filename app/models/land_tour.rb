@@ -1,0 +1,2 @@
+class LandTour < ApplicationRecord
+end

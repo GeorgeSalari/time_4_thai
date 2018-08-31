@@ -1,0 +1,2 @@
+class EveningShow < ApplicationRecord
+end

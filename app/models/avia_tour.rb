@@ -1,0 +1,2 @@
+class AviaTour < ApplicationRecord
+end

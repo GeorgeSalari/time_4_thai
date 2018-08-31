@@ -1,0 +1,122 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center" >Сухопутные туры</h1>
+
+<% @land_tours.each do |land_tour| %>
+  <div>
+    <div class="text-center">
+      <h3><%= link_to land_tour.title, land_tour_path(land_tour) %></h3>
+      <p>
+        <%= land_tour.short_content %>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <p id="adult_price_<%= land_tour.id %>">
+          <%= image_tag("adult.png", style: "width: 25px;") %> ->
+          <%= land_tour.adult_price %>
+        </p>
+        <p id="child_price_<%= land_tour.id %>">
+          <%= image_tag("child.png", style: "width: 25px;") %> ->
+          <%= land_tour.child_price %>
+        </p>
+      </div>
+      <div class="col-8 text-center">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" id="order_tour_button" data-toggle="modal" data-target="#exampleModal_<%= land_tour.id %>">
+          Заказать
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_<%= land_tour.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  <%= "Заказать #{land_tour.title}" %>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                    <label for="program_title" class="col-sm-2 col-form-label">Program:</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="program_title_<%= land_tour.id%>" value="<%= land_tour.title %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="date" class="col-sm-2 col-form-label">Date:</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control-plaintext" id="program_date_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control-plaintext" id="name_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
+                    <div class="col-sm-10">
+                      <input type="tel" class="form-control-plaintext" id="phone_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="hotel" class="col-sm-2 col-form-label">Hotel:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control-plaintext" id="hotel_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="room" class="col-sm-2 col-form-label">Romm:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control-plaintext" id="room_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="adult" class="col-sm-2 col-form-label">Adult:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control-plaintext" id="adult_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="child" class="col-sm-2 col-form-label">Child:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control-plaintext" id="child_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="infant" class="col-sm-2 col-form-label">Infant:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control-plaintext" id="infant_<%= land_tour.id%>" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="total_price" class="col-sm-2 col-form-label">Total:</label>
+                    <div class="col-sm-8">
+                      <input type="text" readonly class="form-control-plaintext" id="total_price_<%= land_tour.id%>" value="">
+                    </div>
+                    <button class="btn.btn-primary col-sm-2 calc_price" id="calc_<%= land_tour.id%>" >Calc</button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Отправить заявку и скачать билет</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= link_to 'Редактировать', edit_land_tour_path(land_tour), class: "btn btn-warning" %>
+    <%= link_to 'Удалить тур', land_tour, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  </div>
+<% end %>
+
+<br>
+
+<%= link_to 'Создать новый тур', new_land_tour_path, class: "btn btn-primary float-right" %>

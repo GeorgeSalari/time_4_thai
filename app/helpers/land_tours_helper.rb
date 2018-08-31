@@ -1,0 +1,2 @@
+module LandToursHelper
+end

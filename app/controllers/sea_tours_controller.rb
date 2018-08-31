@@ -10,7 +10,6 @@ class SeaToursController < ApplicationController
   # GET /sea_tours/1
   # GET /sea_tours/1.json
   def show
-    @sea_tour = SeaTour.find(params[:id])
   end
 
   # GET /sea_tours/new
