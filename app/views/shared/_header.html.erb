@@ -1,78 +1,70 @@
-<nav class="navbar navbar-light navbar-expand-xl">
-  <!-- Navbar content -->
-  <%= link_to image_tag('logo.png'), root_path, class: "navbar-brand" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
-
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Экскурсии
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "На пхукете", phuket_tours_path, class: "dropdown-item" %>
-          <%= link_to "Морские", sea_tours_path, class: "dropdown-item" %>
-          <%= link_to "Сухопутные", land_tours_path, class: "dropdown-item" %>
-          <%= link_to "Авиатуры", avia_tours_path, class: "dropdown-item" %>
-          <%= link_to "Вечерние шоу", evening_shows_path, class: "dropdown-item" %>
-          <%= link_to "Индивидупльные", individual_tours_path, class: "dropdown-item" %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Яхты</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Недвижимость</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Услуги
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Аренда транспорта</a>
-          <a class="dropdown-item" href="#">Трансфер</a>
-          <a class="dropdown-item" href="#">Покупки для души</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Прайс</a>
-      </li>
-    </ul>
-
-
-    <div class="row" id="contacts">
-      <div class="col-sm-4">
-        <%= image_tag('icons.png') %>
+<ul class="d-flex">
+  <li>
+    <div class="dropdown tours">
+      <a href="#">
+        Экскурсии
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Обзорные по Пхукету</a>
+        <a class="dropdown-item" href="#">Морские экскурсии</a>
+        <a class="dropdown-item" href="#">Сухопутные</a>
+        <a class="dropdown-item" href="#">Авиатуры</a>
+        <a class="dropdown-item" href="#">Вечерние шоу</a>
+        <a class="dropdown-item" href="#">Индивидуальные</a>
       </div>
-      <div class="col-sm-8 text-right">
-        <p>+66 95 514 4175</p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" id="order_call_button" data-toggle="modal" data-target="#modal_order_call">
-          Заказать Звонок
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="modal_order_call" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= image_tag('down-chevron.svg')%>
     </div>
-
-
-  </div>
-</nav>
+  </li>
+  <li>
+    <div class="dropdown boats">
+      <a href="#">
+        Аренда Яхт
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Яхты</a>
+        <a class="dropdown-item" href="#">Катера для рыбалки</a>
+        <a class="dropdown-item" href="#">Скоростные катера</a>
+      </div>
+      <%= image_tag('down-chevron.svg')%>
+    </div>
+  </li>
+    <li>
+      <div class="dropdown property">
+      <a href="#">
+        Недвижимость
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Аренда недвижимости</a>
+        <a class="dropdown-item" href="#">Купить недвижимость</a>
+      </div>
+      <%= image_tag('down-chevron.svg')%>
+    </div>
+  </li>
+  <li>
+    <div class="dropdown services">
+      <a href="#">
+        Услуги
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Свадьба на Пхукете</a>
+        <a class="dropdown-item" href="#">Аренда транспорта</a>
+        <a class="dropdown-item" href="#">Фотосессии</a>
+        <a class="dropdown-item" href="#">Трансфер</a>
+        <a class="dropdown-item" href="#">Шоппинг</a>
+      </div>
+      <%= image_tag('down-chevron.svg')%>
+    </div>
+  </li>
+  <li>
+    <div class="dropdown price-list">
+      <a href="#">
+        Прайс
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Скачать</a>
+        <a class="dropdown-item" href="#">Открыть</a>
+      </div>
+      <%= image_tag('down-chevron.svg')%>
+    </div>
+  </li>
+</ul>

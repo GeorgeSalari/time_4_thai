@@ -1,106 +1,180 @@
-nav.navbar {
-  padding: 5px 60px;
-  background-image: url('nav_bar.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+.header-17 .total-header-area .container {
+  border-bottom: 1px solid #7499b6;
+  padding: 5px 0;
 }
 
-.navbar-brand img {
-  width: 100px;
-  height: 60px;
-}
-
-#navbarNavDropdown {
-  margin-left: 40px;
+.header-17 .total-header-area .container .row.align-items-center {
+  display: flex;
   justify-content: space-between;
+}
+
+.btn-group {
+  width: 0;
   color: white;
+  margin-right: 60px;
 }
 
-.nav-item {
-  padding: 0 15px;
+.currency {
+  margin-right: -10px;
+  margin-left: 30px;
 }
 
-#order_tour_button {
-  margin-top: 20px;
-  margin-left: -50%;
+.btn-group img {
+  margin: 0 10px;
 }
 
-.show {
+.btn-group .currency img {
+  margin-right: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.white-collor {
+  color: white!important;
+}
+
+.black-collor {
+  color: #4a4a4a!important;
+}
+
+#basket {
+  position: relative;
+  margin-top: -4px;
+}
+
+#basket #black img {
+  width: 30px;
+}
+
+.Oval-2 {
+  width: 19px;
+  height: 19px;
+  background-color: #f5a623;
+  position: absolute;
+  right: 2px;
+  bottom: -4px;
   text-align: center;
+  border-radius: 50%;
 }
 
-.show form {
-  display: inline;
+.layer {
+  width: 7px;
+  height: 13px;
+  font-family: Lato;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
 }
 
-.show ul {
-  display: inline;
-}
-
-.show #contacts {
-  min-width: 260px;
-  width: 40%;
-  margin: 0 auto;
-}
-
-@media only screen and (max-width: 425px) {
-  .show {
-    margin-left: 0!important;
-  }
-  nav.navbar {
-    padding: 5px 10px;
-  }
-}
-
-#contacts {
-  width: 260px;
-}
-
-
-#contacts .col-sm-4,
-#contacts .col-sm-8 {
-  padding: 0;
-}
-
-#contacts .col-sm-8 p {
-  font-size: 20px;
-  margin: 0;
-}
-
-#contacts .col-sm-4 img{
-  margin-top: 10px;
-}
-
-.form-inline button {
-  background-color: #c9c9c9;
-}
-
-.navbar-nav li a {
-  color: black!important;
-  font-weight: 900;
-  padding: 8px 0!important;
-  font-size: 18px;
-}
-
-.main_page_background {
-  background-image: url('background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+.asana-banner img {
   width: 100%;
-  height: 100%;
+  position: absolute;
+}
+
+.asana-banner .main-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 1;
+}
+
+.asana-banner .main-container .container {
   margin-top: 40px;
 }
 
-.container {
-  width: 100%;
-  height: 400px;
+p.phone {
+  line-height: 20px;
 }
 
-#facebook_baner {
-  background-image: url(facebook.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 380px;
-  height: 150px;
-  float: right;
+p.phone img, p.mail img {
+  width: 21px;
+  height: 16px;
+  object-fit: contain;
+  margin-right: 16px;
+}
+
+.asana-banner .main-container .contact-info .container {
+  margin-top: 100px;
+}
+
+.asana-banner .main-container .contact-info .container p {
+  color: white;
+}
+
+.asana-banner .main-container .contact-info .container p:first-child {
+  margin-bottom: 0;
+}
+
+.asana-banner .contact-info img {
+  position: relative;
+}
+
+.call-request {
+  width: 135px;
+  height: 25px;
+  border-radius: 2px;
+  border: solid 1px #ffffff;
+  background-color: transparent;
+  color: white;
+  position: absolute;
+  top: 97px;
+  left: 25%;
+  z-index: 3;
+  line-height: 22px;
+}
+
+button.call-request:focus {
+  outline: none;
+}
+
+.modal-open .modal {
+  z-index: 1000000;
+}
+
+#second-menu.main-menu {
+  padding-top: 700px;
+  margin: 0 auto;
+}
+
+#second-menu.main-menu nav {
+  padding-top: 15px;
+}
+
+#second-menu.main-menu nav ul li a{
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #078eaa;
+}
+
+#second-menu.main-menu nav ul li img{
+  width: 19px;
+  height: 10px;
+  object-fit: contain;
+  position: relative;
+  margin-left: -30px;
+}
+
+.second-menu-row {
+  border-bottom: 1px solid #d8dcdd;
+  padding-bottom: 15px;
+}
+
+.tour-container {
+  height: 380px;
+  width: 340px;
+  border: solid 1px #d8dcdd;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
+  margin: 30px 30px 0 0;
 }
