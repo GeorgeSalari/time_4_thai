@@ -1,3 +1,6 @@
+RUBY VERSION
+   2.4.1p111
+
 GEM
   remote: https://rubygems.org/
   specs:
