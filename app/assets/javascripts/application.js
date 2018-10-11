@@ -35,7 +35,8 @@ $(document).ready(function(){
 
   $('.asana-banner .main-container').height( $('#mainHeaderImd').height() );
   $('.asana-banner').height( $('#mainHeaderImd').height() );
-  $('#second-menu.main-menu').css('padding-top', $('#mainHeaderImd').height() )
+  $('#second-menu.main-menu').css('padding-top', $('#mainHeaderImd').height() );
+  console.log($('#mainHeaderImd').height());
 
   $('.dropdown').click(function(e){
     var clicked_menu_class = $(this).attr('class')
