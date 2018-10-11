@@ -32,9 +32,10 @@ $(document).ready(function(){
       $('#total_price_'+id).val(total)
     })
   })
-  $('.asana-banner .main-container').height( $('.asana-banner img').height() );
-  $('.asana-banner').height( $('.asana-banner img').height() );
-  $('#second-menu.main-menu').css('padding-top', $('.asana-banner img').height() )
+
+  $('.asana-banner .main-container').height( $('#mainHeaderImd').height() );
+  $('.asana-banner').height( $('#mainHeaderImd').height() );
+  $('#second-menu.main-menu').css('padding-top', $('#mainHeaderImd').height() )
 
   $('.dropdown').click(function(e){
     var clicked_menu_class = $(this).attr('class')
