@@ -83,7 +83,10 @@ $(document).ready(function(){
 
 })
 
+var mySlidesId
+
 function openModal(modalId) {
+  mySlidesId = modalId.id
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
 }
@@ -106,9 +109,8 @@ function currentSlide(n) {
 
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
+  var slides = document.getElementsByClassName("mySlides_"+mySlidesId);
+  var dots = document.getElementsByClassName("demo_"+mySlidesId);
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
