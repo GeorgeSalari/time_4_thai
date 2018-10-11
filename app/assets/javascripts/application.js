@@ -86,7 +86,7 @@ $(document).ready(function(){
 var mySlidesId
 
 function openModal(modalId) {
-  mySlidesId = modalId.id
+  mySlidesId = modalId.id.substr(modalId.id.length - 1);
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
 }
