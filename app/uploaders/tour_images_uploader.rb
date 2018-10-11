@@ -54,6 +54,6 @@ class TourImagesUploader < CarrierWave::Uploader::Base
   end
 
   version :main_page do
-    process resize_to_fill: [340,218]
+    process resize_to_fill: [338,217]
   end
 end
