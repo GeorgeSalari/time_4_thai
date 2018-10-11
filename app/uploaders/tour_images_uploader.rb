@@ -47,9 +47,13 @@ class TourImagesUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [300, 300]
+  process resize_to_fit: [1030, 662]
+
+  version :bottom do
+    process resize_to_fill: [170,109]
+  end
 
   version :main_page do
-    process resize_to_fill: [60,60]
+    process resize_to_fill: [340,218]
   end
 end

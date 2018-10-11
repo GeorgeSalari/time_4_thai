@@ -6,6 +6,9 @@
   <div>
     <div class="text-center">
       <h3><%= link_to sea_tour.title, sea_tour_path(sea_tour) %></h3>
+      <div>
+        <%= image_tag(sea_tour.images.first.url) %>
+      </div>
       <p>
         <%= sea_tour.short_content %>
       </p>

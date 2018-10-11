@@ -69,6 +69,6 @@ class SeaToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sea_tour_params
-      params.require(:sea_tour).permit(:title, :short_content, :content, :adult_price, :child_price)
+      params.require(:sea_tour).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
     end
 end

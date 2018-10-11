@@ -169,7 +169,13 @@
         </div>
       </div>
       <div class="total-brand-17 d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
-        <div class="tour-container"></div>
+        <% @sea_tours.each do |sea_tour| %>
+          <div class="tour-container">
+            <div>
+              <%= image_tag sea_tour.images.first.url %>
+            </div>
+          </div>
+        <% end %>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
