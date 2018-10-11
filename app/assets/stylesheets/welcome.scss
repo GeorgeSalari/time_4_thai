@@ -418,9 +418,14 @@ button.call-request:focus {
 
 #orderTour .formButtonsContainer {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: auto;
   justify-content: space-between;
+}
+
+#orderTour .formButtonsContainer button {
+  margin: 0;
+  width: auto;
 }
 
 #orderTour .modal-body {
