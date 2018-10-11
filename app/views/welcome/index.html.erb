@@ -16,7 +16,7 @@
             </nav>
           </div>
           <div class="logo">
-            <a href="#">
+            <a href="javascript:;">
               <%= image_tag('logo.svg')%>
             </a>
           </div>
@@ -124,13 +124,13 @@
 
   </section>
   <!-- End Banner Area -->
-  <button class="call-request" data-toggle="modal" data-target="#exampleModal">Заказать звонок</button>
-  <!-- The Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <button class="call-request" data-toggle="modal" data-target="#orderCall">Заказать звонок</button>
+  <!-- The Modal Order Call -->
+  <div class="modal fade" id="orderCall" tabindex="-1" role="dialog" aria-labelledby="orderCallLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header text-center">
-          <h5 class="modal-title" id="exampleModalLabel">Заказать обратный звонок</h5>
+          <h5 class="modal-title" id="orderCallLabel">Заказать обратный звонок</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -156,7 +156,7 @@
       </div>
     </div>
   </div>
-  <!-- End Modal -->
+  <!-- End Modal Order Call  -->
   <!-- Start brand Area -->
   <section class="section-150" id="main-tours">
     <div class="container">
@@ -169,12 +169,120 @@
         </div>
       </div>
       <div class="total-brand-17 d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
+        <% @sea_tours.each do |sea_tour| %>
+          <div class="tour-container">
+            <div class="imagesContainer">
+              <%= image_tag sea_tour.images.first.url(:main_page) %>
+              <p>Рекомендуем</p>
+              <p class="tourTitle"><%= sea_tour.title %></p>
+              <p>
+                <%= image_tag 'user.svg' %>
+                B <%= sea_tour.adult_price %>
+                <%= image_tag 'kids-couple.svg' %>
+                B <%= sea_tour.child_price %>
+              </p>
+              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= sea_tour.title %>" data-adult="<%= sea_tour.adult_price %>" data-child="<%= sea_tour.child_price %>">Заказать</button>
+
+
+              <!-- Start modal images showing -->
+              <div id='<%= "imagesModal_#{sea_tour.id}" %>' class="modal imagesModal">
+
+                <div class="modal-content">
+                  <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{sea_tour.id}" %>)">&times;</span>
+
+                  <% sea_tour.images.each do |image| %>
+                    <div class="mySlides">
+                      <%= image_tag image.url %>
+                    </div>
+                  <% end %>
+
+                  <div class="column">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <% sea_tour.images. each_with_index do |image,index| %>
+                      <%= image_tag image.url(:bottom), class: "demo cursor", onclick: "currentSlide(#{index + 1})" %>
+                    <% end %>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- END modal images showing -->
+
+
+
+            </div>
+            <div class="shortContentContainer">
+              <p><%= sea_tour.short_content %></p>
+            </div>
+            <div class="buttonsContainer">
+              <button onclick="openModal(<%= "imagesModal_#{sea_tour.id}" %>);currentSlide(1)">Фото экскурсии</button>
+              <%= link_to "" "Подробней" %>
+            </div>
+          </div>
+        <% end %>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
         <div class="tour-container"></div>
-        <div class="tour-container"></div>
+
+        <!-- The Modal Order Tour -->
+        <div class="modal fade" id="orderTour" tabindex="-1" role="dialog" aria-labelledby="orderCallLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h5 class="modal-title" id="orderCallLabel">Забронировать екскурсию</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="orderTourTitle"></p>
+                <form>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-input">
+                        <label>Дата тура</label>
+                        <input type="date" name="">
+                      </div>
+                      <div class="pplsCounter">
+                        <%= image_tag 'user.svg' %>
+                        <label>Взрослых</label>
+                        <input type="number" name="" min="1" id="adult_count">
+                        <%= image_tag 'kids-couple.svg' %>
+                        <label>Детей</label>
+                        <input type="number" name="" id="child_count">
+                      </div>
+                      <div class="calcTotalPrice">
+                        <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-input">
+                        <label>Ваше имя</label>
+                        <input type="text" name="">
+                      </div>
+
+                      <input type="text" name="" placeholder="Телефон">
+
+                      <input type="text" name="" placeholder="E-mail">
+
+                      <input type="textarea" name="" placeholder="Комментарий">
+
+                    </div>
+                  </div>
+                  <div class="formButtonsContainer">
+                    <button type="button" class="btn btn-primary cart">Добавить в корзину</button>
+                    <button type="button" class="btn btn-primary book">Забронировать сейчас</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Modal Order Tour  -->
+
       </div>
     </div>
     <div class="container">

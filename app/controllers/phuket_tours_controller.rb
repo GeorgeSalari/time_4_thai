@@ -69,6 +69,6 @@ class PhuketToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phuket_tour_params
-      params.require(:phuket_tour).permit(:title, :short_content, :content, :adult_price, :child_price)
+      params.require(:phuket_tour).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
     end
 end

@@ -19,9 +19,16 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+  var tourTitle;
+  var adultPrice;
+  var childPrice;
+  var totalAdultPrice;
+  var totalChildPrice;
+
   $('.calc_price').each(function(){
     $(this).click(function(e){
-      var total = 0
+      var total = 0;
       e.preventDefault();
       var id = this.id.match(/\d+/)[0]
       var adult = $('#adult_'+id).val();
@@ -31,6 +38,27 @@ $(document).ready(function(){
       total = adult * adult_price + child * child_price
       $('#total_price_'+id).val(total)
     })
+  })
+
+  $('.orderTourButton').each(function(){
+    $(this).click(function(e){
+      totalAdultPrice = 0;
+      totalChildPrice = 0;
+      tourTitle = $(this).data('title');
+      adultPrice = $(this).data('adult');
+      childPrice = $(this).data('child');
+      $('#orderTourTitle').text(tourTitle);
+    })
+  })
+
+  $('#adult_count').on("change paste keyup", function(){
+    totalAdultPrice = $(this).val() * adultPrice;
+    $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿');
+  })
+
+  $('#child_count').on("change paste keyup", function(){
+    totalChildPrice = $(this).val() * childPrice;
+    $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
   })
 
   $("#mainHeaderImd").bind('load', function() {
@@ -52,4 +80,45 @@ $(document).ready(function(){
     });
     $($(this).find('.dropdown-menu')[0]).toggleClass('display-dropdown-menu');
   })
+
 })
+
+function openModal(modalId) {
+  document.getElementById(modalId.id).style.display = "block";
+  $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId.id).style.display = "none";
+  $('.header-17 .sticky-wrapper.is-sticky .total-header-area').show();
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  if (slides.length > 0) {
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+}
