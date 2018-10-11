@@ -82,4 +82,3 @@ production:
   <<: *default
   database: best_tours_production
   username: best_tours
-  password: <%= ENV['BEST_TOURS_DATABASE_PASSWORD'] %>
