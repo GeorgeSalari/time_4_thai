@@ -191,7 +191,7 @@
                   <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{sea_tour.id}" %>)">&times;</span>
 
                   <% sea_tour.images.each do |image| %>
-                    <div class='<%= "mySlides_#{sea_tour.id}" %>'>
+                    <div class='<%= "mySlides_#{sea_tours.id}" %>'>
                       <%= image_tag image.url %>
                     </div>
                   <% end %>
@@ -200,7 +200,7 @@
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     <% sea_tour.images.each_with_index do |image,index| %>
-                      <%= image_tag image.url(:bottom), class: '<%= "demo_#{sea_tour.id}" %> cursor', onclick: "currentSlide(#{index + 1})" %>
+                      <%= image_tag image.url(:bottom), class: '<%= "demo_#{sea_tours.id}" %> cursor', onclick: "currentSlide(#{index + 1})" %>
                     <% end %>
                   </div>
 
