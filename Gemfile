@@ -35,6 +35,12 @@ gem "figaro"
 gem 'bootstrap', '~> 4.1.2'
 gem 'jquery-rails'
 
+# Use carrierwave to upload file
+gem 'carrierwave', '~> 1.0'
+# Use minimagick to resize upload file
+gem "mini_magick"
+# Use fog for upload to aws
+gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
