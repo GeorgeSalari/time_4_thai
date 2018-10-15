@@ -13,12 +13,16 @@
 //= require jquery3
 //= require tether
 //= require popper
-//= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
 
 $(document).ready(function(){
+
+  if ( parseInt( $('.layer').text() ) > 9 ) {
+    $('.layer').css('right', '6px')
+  }
 
   var tourTitle;
   var adultPrice;
@@ -65,14 +69,26 @@ $(document).ready(function(){
     $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
   })
 
-  $("#mainHeaderImd").bind('load', function() {
+  var onImgLoad = function(selector, callback){
+    $(selector).each(function(){
+      if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+        callback.apply(this);
+      }
+      else {
+        $(this).on('load', function(){
+          callback.apply(this);
+        });
+      }
+    });
+  };
 
+  onImgLoad('#mainHeaderImd', function(){
     $('.asana-banner .main-container').height( $('#mainHeaderImd').height() );
     $('.asana-banner').height( $('#mainHeaderImd').height() );
     $('#second-menu.main-menu').css('padding-top', $('#mainHeaderImd').height() );
     console.log($('#mainHeaderImd').height());
-
   });
+
 
   $('.dropdown').click(function(e){
     var clicked_menu_class = $(this).attr('class')
@@ -86,7 +102,30 @@ $(document).ready(function(){
   })
 
   $('button.cart').click(function(){
-    debugger
+    $.post( "/cart_items", $( "#new_order" ).serialize() )
+      .done(function(){
+        var t = $('#orderTour button.cart'), b = $('.Oval-2');
+        t.parent().append("<div id=add_cart>1</div>");
+        var e = $('#add_cart');
+        var new_position_top = $('#orderTour .modal-body').offset().top - $('.Oval-2').offset().top
+        var new_position_left = $('.Oval-2').offset().left - $('#orderTour .modal-body').offset().left
+        e.animate({top: -new_position_top, left: new_position_left}, 1000, function(){
+          $('#orderTour').modal('toggle');
+          e.remove();
+          var itemsCount = parseInt( $('.layer').text() );
+          if (itemsCount < 9) {
+            $('.layer').text(itemsCount + 1);
+          } else {
+            $('.layer').css('right', '6px');
+            $('.layer').text(itemsCount + 1);
+          }
+
+        });
+      })
+      .fail(function(){
+        $('#orderTour').modal('toggle');
+        alert( "Что то пошло не так, попробуйте снова!" );
+      })
   })
 
 })

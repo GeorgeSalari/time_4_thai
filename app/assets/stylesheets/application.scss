@@ -1,2 +1,27 @@
-@import "bootstrap";
-@import 'welcome'
+@import 'welcome';
+@import 'magnific-popup';
+@import 'linearicons';
+@import 'owl.carousel';
+@import 'bootstrap-grid';
+@import 'bootstrap-reboot';
+@import 'bootstrap';
+@import 'main';
+
+.alert {
+  font-size: 40px;
+}
+
+#add_cart {
+  top: 348px;
+  left: 180.594px;
+  position: absolute;
+  z-index: 1000001;
+  width: 20px;
+  height: 20px;
+  background-color: #f5a623;
+  color: white;
+  border-radius: 50%;
+  line-height: normal;
+  padding-left: 6px;
+  padding-top: 2px;
+}

@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   private
   def set_cart
-    @cart = Chart.find(session[:cart_id])
+    @cart = Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    @cart = Chart.create
+    @cart = Cart.create
     session[:cart_id] = @cart.id
   end
 end

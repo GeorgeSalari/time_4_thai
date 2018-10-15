@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20181015124630) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "product_id"
     t.string "product_type"
-    t.integer "chart_id"
+    t.integer "cart_id"
     t.integer "quantity"
     t.integer "adult_count"
     t.integer "child_count"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20181015124630) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "charts", force: :cascade do |t|
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
