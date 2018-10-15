@@ -47,7 +47,11 @@ $(document).ready(function(){
       tourTitle = $(this).data('title');
       adultPrice = $(this).data('adult');
       childPrice = $(this).data('child');
+      productType = $(this).data('producttype');
+      productId = $(this).data('productid');
       $('#orderTourTitle').text(tourTitle);
+      $('#order_product_type').val(productType)
+      $('#order_product_id').val(productId)
     })
   })
 
@@ -79,6 +83,10 @@ $(document).ready(function(){
       }
     });
     $($(this).find('.dropdown-menu')[0]).toggleClass('display-dropdown-menu');
+  })
+
+  $('button.cart').click(function(){
+    debugger
   })
 
 })

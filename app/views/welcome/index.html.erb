@@ -181,7 +181,7 @@
                 <%= image_tag 'kids-couple.svg' %>
                 B <%= sea_tour.child_price %>
               </p>
-              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= sea_tour.title %>" data-adult="<%= sea_tour.adult_price %>" data-child="<%= sea_tour.child_price %>">Заказать</button>
+              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= sea_tour.title %>" data-adult="<%= sea_tour.adult_price %>" data-productType="SeaTour" data-productId="<%= sea_tour.id %>" data-child="<%= sea_tour.child_price %>">Заказать</button>
 
 
               <!-- Start modal images showing -->
@@ -234,20 +234,23 @@
               </div>
               <div class="modal-body">
                 <p id="orderTourTitle"></p>
-                <form>
+                <%= form_for @order do |f| %>
+                  <%= f.hidden_field :quantity, value: 1 %>
+                  <%= f.hidden_field :product_type %>
+                  <%= f.hidden_field :product_id %>
                   <div class="row">
                     <div class="col-6">
                       <div class="form-input">
                         <label>Дата тура</label>
-                        <input type="date" name="">
+                        <%= f.date_field :booking_date %>
                       </div>
                       <div class="pplsCounter">
                         <%= image_tag 'user.svg' %>
                         <label>Взрослых</label>
-                        <input type="number" name="" min="1" id="adult_count">
+                        <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true %>
                         <%= image_tag 'kids-couple.svg' %>
                         <label>Детей</label>
-                        <input type="number" name="" id="child_count">
+                        <%= f.number_field :child_count, id: "child_count" %>
                       </div>
                       <div class="calcTotalPrice">
                         <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
@@ -256,22 +259,22 @@
                     <div class="col-6">
                       <div class="form-input">
                         <label>Ваше имя</label>
-                        <input type="text" name="">
+                        <%= f.text_field :customer_name, :required => true %>
                       </div>
 
-                      <input type="text" name="" placeholder="Телефон">
+                      <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true %>
 
-                      <input type="text" name="" placeholder="E-mail">
+                      <%= f.email_field :customer_email, placeholder: "E-mail" %>
 
-                      <input type="textarea" name="" placeholder="Комментарий">
+                      <%= f.text_area :customer_comment, placeholder: "Комментарий" %>
 
                     </div>
                   </div>
                   <div class="formButtonsContainer">
                     <button type="button" class="btn btn-primary cart">Добавить в корзину</button>
-                    <button type="button" class="btn btn-primary book">Забронировать сейчас</button>
+                    <%= f.submit "Забронировать сейчас", class: "btn btn-primary book" %>
                   </div>
-                </form>
+                <% end %>
               </div>
             </div>
           </div>

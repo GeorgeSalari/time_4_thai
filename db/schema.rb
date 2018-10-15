@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181011132221) do
+ActiveRecord::Schema.define(version: 20181015124630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(version: 20181011132221) do
     t.json "images"
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "product_type"
+    t.integer "chart_id"
+    t.integer "quantity"
+    t.integer "adult_count"
+    t.integer "child_count"
+    t.date "booking_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "evening_shows", force: :cascade do |t|
     t.string "title"
     t.string "short_content"
@@ -83,6 +100,21 @@ ActiveRecord::Schema.define(version: 20181011132221) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "product_type"
+    t.integer "quantity"
+    t.integer "adult_count"
+    t.integer "child_count"
+    t.date "booking_date"
+    t.string "customer_name"
+    t.string "customer_phone"
+    t.string "customer_email"
+    t.string "customer_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "phuket_tours", force: :cascade do |t|
