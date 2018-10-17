@@ -58,8 +58,8 @@ $(document).ready(function(){
       $('#order_product_id').val(productId)
       if ( window.location.href.includes('carts') ) {
         bookingDate = $(this).data('date');
-        adultCount = $(this).data('adultcount');
-        childCount = $(this).data('childcount');
+        adultCount = $('.item-adult-count.item-'+productId+'-adult-count.item-'+productType+'-adult-count').val();
+        childCount = $('.item-child-count.item-'+productId+'-child-count.item-'+productType+'-child-count').val();
         $('#adult_count').val(adultCount);
         $('#child_count').val(childCount);
         $('#order_booking_date').val(bookingDate);

@@ -27,7 +27,7 @@
               </p>
             </div>
             <div class="col-3">
-              × <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count'>
+              × <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count item-<%= item.product_id %>-adult-count item-<%= item.product_type %>-adult-count'>
             </div>
           </div>
           <div class="row">
@@ -43,7 +43,7 @@
               </p>
             </div>
             <div class="col-3">
-              × <input type="number" name="" value="<%= item.child_count %>" class='item-child-count'>
+              × <input type="number" name="" value="<%= item.child_count %>" class='item-child-count item-<%= item.product_id %>-child-count item-<%= item.product_type %>-child-count' >
             </div>
           </div>
         </div>
