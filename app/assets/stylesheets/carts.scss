@@ -1,0 +1,127 @@
+.cart-container {
+  min-height: 70vh;
+}
+
+.cart-container h1,
+.cart-container h2 {
+  font-weight: bold;
+  text-align: center;
+  color: #f5a623;
+  margin: 30px 0;
+}
+
+.cart-container > .row {
+  padding: 30px 0;
+  border-bottom: 1px solid #e2e4e4;
+}
+
+.item-title {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #000;
+}
+
+.ppls-count .col-3 {
+  padding: 0;
+}
+
+.ppls-count .col-5 img {
+  margin-top: -5px;
+}
+
+.date-total-price {
+  margin-top: 33px;
+  padding-left: 20px;
+}
+
+.date-total-price p {
+  line-height: 35px;
+  color: #078eaa;
+  font-size: 33px;
+  margin-top: -3px;
+}
+
+.date-total-price a {
+  line-height: 20px;
+  font-size: 50px;
+  color: #d0021b;
+}
+
+.ppls-count p {
+  display: inline;
+  line-height: 35px;
+}
+
+.ppls-count .price-container {
+  color: #000;
+  font-weight: bold;
+}
+
+.ppls-count input {
+  width: 53px;
+  height: 35px;
+  border-radius: 4px;
+  border: solid 1px #d8dcdd;
+  padding-left: 10px;
+  color: #4a4a4a;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.date-container {
+  position: relative;
+  padding: 0 20px;
+}
+
+.date-container label {
+  position: absolute;
+  left: 30px;
+  top: -9px;
+  margin: 0;
+  line-height: normal;
+  color: #000000;
+  background-color: white;
+  padding: 0 10px;
+}
+
+.date-container input {
+  height: 35px;
+  border: solid 1px #d8dcdd;
+  width: 100%;
+  padding-left: 20px;
+  color: #4a4a4a;
+}
+
+.total-price-container {
+  margin-top: -20px;
+}
+
+.total-price-container button {
+  width: 98px;
+  height: 25px;
+  border-radius: 2px;
+  background-color: #f5a623;
+  border-color: #f5a623;
+  line-height: normal;
+  color: white;
+  z-index: 2;
+}
+
+#orderTour button.btn-primary.cart {
+  display: none;
+}
+
+#orderTour .formButtonsContainer {
+  justify-content: center;
+}
+
+
+
+

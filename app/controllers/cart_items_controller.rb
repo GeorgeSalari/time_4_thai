@@ -1,5 +1,4 @@
 class CartItemsController < ApplicationController
-  before_action :set_cart, only: [:create, :destroy]
   before_action :set_cart_item, only: [:destroy]
 
   # POST /cart_items
@@ -15,7 +14,8 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1
   def destroy
-    @cart_item.destroy
+    @cart.remove_product(@cart_item.product_id, @cart_item.product_type)
+    redirect_back fallback_location: root_path
   end
 
   private

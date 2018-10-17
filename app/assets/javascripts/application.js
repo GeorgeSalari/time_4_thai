@@ -14,7 +14,6 @@
 //= require tether
 //= require popper
 //= require rails-ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
 
@@ -46,6 +45,7 @@ $(document).ready(function(){
 
   $('.orderTourButton').each(function(){
     $(this).click(function(e){
+      $('button.cart').removeAttr("disabled");
       totalAdultPrice = 0;
       totalChildPrice = 0;
       tourTitle = $(this).data('title');
@@ -56,15 +56,28 @@ $(document).ready(function(){
       $('#orderTourTitle').text(tourTitle);
       $('#order_product_type').val(productType)
       $('#order_product_id').val(productId)
+      if ( window.location.href.includes('carts') ) {
+        bookingDate = $(this).data('date');
+        adultCount = $(this).data('adultcount');
+        childCount = $(this).data('childcount');
+        $('#adult_count').val(adultCount);
+        $('#child_count').val(childCount);
+        $('#order_booking_date').val(bookingDate);
+        totalAdultPrice = adultCount * adultPrice;
+        totalChildPrice = childCount * childPrice;
+        $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
+      }
     })
   })
 
   $('#adult_count').on("change paste keyup", function(){
+    totalAdultPrice = 0;
     totalAdultPrice = $(this).val() * adultPrice;
     $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿');
   })
 
   $('#child_count').on("change paste keyup", function(){
+    totalChildPrice = 0;
     totalChildPrice = $(this).val() * childPrice;
     $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
   })
@@ -102,6 +115,8 @@ $(document).ready(function(){
   })
 
   $('button.cart').click(function(){
+    var submit_button = $(this)
+    $(this).attr("disabled", true);
     $.post( "/cart_items", $( "#new_order" ).serialize() )
       .done(function(){
         var t = $('#orderTour button.cart'), b = $('.Oval-2');

@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
+      @cart.remove_product(@order.product_id, @order.product_type)
       flash[:success] = 'Спасибо за бронирование, мы скоро с вами свяжимся!'
       redirect_back fallback_location: root_path
     else

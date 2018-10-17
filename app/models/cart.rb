@@ -18,4 +18,8 @@ class Cart < ApplicationRecord
     end
       new_item
   end
+
+  def remove_product(item_id, product_type)
+    cart_items.find_by(product_id: item_id, product_type: product_type).destroy
+  end
 end

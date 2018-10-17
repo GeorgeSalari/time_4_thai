@@ -1,0 +1,74 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'carts' %>
+<% end %>
+
+<%= render 'shared/navbar' %>
+
+<div class="container">
+  <div class="cart-container">
+    <h1>Ваша корзина</h1>
+    <% @cart.cart_items.each do |item| %>
+      <div class="row item-container item-<%= item.product_id %>">
+        <div class="col-4">
+          <%= image_tag item.item_image %>
+          <p class="item-title"><%= item.item_title %></p>
+        </div>
+        <div class="col-3 ppls-count">
+          <div class="row pb20 pt10">
+            <div class="col-5 text-right">
+              <%= image_tag 'user.svg' %>
+              <p>
+                Взрослыx
+              </p>
+            </div>
+            <div class="col-4 price-container">
+              <p>
+                ฿ <span class="adult"><%= item.adult_price %></span>
+              </p>
+            </div>
+            <div class="col-3">
+              × <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count'>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5 text-right">
+              <%= image_tag 'kids-couple.svg' %>
+              <p>
+                Детей
+              </p>
+            </div>
+            <div class="col-4 price-container">
+              <p>
+                ฿ <span class="child"><%= item.child_price %></span>
+              </p>
+            </div>
+            <div class="col-3">
+              × <input type="number" name="" value="<%= item.child_count %>" class='item-child-count'>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 date-total-price">
+          <div class="row">
+            <div class="col-6 date-container">
+              <label>Дата экскурсии</label>
+              <input type="date" name="" value="<%= item.booking_date %>">
+            </div>
+            <div class="col-4 total-price-container">
+              <p>฿ <span class="item-<%= item.product_id %>-total-price"></span></p>
+              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= item.item_title %>" data-adult="<%= item.adult_price %>" data-productType="<%= item.product_type %>" data-productId="<%= item.product_id %>" data-child="<%= item.child_price %>" data-date="<%= item.booking_date %>" data-adultcount='<%= item.adult_count %>' data-childcount='<%= item.child_count %>'>Заказать</button>
+            </div>
+            <div class="col-2 text-center">
+              <%= link_to "×", cart_item_path(item), method: :delete %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <!-- The Modal Order Tour -->
+    <%= render 'shared/order_tour' %>
+    <!-- End Modal Order Tour  -->
+    <h2>Контактные данные</h2>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

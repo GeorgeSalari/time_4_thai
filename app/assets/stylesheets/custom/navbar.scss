@@ -1,0 +1,64 @@
+.header-4.header-17.navbar {
+  position: relative;
+  padding: 0;
+
+  .total-header-area.default-header > nav {
+    justify-content: space-around;
+    display: flex;
+  }
+
+  .total-header-area.default-header > nav ul {
+    display: flex !important;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 10px;
+  }
+
+  .btn-group {
+    width: auto;
+    margin: 0;
+  }
+
+  .total-header-area .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+  }
+
+  .call-request {
+    position: relative;
+    top: 8px;
+    left: 10px;
+    color: #f5a623;
+    border-color: #f5a623;
+  }
+
+  p.mail a {
+    color: #666666;
+  }
+
+  p.phone,
+  p.mail,
+  #social-link-container a {
+    line-height: 46px;
+    margin: 0;
+  }
+
+  .total-header-area {
+    padding-top: 0;
+  }
+
+  .dropdown > a, a:focus, a:hover {
+    color: #078eaa
+  }
+
+  p.phone img, p.mail img {
+    margin: 0;
+  }
+
+  .sticky-wrapper.is-sticky p.mail a,
+  .sticky-wrapper.is-sticky .dropdown > a, .sticky-wrapper.is-sticky .dropdown > a:focus, .sticky-wrapper.is-sticky .dropdown > a:hover,
+  .sticky-wrapper.is-sticky p.phone {
+    color: white;
+  }
+}
