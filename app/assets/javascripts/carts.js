@@ -1,4 +1,14 @@
 $(document).ready(function(){
+  var totalToursPrice = 0;
+
+  function update_total_price() {
+    totalToursPrice = 0;
+    $('.total-price-container').each(function(){
+      totalToursPrice += parseFloat( $(this).find('p span').text() )
+    });
+    $('#allToursPrice').text(totalToursPrice);
+  }
+
   $('.item-container').each(function(){
     var allClasses = $(this).attr('class').split(' '), itemId = allClasses[allClasses.length - 1],
         adult = parseFloat( $('.'+itemId+' .item-adult-count').val() ),
@@ -19,16 +29,30 @@ $(document).ready(function(){
         $('.'+itemId+' .item-adult-count').on("change paste keyup", function(){
           totalPrice = 0;
           totalAdultPrice = $(this).val() * priceAdult;
-          totalPrice += totalAdultPrice + totalChildPrice;
+          if ( isNaN(totalChildPrice) ) {
+            totalPrice += totalAdultPrice
+          } else {
+            totalPrice += totalAdultPrice + totalChildPrice;
+          }
           $('.'+itemId+'-total-price').text(totalPrice);
+          update_total_price();
         })
 
         $('.'+itemId+' .item-child-count').on("change paste keyup", function(){
           totalPrice = 0;
           totalChildPrice = $(this).val() * priceChild;
+          if ( isNaN(totalAdultPrice) ) {
+            totalPrice += totalChildPrice
+          } else {
+            totalPrice += totalAdultPrice + totalChildPrice;
+          }
           totalPrice += totalAdultPrice + totalChildPrice;
           $('.'+itemId+'-total-price').text(totalPrice);
+          update_total_price();
         })
     $('.'+itemId+'-total-price').text(totalPrice);
-  })
+    totalToursPrice += totalPrice;
+  });
+
+  $('#allToursPrice').text(totalToursPrice);
 })

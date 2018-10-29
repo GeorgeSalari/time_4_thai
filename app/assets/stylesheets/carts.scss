@@ -1,5 +1,5 @@
 .cart-container {
-  min-height: 70vh;
+  min-height: 50vh;
 }
 
 .cart-container h1,
@@ -124,6 +124,25 @@
   justify-content: center;
 }
 
+.orderAllContainer {
+  width: 650px;
+  margin: 10px auto;
+}
 
+.allToursPriceText,
+.allToursPriceAmount {
+  color: #000;
+  height:45px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 20px;
+}
 
+.allToursPriceAmount {
+  color: #078eaa;
+  font-weight: bold;
+  font-size: 46px;
+  min-width: 150px;
+  text-align: center;
+}
 
