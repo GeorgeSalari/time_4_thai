@@ -531,3 +531,18 @@ button.call-request:focus {
   font-weight: bold;
   font-size: 22px;
 }
+
+.call-request-scroll {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  z-index: 2;
+  display: none;
+  background: transparent;
+  border:none;
+  box-shadow: none;
+}
+
+.call-request-scroll:focus {
+  outline: none;
+}

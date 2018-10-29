@@ -52,6 +52,7 @@
         }
 
         if (scrollTop <= etse) {
+          $('.call-request-scroll').hide();
           if (s.currentTop !== null) {
             s.stickyElement
               .css('width', '')
@@ -61,6 +62,7 @@
             s.currentTop = null;
           }
         } else {
+          $('.call-request-scroll').show();
           var newTop = documentHeight - s.stickyElement.outerHeight()
             - s.topSpacing - s.bottomSpacing - scrollTop - extra;
           if (newTop < 0) {
