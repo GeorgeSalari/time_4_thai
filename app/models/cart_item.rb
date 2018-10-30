@@ -17,7 +17,15 @@ class CartItem < ApplicationRecord
     find_item_tour().child_price
   end
 
+  def update_cart_item(params)
+    self.update(cart_item_params(params) )
+  end
+
   private
+  def cart_item_params(params)
+    {adult_count: params[:adult_count], child_count: params[:child_count], booking_date: params[:booking_date]}
+  end
+
   def find_item_tour
     case self.product_type
     when 'SeaTour'
