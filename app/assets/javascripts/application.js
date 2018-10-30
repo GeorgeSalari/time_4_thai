@@ -143,6 +143,7 @@ $(document).ready(function(){
           new_position_top = $(newOrderForm).offset().top - $('.Oval-2').offset().top - 70
           new_position_left = $('.Oval-2').offset().left - $(newOrderForm).offset().left + 15
         } else {
+          $("#new_order.fix #add_cart").remove();
           new_position_top = $('#orderTour .modal-body').offset().top - $('.Oval-2').offset().top
           new_position_left = $('.Oval-2').offset().left - $('#orderTour .modal-body').offset().left
         }
