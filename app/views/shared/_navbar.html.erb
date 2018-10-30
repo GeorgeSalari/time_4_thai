@@ -188,6 +188,16 @@
 
     </nav>
 
+    <%= link_to carts_path do %>
+      <div id="basket">
+        <span id='white' class="hidden"><%= image_tag('shopping-cart-white.svg')%></span>
+        <span id='black'><%= image_tag('shopping-cart.svg')%></span>
+        <div class="Oval-2">
+          <span class="layer"><%= @cart.cart_items.count %></span>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 
 

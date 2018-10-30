@@ -454,6 +454,11 @@ button.call-request:focus {
   border-bottom: solid 1px #d8dcdd;
 }
 
+#orderTour .pplsCounter.adult {
+  border: none;
+  padding-bottom: 0;
+}
+
 #orderTour .pplsCounter input {
   margin: 0;
 }
@@ -466,7 +471,8 @@ button.call-request:focus {
   margin-bottom: 23px;
 }
 
-#orderTour .pplsCounter input {
+#orderTour .pplsCounter .col-5 > input,
+#orderTour .pplsCounter .col-7 > input {
   width: 53px;
   height: 35px;
   border-radius: 4px;

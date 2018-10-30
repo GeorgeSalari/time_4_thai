@@ -1,3 +1,196 @@
-// Place all the styles related to the Sea_tours controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  color: #4a4a4a;
+}
+
+.container {
+  height: fit-content;
+  padding-top: 30px;
+}
+
+.container h1,
+.container h2 {
+  font-weight: bold;
+  text-align: center;
+  color: #f5a623;
+  margin: 30px 0;
+}
+
+.price-container {
+  position: relative;
+}
+
+.price-container img {
+  margin-top: -7px;
+  width: 24px;
+}
+
+.price-container p.child-price img {
+  width: 30px;
+}
+
+.price-container p {
+  font-size: 25px;
+  color: #000;
+}
+
+.price-container button {
+  position: relative;
+  top: 0;
+}
+
+.form-container {
+  width: 650px;
+  margin: 40px auto;
+  margin-bottom: 100px;
+  border: solid 8px #078eaa;
+  padding: 65px 20px 30px;
+  position: relative;
+}
+
+#new_order button.btn-primary.cart {
+  background-color: #078eaa;
+  border-color: #078eaa;
+}
+
+#new_order button.btn-primary.cart:hover {
+  background-color: #025aa5;
+  border-color: #01549b;
+}
+
+#new_order .formButtonsContainer {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+#new_order .formButtonsContainer input,
+#new_order .formButtonsContainer button {
+  margin: 0;
+  width: auto;
+}
+
+#new_order .modal-body {
+  padding-top: 20px;
+}
+
+#new_order .modal-content {
+  width: 650px;
+  height: 470px;
+}
+
+#new_order .modal-dialog {
+  max-width: 650px;
+  margin: 0 auto!important;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#new_order .pplsCounter > img {
+  margin-top: -4px;
+}
+
+#new_order .pplsCounter {
+  padding-bottom: 20px;
+  border-bottom: solid 1px #d8dcdd;
+}
+
+#new_order .pplsCounter.adult {
+  border: none;
+  padding-bottom: 0;
+}
+
+#new_order .pplsCounter input {
+  margin: 0;
+}
+
+#new_order #new_orderTitle {
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  font-size: 20px;
+  margin-bottom: 23px;
+}
+
+#new_order .pplsCounter .col-5 > input,
+#new_order .pplsCounter .col-7 > input {
+  width: 53px;
+  height: 35px;
+  border-radius: 4px;
+  border: solid 1px #d8dcdd;
+  padding-left: 10px;
+}
+
+#new_order .pplsCounter input:first-of-type {
+  margin-right: 15px;
+}
+
+#new_order .form-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#new_order .form-input label {
+  position: absolute;
+  left: 11px;
+  top: -9px;
+  margin: 0;
+  line-height: normal;
+  color: #000000;
+  background-color: white;
+  padding: 0 10px;
+}
+
+#new_order .col-6 > input {
+  height: 35px;
+  border-radius: 4px;
+  border: solid 1px #d8dcdd;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+#new_order .col-6 > textarea {
+  height: 74px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  border: solid 1px #d8dcdd;
+  width: 100%;
+  padding: 0 20px;
+}
+
+#new_order .form-input input {
+  height: 35px;
+  border: solid 1px #d8dcdd;
+  width: 100%;
+  padding-left: 20px;
+  color: #4a4a4a;
+}
+
+#new_order .calcTotalPrice {
+  margin-top: 20px;
+  color: #000000;
+}
+
+#new_order #finalTotalPrice {
+  float: right;
+  color: #078eaa;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.orderTourButtonShow {
+  position: absolute;
+  width: 98px;
+  height: 25px;
+  border-radius: 2px;
+  background-color: #f5a623;
+  border-color: #f5a623;
+  line-height: normal;
+  color: white;
+  top: 172px;
+  right: 30px;
+  z-index: 2;
+}
+
+@import 'custom/navbar_cart'

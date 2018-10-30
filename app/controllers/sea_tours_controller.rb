@@ -10,6 +10,7 @@ class SeaToursController < ApplicationController
   # GET /sea_tours/1
   # GET /sea_tours/1.json
   def show
+    @order = Order.new
   end
 
   # GET /sea_tours/new

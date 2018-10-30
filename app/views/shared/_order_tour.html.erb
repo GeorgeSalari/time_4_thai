@@ -11,21 +11,31 @@
         <p id="orderTourTitle"></p>
         <%= form_for @order do |f| %>
           <%= f.hidden_field :quantity, value: 1 %>
-          <%= f.hidden_field :product_type %>
-          <%= f.hidden_field :product_id %>
+          <%= f.hidden_field :product_type, value: product_type %>
+          <%= f.hidden_field :product_id, value: product_id %>
           <div class="row">
             <div class="col-6">
               <div class="form-input">
                 <label>Дата тура</label>
                 <%= f.date_field :booking_date %>
               </div>
-              <div class="pplsCounter">
-                <%= image_tag 'user.svg' %>
-                <label>Взрослых</label>
-                <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true %>
-                <%= image_tag 'kids-couple.svg' %>
-                <label>Детей</label>
-                <%= f.number_field :child_count, id: "child_count" %>
+              <div class="pplsCounter adult row">
+                <div class="col-5">
+                  <%= image_tag 'user.svg' %>
+                  <label>Взрослых</label>
+                </div>
+                <div class="col-7">
+                  <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true %>
+                </div>
+              </div>
+              <div class="pplsCounter row">
+                <div class="col-5">
+                  <%= image_tag 'kids-couple.svg' %>
+                  <label>Детей</label>
+                </div>
+                <div class="col-7">
+                  <%= f.number_field :child_count, id: "child_count" %>
+                </div>
               </div>
               <div class="calcTotalPrice">
                 <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
