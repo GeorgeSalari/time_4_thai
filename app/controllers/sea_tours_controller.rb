@@ -4,6 +4,7 @@ class SeaToursController < ApplicationController
   # GET /sea_tours
   # GET /sea_tours.json
   def index
+    @order = Order.new
     @sea_tours = SeaTour.all
   end
 
