@@ -11,6 +11,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def cart_order
+    if @cart.order_all(params)
+      session[:cart_id] = nil
+      flash[:success] = 'Спасибо за бронирование, мы скоро с вами свяжимся!'
+      redirect_to root_path
+    else
+      flash[:error] = 'Что то пошло не так, попробуйте снова.'
+      redirect_back fallback_location: root_path
+    end
+  end
+
   private
   def order_params
     params.require(:order).permit(

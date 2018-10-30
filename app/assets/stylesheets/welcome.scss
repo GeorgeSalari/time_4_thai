@@ -478,12 +478,14 @@ button.call-request:focus {
   margin-right: 15px;
 }
 
-#orderTour .form-input {
+#orderTour .form-input,
+#new_order .form-input {
   position: relative;
   margin-bottom: 20px;
 }
 
-#orderTour .form-input label {
+#orderTour .form-input label,
+#new_order .form-input label {
   position: absolute;
   left: 11px;
   top: -9px;
@@ -494,7 +496,8 @@ button.call-request:focus {
   padding: 0 10px;
 }
 
-#orderTour .col-6 > input {
+#orderTour .col-6 > input,
+#new_order .col-6 > input {
   height: 35px;
   border-radius: 4px;
   border: solid 1px #d8dcdd;
@@ -503,7 +506,8 @@ button.call-request:focus {
   margin-bottom: 20px;
 }
 
-#orderTour .col-6 > textarea {
+#orderTour .col-6 > textarea,
+#new_order > textarea {
   height: 74px;
   margin-bottom: 25px;
   border-radius: 4px;
@@ -512,7 +516,8 @@ button.call-request:focus {
   padding: 0 20px;
 }
 
-#orderTour .form-input input {
+#orderTour .form-input input,
+#new_order .form-input input {
   height: 35px;
   border: solid 1px #d8dcdd;
   width: 100%;
@@ -530,4 +535,19 @@ button.call-request:focus {
   color: #078eaa;
   font-weight: bold;
   font-size: 22px;
+}
+
+.call-request-scroll {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  z-index: 2;
+  display: none;
+  background: transparent;
+  border:none;
+  box-shadow: none;
+}
+
+.call-request-scroll:focus {
+  outline: none;
 }

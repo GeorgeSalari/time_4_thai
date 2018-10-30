@@ -67,7 +67,35 @@
     <!-- The Modal Order Tour -->
     <%= render 'shared/order_tour' %>
     <!-- End Modal Order Tour  -->
-    <h2>Контактные данные</h2>
+    <% if @cart.cart_items.count <= 0 %>
+      <h2>Ваша корзина пуста! Выберите себе для начало <%= link_to 'туры', root_path %>.</h2>
+    <% else %>
+      <div class="text-right">
+        <p class='allToursPriceText'>Итоговая стоимость: </p>
+        <p class="allToursPriceAmount"> ฿ <span id="allToursPrice">0</span></p>
+      </div>
+      <h2>Контактные данные</h2>
+      <div class="orderAllContainer">
+        <%= form_for @order, :url => {:controller => :orders, action: :cart_order, method: :patch } do |f| %>
+          <div class="form-input">
+            <label>Ваше имя</label>
+            <%= f.text_field :customer_name, :required => true, autocomplete: 'name' %>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
+            </div>
+            <div class="col-6">
+              <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
+            </div>
+          </div>
+          <%= f.text_area :customer_comment, placeholder: "Комментарий", autocomplete: false %>
+          <div class="text-center">
+            <%= f.submit "Подтвердить заказ", class: "btn btn-primary book" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 

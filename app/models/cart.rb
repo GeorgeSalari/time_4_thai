@@ -22,4 +22,28 @@ class Cart < ApplicationRecord
   def remove_product(item_id, product_type)
     cart_items.find_by(product_id: item_id, product_type: product_type).destroy
   end
+
+  def order_all(params)
+    check_flag = true
+    self.cart_items.each do |item|
+      order = Order.new(order_params(item, params) )
+      check_flag = false unless order.save
+    end
+    check_flag
+  end
+
+  def order_params(item, params)
+    {
+      product_id: item.product_id,
+      product_type: item.product_type,
+      quantity: item.quantity,
+      adult_count: item.adult_count,
+      child_count: item.child_count,
+      booking_date: item.booking_date,
+      customer_name: params[:order][:customer_name],
+      customer_phone: params[:order][:customer_phone],
+      customer_email: params[:order][:customer_email],
+      customer_comment: params[:order][:customer_comment]
+    }
+  end
 end
