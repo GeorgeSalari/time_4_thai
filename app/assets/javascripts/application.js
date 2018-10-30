@@ -70,6 +70,17 @@ $(document).ready(function(){
     })
   })
 
+  $('.orderTourButtonShow').each(function(){
+    $(this).click(function(e){
+      totalAdultPrice = 0;
+      totalChildPrice = 0;
+      tourTitle = $(this).data('title');
+      adultPrice = $(this).data('adult');
+      childPrice = $(this).data('child');
+      $('#orderTourTitle').text(tourTitle);
+    })
+  })
+
   $('#adult_count').on("change paste keyup", function(){
     totalAdultPrice = 0;
     totalAdultPrice = $(this).val() * adultPrice;
@@ -115,17 +126,31 @@ $(document).ready(function(){
   })
 
   $('button.cart').click(function(){
-    var submit_button = $(this)
-    $(this).attr("disabled", true);
-    $.post( "/cart_items", $( "#new_order" ).serialize() )
+    var submit_button = $(this), newOrderForm, new_position_top, new_position_left ;
+    if ($(this).parent().parent().attr('class') == "fix") {
+      newOrderForm = "#new_order.fix"
+    } else {
+      newOrderForm = "#new_order"
+      $(this).attr("disabled", true);
+    }
+
+    $.post( "/cart_items", $(newOrderForm).serialize() )
       .done(function(){
-        var t = $('#orderTour button.cart'), b = $('.Oval-2');
+        var t = $(newOrderForm+' button.cart'), b = $('.Oval-2');
         t.parent().append("<div id=add_cart>1</div>");
         var e = $('#add_cart');
-        var new_position_top = $('#orderTour .modal-body').offset().top - $('.Oval-2').offset().top
-        var new_position_left = $('.Oval-2').offset().left - $('#orderTour .modal-body').offset().left
+        if ( newOrderForm.includes('fix') ) {
+          new_position_top = $(newOrderForm).offset().top - $('.Oval-2').offset().top - 70
+          new_position_left = $('.Oval-2').offset().left - $(newOrderForm).offset().left + 15
+        } else {
+          new_position_top = $('#orderTour .modal-body').offset().top - $('.Oval-2').offset().top
+          new_position_left = $('.Oval-2').offset().left - $('#orderTour .modal-body').offset().left
+        }
+
         e.animate({top: -new_position_top, left: new_position_left}, 1000, function(){
-          $('#orderTour').modal('toggle');
+          if ( !newOrderForm.includes('fix') ) {
+            $('#orderTour').modal('toggle');
+          }
           e.remove();
           var itemsCount = parseInt( $('.layer').text() );
           if (itemsCount < 9) {

@@ -20,7 +20,10 @@ class Cart < ApplicationRecord
   end
 
   def remove_product(item_id, product_type)
-    cart_items.find_by(product_id: item_id, product_type: product_type).destroy
+    cart_item = cart_items.find_by(product_id: item_id, product_type: product_type)
+    if cart_item
+      cart_item.destroy
+    end
   end
 
   def order_all(params)

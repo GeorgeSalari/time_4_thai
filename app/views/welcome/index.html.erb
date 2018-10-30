@@ -61,13 +61,13 @@
             </div>
             <div class="buttonsContainer">
               <button onclick="openModal(<%= "imagesModal_#{sea_tour.id}" %>);currentSlide(1)">Фото экскурсии</button>
-              <%= link_to "" "Подробней" %>
+              <%= link_to "Подробней", sea_tour_path(sea_tour) %>
             </div>
           </div>
         <% end %>
 
         <!-- The Modal Order Tour -->
-        <%= render 'shared/order_tour' %>
+        <%= render partial: 'shared/order_tour', :locals => { product_type: "", product_id: ''} %>
         <!-- End Modal Order Tour  -->
 
       </div>

@@ -65,7 +65,7 @@
       </div>
     <% end %>
     <!-- The Modal Order Tour -->
-    <%= render 'shared/order_tour' %>
+    <%= render partial: 'shared/order_tour', :locals => { product_type: "", product_id: ''} %>
     <!-- End Modal Order Tour  -->
     <% if @cart.cart_items.count <= 0 %>
       <h2>Ваша корзина пуста! Выберите себе для начало <%= link_to 'туры', root_path %>.</h2>

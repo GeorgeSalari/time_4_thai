@@ -28,7 +28,8 @@
       var scrollTop = $window.scrollTop(),
         documentHeight = $document.height(),
         dwh = documentHeight - windowHeight,
-        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+        extra = (scrollTop > dwh) ? dwh - scrollTop : 0,
+        fullPath = location.pathname + location.search + location.hash;
 
       for (var i = 0; i < sticked.length; i++) {
         var s = sticked[i],
@@ -53,6 +54,10 @@
 
         if (scrollTop <= etse) {
           $('.call-request-scroll').hide();
+          if(fullPath != "/") {
+            $('#black').show();
+            $('#white').hide();
+          }
           if (s.currentTop !== null) {
             s.stickyElement
               .css('width', '')
@@ -62,6 +67,10 @@
             s.currentTop = null;
           }
         } else {
+          if(fullPath != "/") {
+            $('#black').hide();
+            $('#white').show();
+          }
           $('.call-request-scroll').show();
           var newTop = documentHeight - s.stickyElement.outerHeight()
             - s.topSpacing - s.bottomSpacing - scrollTop - extra;
