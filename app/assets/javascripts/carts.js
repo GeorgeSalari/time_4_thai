@@ -85,7 +85,6 @@ $(document).ready(function(){
           } else {
             totalPrice += totalAdultPrice + totalChildPrice;
           }
-          totalPrice += totalAdultPrice + totalChildPrice;
           $('.'+itemId+'-total-price').text(totalPrice);
           update_total_price();
         })
