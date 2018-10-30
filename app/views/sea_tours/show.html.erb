@@ -9,9 +9,18 @@
 
   <div class="text-center">
     <% @sea_tour.images.each do |image| %>
-      <%= image_tag image.url(:bottom) %>
+      <%= image_tag image.url(:bottom), class: 'small_images' %>
     <% end %>
   </div>
+
+  <!-- The Modal Big Images -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close_image">&times;</span>
+      <img id="img01">
+    </div>
+  </div>
+  <!-- End Modal -->
 
   <h1>
     <%= @sea_tour.title %>
