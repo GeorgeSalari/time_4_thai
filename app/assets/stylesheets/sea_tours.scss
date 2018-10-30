@@ -193,4 +193,35 @@ body {
   z-index: 2;
 }
 
+.small_images {
+  cursor: pointer;
+}
+
+#imageModal .modal-content {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#imageModal .modal-content img {
+  width: auto;
+  height: auto;
+}
+
+#imageModal .close_image {
+  font-weight: bold;
+  color: white;
+  font-size: 53px;
+  position: absolute;
+  top: 25px;
+  right: 15px;
+  opacity: 1;
+  line-height: 0;
+  text-shadow: 0 1px 0 #fff;
+  cursor: pointer;
+}
+
 @import 'custom/navbar_cart'
