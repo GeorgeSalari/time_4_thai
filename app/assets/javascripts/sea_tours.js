@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   // Get the modal
   var modal = $('#imageModal');
 
@@ -17,7 +18,9 @@ $(document).ready(function(){
   var span = document.getElementsByClassName("close_image")[0];
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.modal('hide');
+  if(typeof span != 'undefined') {
+    span.onclick = function() {
+      modal.modal('hide');
+    }
   }
 })

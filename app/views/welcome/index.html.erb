@@ -7,70 +7,16 @@
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-12">
           <div class="section-title-17 text-center">
-            <h2>Популярные экскурсии Пхукета</h2>
-            <p>Морские экскурсии</p>
+            <% if content_for?(:header) %>
+              <%= yield(:header) %>
+            <% else %>
+              <h2>Популярные экскурсии Пхукета</h2>
+              <p>Морские экскурсии</p>
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="total-brand-17 d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
-        <% @sea_tours.each do |sea_tour| %>
-          <div class="tour-container">
-            <div class="imagesContainer">
-              <%= image_tag sea_tour.images.first.url(:main_page) %>
-              <p>Рекомендуем</p>
-              <p class="tourTitle"><%= sea_tour.title %></p>
-              <p>
-                <%= image_tag 'user.svg' %>
-                B <%= sea_tour.adult_price %>
-                <%= image_tag 'kids-couple.svg' %>
-                B <%= sea_tour.child_price %>
-              </p>
-              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= sea_tour.title %>" data-adult="<%= sea_tour.adult_price %>" data-productType="SeaTour" data-productId="<%= sea_tour.id %>" data-child="<%= sea_tour.child_price %>">Заказать</button>
-
-
-              <!-- Start modal images showing -->
-              <div id='<%= "imagesModal_#{sea_tour.id}" %>' class="modal imagesModal">
-
-                <div class="modal-content">
-                  <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{sea_tour.id}" %>)">&times;</span>
-
-                  <% sea_tour.images.each do |image| %>
-                    <div class='mySlides <%= "mySlides_#{sea_tour.id}" %>'>
-                      <%= image_tag image.url %>
-                    </div>
-                  <% end %>
-
-                  <div class="column">
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    <% sea_tour.images.each_with_index do |image,index| %>
-                      <%= image_tag image.url(:bottom), class: "demo demo_#{sea_tour.id} cursor", onclick: "currentSlide(#{index + 1})" %>
-                    <% end %>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- END modal images showing -->
-
-
-
-            </div>
-            <div class="shortContentContainer">
-              <p><%= sea_tour.short_content %></p>
-            </div>
-            <div class="buttonsContainer">
-              <button onclick="openModal(<%= "imagesModal_#{sea_tour.id}" %>);currentSlide(1)">Фото экскурсии</button>
-              <%= link_to "Подробней", sea_tour_path(sea_tour) %>
-            </div>
-          </div>
-        <% end %>
-
-        <!-- The Modal Order Tour -->
-        <%= render partial: 'shared/order_tour', :locals => { product_type: "", product_id: ''} %>
-        <!-- End Modal Order Tour  -->
-
-      </div>
+      <%= render 'shared/sea_tours' %>
     </div>
     <div class="container">
       <div class="row justify-content-center">
