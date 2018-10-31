@@ -1,0 +1,43 @@
+<!-- The Modal Order Call -->
+<div class="modal fade" id="orderCall" tabindex="-1" role="dialog" aria-labelledby="orderCallLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="orderCallLabel">Заказать обратный звонок</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body">
+          <%= form_for @call_order do |f| %>
+            <div class="input-container">
+              <%= f.text_field :customer_name, placeholder: "Ваше имя", required: true %>
+            </div>
+            <div class="input-container">
+              <%= f.text_field :customer_phone, placeholder: "Телефон в формате: +7-(777)-777-77-77)", required: true %>
+            </div>
+            <div class="input-container checkbox-container">
+              <% types = ['Viber', 'WhatsApp', 'Line', 'Telegram', 'Обычный вызов'] %>
+              <% types.each do |type| %>
+                <%= f.check_box :call_type, { multiple: true }, type, false %>
+                <label><%= type %></label>
+              <% end %>
+              <div class="small_total">
+                <div class="content_error">
+                  <%= image_tag('alert.png') %>
+                  Пожалуйста выберите хотя бы один способ!
+                </div>
+                <div class="arrow-up"></div>
+              </div>
+            </div>
+            <div class="submit-container text-center">
+              <%= f.submit 'Заказать звонок', class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Modal Order Call  -->

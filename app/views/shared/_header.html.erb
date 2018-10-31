@@ -266,35 +266,4 @@
   </section>
   <!-- End Banner Area -->
   <button class="call-request" data-toggle="modal" data-target="#orderCall">Заказать звонок</button>
-  <!-- The Modal Order Call -->
-  <div class="modal fade" id="orderCall" tabindex="-1" role="dialog" aria-labelledby="orderCallLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h5 class="modal-title" id="orderCallLabel">Заказать обратный звонок</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="input-container">
-            <input type="text" name="" placeholder="Ваше имя">
-          </div>
-          <div class="input-container">
-            <input type="text" name="" placeholder='Телефон в формате: +7-(777)-777-77-77)'>
-          </div>
-          <div class="input-container checkbox-container">
-            <input type="checkbox" name="viber">Viber
-            <input type="checkbox" name="whats_app">WhatsApp
-            <input type="checkbox" name="line">Line
-            <input type="checkbox" name="telegram">Telegram
-            <input type="checkbox" name="telephon">Обычный вызов
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Заказать звонок</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Modal Order Call  -->
+  <%= render 'shared/order_call_modale' %>
