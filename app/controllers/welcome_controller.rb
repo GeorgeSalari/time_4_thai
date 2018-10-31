@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
+  before_action :new_order, :new_call_order, only: :index
+
   def index
-    @order = Order.new
-    @call_order = CallOrder.new
     @sea_tours = SeaTour.all
   end
 end
