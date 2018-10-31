@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181015124630) do
+ActiveRecord::Schema.define(version: 20181031034043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20181015124630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+  end
+
+  create_table "call_orders", force: :cascade do |t|
+    t.text "call_type", default: [], array: true
+    t.string "customer_name"
+    t.string "customer_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|

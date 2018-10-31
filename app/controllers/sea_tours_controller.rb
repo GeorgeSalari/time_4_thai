@@ -1,17 +1,16 @@
 class SeaToursController < ApplicationController
   before_action :set_sea_tour, only: [:show, :edit, :update, :destroy]
+  before_action :new_order, :new_call_order, only: [:index, :show]
 
   # GET /sea_tours
   # GET /sea_tours.json
   def index
-    @order = Order.new
     @sea_tours = SeaTour.all
   end
 
   # GET /sea_tours/1
   # GET /sea_tours/1.json
   def show
-    @order = Order.new
   end
 
   # GET /sea_tours/new

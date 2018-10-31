@@ -1,0 +1,2 @@
+class CallOrder < ApplicationRecord
+end

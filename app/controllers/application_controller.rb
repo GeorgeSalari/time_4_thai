@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
 
   private
+  def new_order
+    @order = Order.new
+  end
+
+  def new_call_order
+    @call_order = CallOrder.new
+  end
+
   def set_cart
     @cart = Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
