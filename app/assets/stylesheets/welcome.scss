@@ -172,7 +172,7 @@ button.call-request:focus {
 }
 
 .tour-container {
-  height: 380px;
+  height: 410px;
   width: 340px;
   border: solid 1px #d8dcdd;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
@@ -180,6 +180,7 @@ button.call-request:focus {
 }
 
 .shortContentContainer {
+  min-height: 112px;
   font-family: Lato;
   font-size: 12px;
   font-weight: normal;
@@ -336,7 +337,7 @@ button.call-request:focus {
 .imagesModal .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 42%;
   transform: translateY(-50%);
   z-index: 1;
   padding: 16px;
@@ -352,11 +353,11 @@ button.call-request:focus {
 
 /* Position the "next button" to the right */
 .imagesModal .next {
-  right: -45px;
+  right: -57px;
 }
 
 .imagesModal .prev {
-  left: -45px;
+  left: -57px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
