@@ -1,30 +1,63 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
+<% end %>
+
+<%= render 'shared/navbar' %>
 <p id="notice"><%= notice %></p>
-<div class="text-center">
-  <h2>
-    <%= @land_tour.title %>
-    <button class="btn btn-primary btn-lg float-right" id="order_tour_button" >Заказать</button>
-  </h2>
-  <div class="row">
-    <div class="col-6 text-right">
-      <p>
-        <%= image_tag("adult.png", style: "width: 25px;") %> ->
-        <%= @land_tour.adult_price %>
-      </p>
-    </div>
-    <div class="col-6 text-left">
-      <p>
-        <%= image_tag("child.png", style: "width: 25px;") %> ->
-        <%= @land_tour.child_price %>
-      </p>
+
+<div class="container">
+
+  <div class="text-center">
+    <% @land_tour.images.each do |image| %>
+      <%= image_tag image.url(:bottom), class: 'small_images' %>
+    <% end %>
+  </div>
+
+  <!-- The Modal Big Images -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close_image">&times;</span>
+      <img id="img01">
     </div>
   </div>
-  <h4 class="text-left" >Краткое описание:</h4>
-  <p>
-    <%= @land_tour.short_content %>
-  </p>
-  <h4 class="text-left">Полное описание:</h4>
-  <p><%= @land_tour.content %></p>
+  <!-- End Modal -->
+
+  <h1>
+    <%= @land_tour.title %>
+  </h1>
+  <div class="row price-container">
+    <div class="col-4 text-right">
+      <p class="adult-price">
+        <%= image_tag 'user.svg' %>
+        B <%= @land_tour.adult_price %>
+      </p>
+    </div>
+    <div class="col-4 text-center">
+      <p class="child-price">
+        <%= image_tag 'kids-couple.svg' %>
+        B <%= @land_tour.child_price %>
+      </p>
+    </div>
+    <div class="col-4 text-left">
+      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @land_tour.title %>" data-adult="<%= @land_tour.adult_price %>" data-productType="LandTour" data-productId="<%= @land_tour.id %>" data-child="<%= @land_tour.child_price %>">Заказать</button>
+
+      <!-- The Modal Order Tour -->
+      <%= render partial: 'shared/order_tour', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+      <!-- End Modal Order Tour  -->
+    </div>
+  </div>
+  <div class="short-content">
+    <h2>Краткое описание:</h2>
+    <p>
+      <%= @land_tour.short_content %>
+    </p>
+  </div>
+  <div class="full-content">
+    <h2>Полное описание:</h2>
+    <p><%= @land_tour.content %></p>
+  </div>
+  <div class="form-container">
+    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+  </div>
 </div>
-<%= link_to 'Редактировать', edit_land_tour_path(@land_tour), class: "btn btn-warning" %>
-<%= link_to 'Удалить тур', @land_tour, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', land_tours_path, class: "btn btn-primary float-right" %>
+<%= render "shared/footer" %>
