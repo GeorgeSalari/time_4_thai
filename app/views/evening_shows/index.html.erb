@@ -1,122 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1 class="text-center" >Вечерние шоу</h1>
-
-<% @evening_shows.each do |evening_show| %>
-  <div>
-    <div class="text-center">
-      <h3><%= link_to evening_show.title, evening_show_path(evening_show) %></h3>
-      <p>
-        <%= evening_show.short_content %>
-      </p>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <p id="adult_price_<%= evening_show.id %>">
-          <%= image_tag("adult.png", style: "width: 25px;") %> ->
-          <%= evening_show.adult_price %>
-        </p>
-        <p id="child_price_<%= evening_show.id %>">
-          <%= image_tag("child.png", style: "width: 25px;") %> ->
-          <%= evening_show.child_price %>
-        </p>
-      </div>
-      <div class="col-8 text-center">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" id="order_tour_button" data-toggle="modal" data-target="#exampleModal_<%= evening_show.id %>">
-          Заказать
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal_<%= evening_show.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  <%= "Заказать #{evening_show.title}" %>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group row">
-                    <label for="program_title" class="col-sm-2 col-form-label">Program:</label>
-                    <div class="col-sm-10">
-                      <input type="text" readonly class="form-control-plaintext" id="program_title_<%= evening_show.id%>" value="<%= evening_show.title %>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="date" class="col-sm-2 col-form-label">Date:</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control-plaintext" id="program_date_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Name:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control-plaintext" id="name_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
-                    <div class="col-sm-10">
-                      <input type="tel" class="form-control-plaintext" id="phone_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="hotel" class="col-sm-2 col-form-label">Hotel:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control-plaintext" id="hotel_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="room" class="col-sm-2 col-form-label">Romm:</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control-plaintext" id="room_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="adult" class="col-sm-2 col-form-label">Adult:</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control-plaintext" id="adult_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="child" class="col-sm-2 col-form-label">Child:</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control-plaintext" id="child_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="infant" class="col-sm-2 col-form-label">Infant:</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control-plaintext" id="infant_<%= evening_show.id%>" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="total_price" class="col-sm-2 col-form-label">Total:</label>
-                    <div class="col-sm-8">
-                      <input type="text" readonly class="form-control-plaintext" id="total_price_<%= evening_show.id%>" value="">
-                    </div>
-                    <button class="btn.btn-primary col-sm-2 calc_price" id="calc_<%= evening_show.id%>" >Calc</button>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Отправить заявку и скачать билет</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= link_to 'Редактировать', edit_evening_show_path(evening_show), class: "btn btn-warning" %>
-    <%= link_to 'Удалить тур', evening_show, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-  </div>
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
 <% end %>
 
-<br>
+<%= render 'shared/navbar' %>
+<p id="notice"><%= notice %></p>
+<div class="container index-tour">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-12">
+      <div class="section-title-17 text-center">
+        <% if content_for?(:header) %>
+          <%= yield(:header) %>
+        <% else %>
+          <h2>Морские экскурсии</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render partial: 'shared/tours', locals: {all_tours: @evening_shows, path: 'evening_show_path', product_type: 'EveningShow'} %>
+</div>
 
-<%= link_to 'Создать новый тур', new_evening_show_path, class: "btn btn-primary float-right" %>
+<%= render "shared/footer" %>

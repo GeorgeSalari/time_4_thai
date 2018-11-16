@@ -13,4 +13,15 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
+  def show_path(path, tour)
+    case path
+    when 'sea_tour_path'
+      sea_tour_path(tour)
+    when 'evening_show_path'
+      evening_show_path(tour)
+    else
+      sea_tour_path(tour)
+    end
+  end
 end

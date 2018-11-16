@@ -30,6 +30,8 @@ class CartItem < ApplicationRecord
     case self.product_type
     when 'SeaTour'
       SeaTour.find(self.product_id)
+    when 'EveningShow'
+      EveningShow.find(self.product_id)
     end
   end
 end

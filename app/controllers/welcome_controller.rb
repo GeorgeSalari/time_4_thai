@@ -3,5 +3,6 @@ class WelcomeController < ApplicationController
 
   def index
     @sea_tours = SeaTour.all.first(6)
+    @evening_shows = EveningShow.all.first(6)
   end
 end
