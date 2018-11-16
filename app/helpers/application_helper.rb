@@ -18,6 +18,8 @@ module ApplicationHelper
     case path
     when 'sea_tour_path'
       sea_tour_path(tour)
+    when 'land_tour_path'
+      land_tour_path(tour)
     when 'evening_show_path'
       evening_show_path(tour)
     else
