@@ -3,5 +3,6 @@ class WelcomeController < ApplicationController
 
   def index
     @sea_tours = SeaTour.all
+    @comment = Comment.new
   end
 end
