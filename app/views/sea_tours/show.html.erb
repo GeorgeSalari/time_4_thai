@@ -7,6 +7,10 @@
 
 <div class="container">
 
+  <h1>
+    <%= @sea_tour.title %>
+  </h1>
+
   <div class="text-center">
     <% @sea_tour.images.each do |image| %>
       <%= image_tag image.url(:bottom), class: 'small_images' %>
@@ -22,9 +26,6 @@
   </div>
   <!-- End Modal -->
 
-  <h1>
-    <%= @sea_tour.title %>
-  </h1>
   <div class="row price-container">
     <div class="col-4 text-right">
       <p class="adult-price">
