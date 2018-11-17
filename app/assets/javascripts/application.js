@@ -175,10 +175,14 @@ function openModal(modalId) {
   mySlidesId = modalId.id.substr(modalId.id.length - 1);
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
+  if ( $(window).scrollTop() == 0 ) {
+    $('.header-4.header-17.navbar').hide()
+  }
 }
 
 function closeModal(modalId) {
   document.getElementById(modalId.id).style.display = "none";
+  $('.header-4.header-17.navbar').show()
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').show();
 }
 
