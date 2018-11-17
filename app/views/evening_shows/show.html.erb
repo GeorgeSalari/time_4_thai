@@ -12,19 +12,33 @@
   </h1>
 
   <div class="text-center">
-    <% @evening_show.images.each do |image| %>
-      <%= image_tag image.url(:bottom), class: 'small_images' %>
+    <% @evening_show.images.each_with_index do |image, index| %>
+      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
     <% end %>
   </div>
 
-  <!-- The Modal Big Images -->
-  <div id="imageModal" class="modal">
+  <!-- Start modal images showing -->
+  <div id='imageModal_0' class="modal imagesModal">
+
     <div class="modal-content">
-      <span class="close_image">&times;</span>
-      <img id="img01">
+      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
+
+      <% @evening_show.images.each do |image| %>
+        <div class='mySlides <%= "mySlides_0" %>'>
+          <%= image_tag image.url %>
+        </div>
+      <% end %>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <div class="column">
+        <% @evening_show.images.each_with_index do |image,index| %>
+          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
+        <% end %>
+      </div>
+
     </div>
   </div>
-  <!-- End Modal -->
+  <!-- END modal images showing -->
 
   <div class="row price-container">
     <div class="col-4 text-right">
