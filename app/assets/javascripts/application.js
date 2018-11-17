@@ -117,11 +117,9 @@ $(document).ready(function(){
   $('.dropdown').click(function(e){
     var clicked_menu_class = $(this).attr('class')
     e.preventDefault();
-    $.each($('.dropdown-menu'), function( index, value ) {
-      if ($(this).attr('class').includes('display-dropdown-menu') && $(this).parent().attr('class') != clicked_menu_class) {
-        $(value).removeClass('display-dropdown-menu')
-      }
-    });
+    $(this).find('.dropdown-item').click(function(){
+      location.href = $(this).attr('href');
+    })
     $($(this).find('.dropdown-menu')[0]).toggleClass('display-dropdown-menu');
   })
 

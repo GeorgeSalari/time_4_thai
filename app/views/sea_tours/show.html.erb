@@ -54,7 +54,7 @@
   </div>
   <div class="full-content">
     <h2>Полное описание:</h2>
-    <p><%= @sea_tour.content %></p>
+    <p><%= @sea_tour.content.html_safe %></p>
   </div>
   <div class="form-container">
     <%= render partial: 'shared/order_tour_form', :locals => { product_type: "SeaTour", product_id: @sea_tour.id} %>
