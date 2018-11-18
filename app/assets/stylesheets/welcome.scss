@@ -180,9 +180,9 @@ button.call-request:focus {
 }
 
 .shortContentContainer {
-  min-height: 112px;
+  min-height: 136px;
   font-family: Lato;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -190,8 +190,17 @@ button.call-request:focus {
   letter-spacing: normal;
   color: #4a4a4a;
   border-left: 3px solid #f5a623;
-  padding: 0 40px;
-  margin: 25px -2px 10px;
+  padding: 0 15px;
+  margin: 10px -2px 0px;
+  position: relative;
+}
+
+.shortContentContainer p {
+  top: 50%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  transform: translateY(-50%);
+  position: absolute;
 }
 
 .imagesContainer {
