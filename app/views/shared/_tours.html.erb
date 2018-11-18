@@ -2,7 +2,9 @@
   <% all_tours.each do |tour| %>
     <div class="tour-container">
       <div class="imagesContainer">
-        <%= image_tag tour.images.first.url(:main_page) %>
+        <%= link_to show_path(path, tour) do %>
+          <%= image_tag tour.images.first.url(:main_page) %>
+        <% end %>
         <p>Рекомендуем</p>
         <p class="tourTitle"><%= tour.title %></p>
         <p>
