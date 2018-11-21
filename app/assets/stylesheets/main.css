@@ -3289,6 +3289,10 @@ td, th {
   font-weight: 700;
 }
 
+.shoping-button {
+  color: #078eaa;
+}
+
 @media (min-width: 768px) and (max-width: 1200px) {
   .cta-18 .cta-content h2 br {
     display: none;
