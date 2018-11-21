@@ -22,6 +22,11 @@
         </div>
       </div>
       <%= render partial: 'shared/tours', locals: {all_tours: @sea_tours, path: 'sea_tour_path', product_type: 'SeaTour'} %>
+      <div class="path-button-container text-center">
+        <%= link_to sea_tours_path, class: 'path-button' do %>
+          Все морские туры
+        <% end %>
+      </div>
     </div>
 
     <div class="container">
@@ -48,6 +53,11 @@
         </div>
       </div>
       <%= render partial: 'shared/tours', locals: {all_tours: @land_tours, path: 'land_tour_path', product_type: 'LandTour'} %>
+      <div class="path-button-container text-center">
+        <%= link_to land_tours_path, class: 'path-button' do %>
+          Все сухопутные туры
+        <% end %>
+      </div>
     </div>
 
   </section>
