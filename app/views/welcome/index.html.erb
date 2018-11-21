@@ -15,7 +15,7 @@
             <% else %>
               <h2>Популярные экскурсии Пхукета</h2>
               <%= link_to sea_tours_path do %>
-                <p>Морские экскурсии</p>
+                <p>МОРСКИЕ ЭКСКУРСИИ</p>
               <% end %>
             <% end %>
           </div>
@@ -29,7 +29,7 @@
         <div class="col-lg-10 col-md-12">
           <div class="section-title-17 text-center">
             <%= link_to evening_shows_path do %>
-              <p>Вечерние экскурсии</p>
+              <p>ВЕЧЕРНИЕ ЭКСКУРСИИ</p>
             <% end %>
           </div>
         </div>
@@ -42,30 +42,12 @@
         <div class="col-lg-10 col-md-12">
           <div class="section-title-17 text-center">
             <%= link_to land_tours_path do %>
-              <p>Сухопутные экскурсии</p>
+              <p>СУХОПУТНЫЕ ЭКСКУРСИИ</p>
             <% end %>
           </div>
         </div>
       </div>
       <%= render partial: 'shared/tours', locals: {all_tours: @land_tours, path: 'land_tour_path', product_type: 'LandTour'} %>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <p>Обзорные экскурсии</p>
-          </div>
-        </div>
-      </div>
-      <div class="total-brand-17 d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
-        <div class="tour-container"></div>
-        <div class="tour-container"></div>
-        <div class="tour-container"></div>
-        <div class="tour-container"></div>
-        <div class="tour-container"></div>
-        <div class="tour-container"></div>
-      </div>
     </div>
 
   </section>

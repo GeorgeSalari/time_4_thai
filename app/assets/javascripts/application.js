@@ -118,12 +118,27 @@ $(document).ready(function(){
     console.log($('#mainHeaderImd').height());
   });
 
+  $(document).mouseup(function(e) {
+    var container_1 = $(".dropdown");
+    var container_2 = $(".dropdown-menu");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container_1.is(e.target) && container_1.has(e.target).length === 0 || !container_2.is(e.target) && container_2.has(e.target).length === 0) {
+      $('.dropdown-menu').each(function(){
+        $(this).removeClass('display-dropdown-menu');
+      })
+    }
+  });
+
 
   $('.dropdown').click(function(e){
     var clicked_menu_class = $(this).attr('class')
     e.preventDefault();
     $(this).find('.dropdown-item').click(function(){
       location.href = $(this).attr('href');
+    })
+    $('.dropdown-menu').each(function(){
+      $(this).removeClass('display-dropdown-menu');
     })
     $($(this).find('.dropdown-menu')[0]).toggleClass('display-dropdown-menu');
   })
