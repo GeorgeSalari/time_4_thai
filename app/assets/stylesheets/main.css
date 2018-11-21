@@ -4093,6 +4093,35 @@ td, th {
 .footer-widget-17 p.mail {
   margin-bottom: 10px;
   color: #f5a623;
+  font-weight: 19px;
+}
+
+.garanty {
+  position: absolute;
+  right: 60px;
+  bottom: 0;
+}
+
+.garanty p {
+  font-size: 18px;
+}
+
+.viber-whatsapp-telegram {
+  margin-top: -33px;
+  margin-bottom: 15px;
+}
+
+.viber-whatsapp-telegram img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.viber-whatsapp-telegram img:first-child {
+  margin-left: 0;
+}
+
+.default-footer .container {
+  padding-top: 10px;
 }
 
 .footer-widget-17 .footer-top-shape {
@@ -4590,4 +4619,8 @@ p.mail a {
 
 .header-17 .main-menu#scrolled-menu ul li a:after {
   left: 71%;
+}
+
+.short-content, .full-content {
+  font-size: 17px;
 }
