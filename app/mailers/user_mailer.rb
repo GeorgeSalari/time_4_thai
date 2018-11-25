@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     hour = 0 if hour == 24
     min = date.min
     sec = date.sec
-    DateTime.strptime("#{day}-#{month}-#{year} #{hour}:#{min}:#{sec}","%d-%m-%Y %H:%M:%S").to_s.split('T').join(' ').split('+')[0]
+    "#{day}-#{month}-#{year} #{hour}:#{min}:#{sec}"
   end
 
   def find_item_tour(product_id, product_type)
