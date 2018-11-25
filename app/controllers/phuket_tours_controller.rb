@@ -17,13 +17,17 @@ class PhuketToursController < ApplicationController
     if logged_in?
       @phuket_tour = PhuketTour.new
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
 
   # GET /phuket_tours/1/edit
   def edit
+    if !logged_in?
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # POST /phuket_tours
@@ -42,7 +46,7 @@ class PhuketToursController < ApplicationController
         end
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
@@ -61,7 +65,7 @@ class PhuketToursController < ApplicationController
         end
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
@@ -76,7 +80,7 @@ class PhuketToursController < ApplicationController
         format.json { head :no_content }
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end

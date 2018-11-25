@@ -18,13 +18,17 @@ class LandToursController < ApplicationController
     if logged_in?
       @land_tour = LandTour.new
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
 
   # GET /land_tours/1/edit
   def edit
+    if !logged_in?
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # POST /land_tours
@@ -43,7 +47,7 @@ class LandToursController < ApplicationController
         end
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
@@ -62,7 +66,7 @@ class LandToursController < ApplicationController
         end
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end
@@ -77,7 +81,7 @@ class LandToursController < ApplicationController
         format.json { head :no_content }
       end
     else
-      flash[:danger] = 'У вас нет доступа!'
+      flash[:success] = 'У вас нет доступа!'
       redirect_to root_path
     end
   end

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'Добро пожаловать!'
       redirect_to root_path
     else
-      flash[:danger] = 'Не верное имя или пароль!'
+      flash[:success] = 'Не верное имя или пароль!'
       render 'new'
     end
   end
