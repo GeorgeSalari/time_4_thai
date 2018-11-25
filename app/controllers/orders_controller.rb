@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     if @order.save
       @cart.remove_product(@order.product_id, @order.product_type)
       flash[:success] = 'Спасибо за бронирование, мы скоро с вами свяжимся!'
-      UserMailer.with(order: @order).send_email('tour')
+      UserMailer.with(order: @order).tour_request.deliver_later
       redirect_back fallback_location: root_path
     else
       flash[:error] = 'Что то пошло не так, попробуйте снова.'

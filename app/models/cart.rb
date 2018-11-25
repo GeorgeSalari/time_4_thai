@@ -31,7 +31,7 @@ class Cart < ApplicationRecord
     self.cart_items.each do |item|
       order = Order.new(order_params(item, params) )
       if order.save
-        UserMailer.with(order: order).send_email('tour')
+        UserMailer.with(order: order).tour_request.deliver_later
       else
         check_flag = false
       end
