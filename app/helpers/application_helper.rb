@@ -26,4 +26,5 @@ module ApplicationHelper
       sea_tour_path(tour)
     end
   end
+
 end

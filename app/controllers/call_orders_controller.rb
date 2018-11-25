@@ -3,6 +3,7 @@ class CallOrdersController < ApplicationController
     call_order = CallOrder.new(call_order_params)
     if call_order.save
       flash[:success] = 'Спасибо за запрос, мы скоро с вами свяжимся!'
+      UserMailer.with(call_order: call_order).call_request.deliver_later
       redirect_back fallback_location: root_path
     else
       flash[:error] = 'Что то пошло не так, попробуйте снова.'
