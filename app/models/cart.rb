@@ -30,7 +30,11 @@ class Cart < ApplicationRecord
     check_flag = true
     self.cart_items.each do |item|
       order = Order.new(order_params(item, params) )
-      check_flag = false unless order.save
+      if order.save
+        UserMailer.with(order: order).send_email('tour')
+      else
+        check_flag = false
+      end
     end
     check_flag
   end
