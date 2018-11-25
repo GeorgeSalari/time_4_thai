@@ -14,7 +14,12 @@ class IndividualToursController < ApplicationController
 
   # GET /individual_tours/new
   def new
-    @individual_tour = IndividualTour.new
+    if logged_in?
+      @individual_tour = IndividualTour.new
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /individual_tours/1/edit
@@ -24,40 +29,55 @@ class IndividualToursController < ApplicationController
   # POST /individual_tours
   # POST /individual_tours.json
   def create
-    @individual_tour = IndividualTour.new(individual_tour_params)
+    if logged_in?
+      @individual_tour = IndividualTour.new(individual_tour_params)
 
-    respond_to do |format|
-      if @individual_tour.save
-        format.html { redirect_to @individual_tour, notice: 'Individual tour was successfully created.' }
-        format.json { render :show, status: :created, location: @individual_tour }
-      else
-        format.html { render :new }
-        format.json { render json: @individual_tour.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @individual_tour.save
+          format.html { redirect_to @individual_tour, notice: 'Individual tour was successfully created.' }
+          format.json { render :show, status: :created, location: @individual_tour }
+        else
+          format.html { render :new }
+          format.json { render json: @individual_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /individual_tours/1
   # PATCH/PUT /individual_tours/1.json
   def update
-    respond_to do |format|
-      if @individual_tour.update(individual_tour_params)
-        format.html { redirect_to @individual_tour, notice: 'Individual tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @individual_tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @individual_tour.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @individual_tour.update(individual_tour_params)
+          format.html { redirect_to @individual_tour, notice: 'Individual tour was successfully updated.' }
+          format.json { render :show, status: :ok, location: @individual_tour }
+        else
+          format.html { render :edit }
+          format.json { render json: @individual_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /individual_tours/1
   # DELETE /individual_tours/1.json
   def destroy
-    @individual_tour.destroy
-    respond_to do |format|
-      format.html { redirect_to individual_tours_url, notice: 'Individual tour was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @individual_tour.destroy
+      respond_to do |format|
+        format.html { redirect_to individual_tours_url, notice: 'Individual tour was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 

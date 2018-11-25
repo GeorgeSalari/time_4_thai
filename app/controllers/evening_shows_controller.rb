@@ -15,7 +15,12 @@ class EveningShowsController < ApplicationController
 
   # GET /evening_shows/new
   def new
-    @evening_show = EveningShow.new
+    if logged_in?
+      @evening_show = EveningShow.new
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /evening_shows/1/edit
@@ -25,40 +30,55 @@ class EveningShowsController < ApplicationController
   # POST /evening_shows
   # POST /evening_shows.json
   def create
-    @evening_show = EveningShow.new(evening_show_params)
+    if logged_in?
+      @evening_show = EveningShow.new(evening_show_params)
 
-    respond_to do |format|
-      if @evening_show.save
-        format.html { redirect_to @evening_show, notice: 'Evening show was successfully created.' }
-        format.json { render :show, status: :created, location: @evening_show }
-      else
-        format.html { render :new }
-        format.json { render json: @evening_show.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @evening_show.save
+          format.html { redirect_to @evening_show, notice: 'Evening show was successfully created.' }
+          format.json { render :show, status: :created, location: @evening_show }
+        else
+          format.html { render :new }
+          format.json { render json: @evening_show.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /evening_shows/1
   # PATCH/PUT /evening_shows/1.json
   def update
-    respond_to do |format|
-      if @evening_show.update(evening_show_params)
-        format.html { redirect_to @evening_show, notice: 'Evening show was successfully updated.' }
-        format.json { render :show, status: :ok, location: @evening_show }
-      else
-        format.html { render :edit }
-        format.json { render json: @evening_show.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @evening_show.update(evening_show_params)
+          format.html { redirect_to @evening_show, notice: 'Evening show was successfully updated.' }
+          format.json { render :show, status: :ok, location: @evening_show }
+        else
+          format.html { render :edit }
+          format.json { render json: @evening_show.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /evening_shows/1
   # DELETE /evening_shows/1.json
   def destroy
-    @evening_show.destroy
-    respond_to do |format|
-      format.html { redirect_to evening_shows_url, notice: 'Evening show was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @evening_show.destroy
+      respond_to do |format|
+        format.html { redirect_to evening_shows_url, notice: 'Evening show was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 

@@ -14,7 +14,12 @@ class PhuketToursController < ApplicationController
 
   # GET /phuket_tours/new
   def new
-    @phuket_tour = PhuketTour.new
+    if logged_in?
+      @phuket_tour = PhuketTour.new
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /phuket_tours/1/edit
@@ -24,40 +29,55 @@ class PhuketToursController < ApplicationController
   # POST /phuket_tours
   # POST /phuket_tours.json
   def create
-    @phuket_tour = PhuketTour.new(phuket_tour_params)
+    if logged_in?
+      @phuket_tour = PhuketTour.new(phuket_tour_params)
 
-    respond_to do |format|
-      if @phuket_tour.save
-        format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully created.' }
-        format.json { render :show, status: :created, location: @phuket_tour }
-      else
-        format.html { render :new }
-        format.json { render json: @phuket_tour.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @phuket_tour.save
+          format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully created.' }
+          format.json { render :show, status: :created, location: @phuket_tour }
+        else
+          format.html { render :new }
+          format.json { render json: @phuket_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /phuket_tours/1
   # PATCH/PUT /phuket_tours/1.json
   def update
-    respond_to do |format|
-      if @phuket_tour.update(phuket_tour_params)
-        format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phuket_tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @phuket_tour.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @phuket_tour.update(phuket_tour_params)
+          format.html { redirect_to @phuket_tour, notice: 'phuket tour was successfully updated.' }
+          format.json { render :show, status: :ok, location: @phuket_tour }
+        else
+          format.html { render :edit }
+          format.json { render json: @phuket_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /phuket_tours/1
   # DELETE /phuket_tours/1.json
   def destroy
-    @phuket_tour.destroy
-    respond_to do |format|
-      format.html { redirect_to phuket_tours_url, notice: 'phuket tour was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @phuket_tour.destroy
+      respond_to do |format|
+        format.html { redirect_to phuket_tours_url, notice: 'phuket tour was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 

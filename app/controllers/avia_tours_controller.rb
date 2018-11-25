@@ -14,7 +14,12 @@ class AviaToursController < ApplicationController
 
   # GET /avia_tours/new
   def new
-    @avia_tour = AviaTour.new
+    if logged_in?
+      @avia_tour = AviaTour.new
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /avia_tours/1/edit
@@ -24,40 +29,55 @@ class AviaToursController < ApplicationController
   # POST /avia_tours
   # POST /avia_tours.json
   def create
-    @avia_tour = AviaTour.new(avia_tour_params)
+    if logged_in?
+      @avia_tour = AviaTour.new(avia_tour_params)
 
-    respond_to do |format|
-      if @avia_tour.save
-        format.html { redirect_to @avia_tour, notice: 'Avia tour was successfully created.' }
-        format.json { render :show, status: :created, location: @avia_tour }
-      else
-        format.html { render :new }
-        format.json { render json: @avia_tour.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @avia_tour.save
+          format.html { redirect_to @avia_tour, notice: 'Avia tour was successfully created.' }
+          format.json { render :show, status: :created, location: @avia_tour }
+        else
+          format.html { render :new }
+          format.json { render json: @avia_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /avia_tours/1
   # PATCH/PUT /avia_tours/1.json
   def update
-    respond_to do |format|
-      if @avia_tour.update(avia_tour_params)
-        format.html { redirect_to @avia_tour, notice: 'Avia tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @avia_tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @avia_tour.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @avia_tour.update(avia_tour_params)
+          format.html { redirect_to @avia_tour, notice: 'Avia tour was successfully updated.' }
+          format.json { render :show, status: :ok, location: @avia_tour }
+        else
+          format.html { render :edit }
+          format.json { render json: @avia_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /avia_tours/1
   # DELETE /avia_tours/1.json
   def destroy
-    @avia_tour.destroy
-    respond_to do |format|
-      format.html { redirect_to avia_tours_url, notice: 'Avia tour was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @avia_tour.destroy
+      respond_to do |format|
+        format.html { redirect_to avia_tours_url, notice: 'Avia tour was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 

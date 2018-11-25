@@ -15,7 +15,12 @@ class LandToursController < ApplicationController
 
   # GET /land_tours/new
   def new
-    @land_tour = LandTour.new
+    if logged_in?
+      @land_tour = LandTour.new
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /land_tours/1/edit
@@ -25,40 +30,55 @@ class LandToursController < ApplicationController
   # POST /land_tours
   # POST /land_tours.json
   def create
-    @land_tour = LandTour.new(land_tour_params)
+    if logged_in?
+      @land_tour = LandTour.new(land_tour_params)
 
-    respond_to do |format|
-      if @land_tour.save
-        format.html { redirect_to @land_tour, notice: 'Land tour was successfully created.' }
-        format.json { render :show, status: :created, location: @land_tour }
-      else
-        format.html { render :new }
-        format.json { render json: @land_tour.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @land_tour.save
+          format.html { redirect_to @land_tour, notice: 'Land tour was successfully created.' }
+          format.json { render :show, status: :created, location: @land_tour }
+        else
+          format.html { render :new }
+          format.json { render json: @land_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /land_tours/1
   # PATCH/PUT /land_tours/1.json
   def update
-    respond_to do |format|
-      if @land_tour.update(land_tour_params)
-        format.html { redirect_to @land_tour, notice: 'Land tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @land_tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @land_tour.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @land_tour.update(land_tour_params)
+          format.html { redirect_to @land_tour, notice: 'Land tour was successfully updated.' }
+          format.json { render :show, status: :ok, location: @land_tour }
+        else
+          format.html { render :edit }
+          format.json { render json: @land_tour.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /land_tours/1
   # DELETE /land_tours/1.json
   def destroy
-    @land_tour.destroy
-    respond_to do |format|
-      format.html { redirect_to land_tours_url, notice: 'Land tour was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @land_tour.destroy
+      respond_to do |format|
+        format.html { redirect_to land_tours_url, notice: 'Land tour was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
