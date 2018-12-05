@@ -34,6 +34,8 @@ class CartItem < ApplicationRecord
       LandTour.find(self.product_id)
     when 'EveningShow'
       EveningShow.find(self.product_id)
+    when 'PhuketTour'
+      PhuketTour.find(self.product_id)
     end
   end
 end

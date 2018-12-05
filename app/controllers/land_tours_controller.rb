@@ -1,6 +1,7 @@
 class LandToursController < ApplicationController
   before_action :set_land_tour, only: [:show, :edit, :update, :destroy]
   before_action :new_order, :new_call_order, only: [:index, :show]
+  rescue_from NoMethodError, :with => :check_error
 
   # GET /land_tours
   # GET /land_tours.json
@@ -86,14 +87,19 @@ class LandToursController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_land_tour
-      @land_tour = LandTour.find(params[:id])
-    end
+private
+  def check_error
+    flash[:success] = 'Что то пошло не так, извините!'
+    redirect_to root_path
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def land_tour_params
-      params.require(:land_tour).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_land_tour
+    @land_tour = LandTour.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def land_tour_params
+    params.require(:land_tour).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
+  end
 end

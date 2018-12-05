@@ -1,10 +1,12 @@
 class PhuketToursController < ApplicationController
   before_action :set_phuket_tour, only: [:show, :edit, :update, :destroy]
+  before_action :new_order, :new_call_order, only: [:index, :show]
+  rescue_from NoMethodError, :with => :check_error
 
   # GET /phuket_tours
   # GET /phuket_tours.json
   def index
-    @phuket_tours = PhuketTour.all
+    @phuket_tour = PhuketTour.all
   end
 
   # GET /phuket_tours/1
@@ -86,6 +88,11 @@ class PhuketToursController < ApplicationController
   end
 
   private
+    def check_error
+      flash[:success] = 'Что то пошло не так, извините!'
+      redirect_to root_path
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_phuket_tour
       @phuket_tour = PhuketTour.find(params[:id])
