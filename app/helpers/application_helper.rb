@@ -29,4 +29,12 @@ module ApplicationHelper
     end
   end
 
+  def ferries_path
+    tour = SeaTour.where(title: "Билеты на паромы").first
+    if tour != nil
+      sea_tour_path(tour)
+    else
+      sea_tour_path(SeaTour.first)
+    end
+  end
 end
