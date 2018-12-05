@@ -5,5 +5,6 @@ class WelcomeController < ApplicationController
     @sea_tours = SeaTour.all.first(6)
     @land_tours = LandTour.all.first(6)
     @evening_shows = EveningShow.all.first(6)
+    @phuket_tours = PhuketTour.all.first(6)
   end
 end

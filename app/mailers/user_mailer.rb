@@ -18,6 +18,8 @@ class UserMailer < ApplicationMailer
       LandTour.find(product_id)
     when 'EveningShow'
       EveningShow.find(product_id)
+    when 'PhuketTour'
+      PhuketTour.find(product_id)
     end
   end
 end
