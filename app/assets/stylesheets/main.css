@@ -3500,6 +3500,7 @@ td, th {
 .faq-area-17 {
   position: relative;
   padding-top: 70px;
+  background: #f9fafc;
 }
 
 .rectangle-18 {
@@ -4623,4 +4624,8 @@ p.mail a {
 
 .short-content, .full-content {
   font-size: 17px;
+}
+
+.aventage-image img {
+  width: 69px;
 }
