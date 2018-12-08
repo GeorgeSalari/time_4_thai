@@ -1,5 +1,7 @@
 class AviaToursController < ApplicationController
   before_action :set_avia_tour, only: [:show, :edit, :update, :destroy]
+  before_action :new_order, :new_call_order, only: [:index, :show]
+  # rescue_from NoMethodError, :with => :check_error
 
   # GET /avia_tours
   # GET /avia_tours.json
@@ -86,6 +88,11 @@ class AviaToursController < ApplicationController
   end
 
   private
+    def check_error
+      flash[:success] = 'Что то пошло не так, извините!'
+      redirect_to root_path
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_avia_tour
       @avia_tour = AviaTour.find(params[:id])
