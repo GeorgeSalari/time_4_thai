@@ -24,6 +24,8 @@ module ApplicationHelper
       evening_show_path(tour)
     when 'phuket_tour_path'
       phuket_tour_path(tour)
+    when 'avia_tour_path'
+      avia_tour_path(tour)
     else
       sea_tour_path(tour)
     end
