@@ -38,6 +38,8 @@ class CartItem < ApplicationRecord
       PhuketTour.find(self.product_id)
     when 'AviaTour'
       AviaTour.find(self.product_id)
+    when 'Boat'
+      Boat.find(self.product_id)
     end
   end
 end

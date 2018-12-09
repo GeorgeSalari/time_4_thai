@@ -1,7 +1,7 @@
 class AviaToursController < ApplicationController
   before_action :set_avia_tour, only: [:show, :edit, :update, :destroy]
   before_action :new_order, :new_call_order, only: [:index, :show]
-  # rescue_from NoMethodError, :with => :check_error
+  rescue_from NoMethodError, :with => :check_error
 
   # GET /avia_tours
   # GET /avia_tours.json
