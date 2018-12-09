@@ -22,6 +22,8 @@ class UserMailer < ApplicationMailer
       PhuketTour.find(product_id)
     when 'AviaTour'
       AviaTour.find(product_id)
+    when 'Boat'
+      Boat.find(product_id)
     end
   end
 end
