@@ -100,6 +100,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def land_tour_params
-    params.require(:land_tour).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
+    params.require(:land_tour).permit(:title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
   end
 end

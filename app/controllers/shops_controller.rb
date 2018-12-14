@@ -75,6 +75,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
+      params.require(:shop).permit(:title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
     end
 end
