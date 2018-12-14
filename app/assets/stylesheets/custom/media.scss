@@ -1,0 +1,21 @@
+@media (max-width: 1200px) {
+  .imagesModal .modal-content {
+    min-width: 90%;
+  }
+  .imagesModal .mySlides {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .imagesModal .mySlides img {
+    width: 100%;
+  }
+  .imagesModal .prev {
+    left: -20px;
+  }
+  .imagesModal .next {
+    right: -20px;
+  }
+  .imagesModal .close {
+    right: -30px;
+  }
+}

@@ -2761,13 +2761,6 @@ td, th {
   margin-left: 25px;
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-  .total-brand-17 img {
-    height: 25px;
-    width: auto;
-  }
-}
-
 @media (max-width: 767px) {
   .total-brand-17 img {
     margin-left: 20px;

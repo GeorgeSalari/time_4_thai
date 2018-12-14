@@ -18,6 +18,13 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+  if (window.innerHeight < 655) {
+    $('.sun-container').css('display', 'none');
+  } else {
+    $('.sun-container').css('display', 'flex');
+  }
+
   // $('.imagesContainer').click(function(e){
   //   if (e.target.textContent != "Заказать") {
   //     location.href = $(this).find('a')[0].href
