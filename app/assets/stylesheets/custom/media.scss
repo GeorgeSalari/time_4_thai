@@ -78,7 +78,12 @@
     margin: 0;
   }
   .side-menubar nav {
-    top: 25%;
+    max-height: 56%;
+    overflow: scroll;
+    top: 41%;
+  }
+  .side-menubar .display-dropdown-menu {
+    position: inherit;
   }
   .side-menubar.open-menubar nav ul {
     flex-direction: column;
@@ -97,8 +102,5 @@
 @media (max-width: 479px) {
   .footer-widget-17 {
     display: none;
-  }
-  .side-menubar nav {
-    top: 45%;
   }
 }
