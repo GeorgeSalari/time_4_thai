@@ -957,7 +957,7 @@ td, th {
   -moz-transition: all 0.3s 0s;
   -o-transition: all 0.3s 0s;
   transition: all 0.3s 0s;
-  margin-right: -300px;
+  margin-right: -500px;
   position: fixed;
   background: #f9fafc;
   right: 0;
