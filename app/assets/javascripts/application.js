@@ -222,9 +222,10 @@ function showSlides(n, product) {
   var i;
   console.log ('начало i = ' + i)
   var slides = document.getElementsByClassName("mySlides_"+product+mySlidesId);
-  console.log ('slide = ' + slide)
+  console.log ('slides class = ' + $(slides).attr('class'))
+  console.log ('slides length = ' + $(slides).length)
   var dots = document.getElementsByClassName("demo_"+product+mySlidesId);
-  console.log ('dots = ' + dots)
+  console.log ('dots class = ' + $(dots).attr('class'))
   console.log ('n = ' + n)
   console.log ('product = ' + product)
   if (n > slides.length) {slideIndex = 1}
