@@ -27,8 +27,8 @@
                   <%= image_tag image.url %>
                 </div>
               <% end %>
-              <a class="prev" onclick="plusSlides(-1), <%= product_type %>">&#10094;</a>
-              <a class="next" onclick="plusSlides(1), <%= product_type %>">&#10095;</a>
+              <a class="prev" onclick="plusSlides(-1), '<%= product_type %>'">&#10094;</a>
+              <a class="next" onclick="plusSlides(1), '<%= product_type %>'">&#10095;</a>
               <div class="column">
                 <% tour.images.each_with_index do |image,index| %>
                   <%= image_tag image.url(:bottom), class: "demo demo_#{tour.id} cursor", onclick: "currentSlide(#{index + 1}, '#{product_type}')" %>
