@@ -194,7 +194,6 @@ var mySlidesId
 function openModal(modalId) {
   var array = modalId.id.split('_')
   mySlidesId = array[array.length - 1]
-  console.log ('mySlidesId ' + mySlidesId)
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
   if ( $(window).scrollTop() == 0 ) {
@@ -217,21 +216,18 @@ function plusSlides(n, product) {
 }
 
 function currentSlide(n, product) {
-  console.log ('currentSlide product = ' + product)
   showSlides( slideIndex = parseInt(n), product );
 }
 
 function showSlides(n, product) {
-  console.log ('showSlides product = ' + product)
   var i;
-  console.log ('начало i = ' + i)
-
-  var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
-  console.log ('slides class = ' + $(slides).attr('class'))
-  // console.log ('slides length = ' + $(slides).length)
-  var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);
-  console.log ('dots class = ' + $(dots).attr('class'))
-  console.log ('n = ' + n)
+  if (product != undefined) {
+    var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
+    var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);
+  } else {
+    var slides = document.getElementsByClassName("mySlides_"+mySlidesId);
+    var dots = document.getElementsByClassName("demo_"+mySlidesId);
+  }
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -240,9 +236,6 @@ function showSlides(n, product) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  console.log ('slideIndex = ' + slideIndex)
-  console.log ('slides[slideIndex-1] = ' + slides[slideIndex-1])
-  console.log ('dots[slideIndex-1] = ' + dots[slideIndex-1])
   if (slides.length > 0) {
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
