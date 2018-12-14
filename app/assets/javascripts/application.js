@@ -207,19 +207,24 @@ function closeModal(modalId) {
 }
 
 var slideIndex;
+
 showSlides( parseInt(slideIndex ) );
 
-function plusSlides(n) {
-  showSlides( slideIndex += parseInt(n) );
+function plusSlides(n, product) {
+  showSlides( slideIndex += parseInt(n), product );
 }
 
-function currentSlide(n) {
-  showSlides( slideIndex = parseInt(n) );
+function currentSlide(n, product) {
+  showSlides( slideIndex = parseInt(n), product );
 }
 
-function showSlides(n) {
+function showSlides(n, product) {
   var i;
-  var slides = document.getElementsByClassName("mySlides_"+mySlidesId);
+  if (product != undefined ) {
+    var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
+  } else {
+    var slides = document.getElementsByClassName("mySlides_"+mySlidesId);
+  }
   var dots = document.getElementsByClassName("demo_"+mySlidesId);
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
