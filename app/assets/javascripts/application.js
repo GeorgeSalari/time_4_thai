@@ -192,7 +192,8 @@ $(document).ready(function(){
 var mySlidesId
 
 function openModal(modalId) {
-  mySlidesId = modalId.id.substr(modalId.id.length - 1);
+  var array = modalId.id.split('_')
+  mySlidesId = array[array.length - 1]
   console.log ('mySlidesId ' + mySlidesId)
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
