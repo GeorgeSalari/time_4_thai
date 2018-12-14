@@ -206,7 +206,7 @@ function closeModal(modalId) {
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').show();
 }
 
-var slideIndex;
+var slideIndex = 1;
 
 showSlides( parseInt(slideIndex ) );
 
