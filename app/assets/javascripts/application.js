@@ -193,6 +193,7 @@ var mySlidesId
 
 function openModal(modalId) {
   mySlidesId = modalId.id.substr(modalId.id.length - 1);
+  console.log ('mySlidesId ' + mySlidesId)
   document.getElementById(modalId.id).style.display = "block";
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').hide();
   if ( $(window).scrollTop() == 0 ) {
@@ -223,8 +224,7 @@ function showSlides(n, product) {
   console.log ('showSlides product = ' + product)
   var i;
   console.log ('начало i = ' + i)
-  mySlidesId = modalId.id.substr(modalId.id.length - 1);
-  console.log ('mySlidesId ' + mySlidesId)
+
   var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
   console.log ('slides class = ' + $(slides).attr('class'))
   // console.log ('slides length = ' + $(slides).length)
