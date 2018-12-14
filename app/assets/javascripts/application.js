@@ -220,13 +220,8 @@ function currentSlide(n, product) {
 
 function showSlides(n, product) {
   var i;
-  if (product != undefined ) {
-    var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
-    var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);
-  } else {
-    var slides = document.getElementsByClassName("mySlides_"+mySlidesId);
-    var dots = document.getElementsByClassName("demo_"+mySlidesId);
-  }
+  var slides = document.getElementsByClassName("mySlides_"+product+mySlidesId);
+  var dots = document.getElementsByClassName("demo_"+product+mySlidesId);
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
