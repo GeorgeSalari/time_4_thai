@@ -24,11 +24,11 @@ $(document).ready(function(){
     $('.sun-container').css('display', 'flex');
   }
 
-  // $('.imagesContainer').click(function(e){
-  //   if (e.target.textContent != "Заказать") {
-  //     location.href = $(this).find('a')[0].href
-  //   }
-  // })
+  $('.imagesContainer').click(function(e){
+    if (e.target.textContent != "Заказать") {
+      location.href = $(this).find('a')[0].href
+    }
+  })
 
   if ( parseInt( $('.layer').text() ) > 9 ) {
     $('.layer').css('right', '6px')
