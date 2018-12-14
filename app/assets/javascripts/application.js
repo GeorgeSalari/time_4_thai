@@ -18,11 +18,11 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $('.imagesContainer').click(function(e){
-    if (e.target.textContent != "Заказать") {
-      location.href = $(this).find('a')[0].href
-    }
-  })
+  // $('.imagesContainer').click(function(e){
+  //   if (e.target.textContent != "Заказать") {
+  //     location.href = $(this).find('a')[0].href
+  //   }
+  // })
 
   if ( parseInt( $('.layer').text() ) > 9 ) {
     $('.layer').css('right', '6px')
@@ -206,15 +206,15 @@ function closeModal(modalId) {
   $('.header-17 .sticky-wrapper.is-sticky .total-header-area').show();
 }
 
-var slideIndex = 1;
-showSlides(slideIndex);
+var slideIndex;
+showSlides( parseInt(slideIndex ) );
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  showSlides( slideIndex += parseInt(n) );
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides( slideIndex = parseInt(n) );
 }
 
 function showSlides(n) {
