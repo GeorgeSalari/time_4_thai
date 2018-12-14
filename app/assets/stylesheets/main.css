@@ -2104,7 +2104,7 @@ td, th {
   width: 44px;
   height: 23px;
   object-fit: contain;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 @media (max-width: 767px) {
@@ -4629,12 +4629,9 @@ p.mail a {
 }
 
 .sun-container {
-  width: 200px;
-  position: absolute;
-  left: -10px;
-  top: 90px;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
 }
