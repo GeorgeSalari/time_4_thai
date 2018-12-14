@@ -24,6 +24,8 @@ class UserMailer < ApplicationMailer
       AviaTour.find(product_id)
     when 'Boat'
       Boat.find(product_id)
+    when 'Shop'
+      Shop.find(product_id)
     end
   end
 end
