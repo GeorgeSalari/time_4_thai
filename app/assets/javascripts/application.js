@@ -220,8 +220,13 @@ function currentSlide(n, product) {
 
 function showSlides(n, product) {
   var i;
+  console.log ('начало i = ' + i)
   var slides = document.getElementsByClassName("mySlides_"+product+mySlidesId);
+  console.log ('slide = ' + slide)
   var dots = document.getElementsByClassName("demo_"+product+mySlidesId);
+  console.log ('dots = ' + dots)
+  console.log ('n = ' + n)
+  console.log ('product = ' + product)
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -230,6 +235,9 @@ function showSlides(n, product) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
+  console.log ('slideIndex = ' + slideIndex)
+  console.log ('slides[slideIndex-1] = ' + slides[slideIndex-1])
+  console.log ('dots[slideIndex-1] = ' + dots[slideIndex-1])
   if (slides.length > 0) {
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
