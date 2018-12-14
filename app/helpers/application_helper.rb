@@ -28,6 +28,8 @@ module ApplicationHelper
       avia_tour_path(tour)
     when 'boat_path'
       boat_path(tour)
+    when 'shop_path'
+      shop_path(tour)
     else
       sea_tour_path(tour)
     end

@@ -40,6 +40,8 @@ class CartItem < ApplicationRecord
       AviaTour.find(self.product_id)
     when 'Boat'
       Boat.find(self.product_id)
+    when 'Shop'
+      Shop.find(self.product_id)
     end
   end
 end
