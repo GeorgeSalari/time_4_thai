@@ -4,23 +4,23 @@ class StaticPagesController < ApplicationController
   before_action :set_static_page, only: [:edit, :update]
 
   def individual
-
+    @individual = StaticPage.find(7)
   end
 
   def realty_rent
-
+    @realty_rent = StaticPage.find(5)
   end
 
   def realty_buy
-
+    @realty_buy = StaticPage.find(6)
   end
 
   def transfer
-
+    @transfer = StaticPage.find(4)
   end
 
   def photoshoot
-
+    @photoshoot = StaticPage.find(3)
   end
 
   def wedding
@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
   end
 
   def spa
-
+    @spa = StaticPage.find(2)
   end
 
   def new
