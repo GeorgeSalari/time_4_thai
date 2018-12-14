@@ -26,6 +26,8 @@ class UserMailer < ApplicationMailer
       Boat.find(product_id)
     when 'Shop'
       Shop.find(product_id)
+    when 'StaticPage'
+      StaticPage.find(product_id)
     end
   end
 end

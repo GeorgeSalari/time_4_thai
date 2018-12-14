@@ -1,0 +1,79 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
+<% end %>
+
+<%= render 'shared/navbar' %>
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <h1>
+    <%= @wedding.title %>
+  </h1>
+
+  <div class="text-center">
+    <% @wedding.images.each_with_index do |image, index| %>
+      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
+    <% end %>
+  </div>
+
+  <!-- Start modal images showing -->
+  <div id='imageModal_0' class="modal imagesModal">
+
+    <div class="modal-content">
+      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
+
+      <% @wedding.images.each do |image| %>
+        <div class='mySlides <%= "mySlides_0" %>'>
+          <%= image_tag image.url %>
+        </div>
+      <% end %>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <div class="column">
+        <% @wedding.images.each_with_index do |image,index| %>
+          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <!-- END modal images showing -->
+
+  <div class="row price-container">
+    <div class="col-4 text-right">
+      <p class="adult-price">
+        <%= image_tag 'user.svg' %>
+        B <%= @wedding.adult_price %>
+      </p>
+    </div>
+    <div class="col-4 text-center">
+      <p class="child-price">
+        <%= image_tag 'kids-couple.svg' %>
+        B <%= @wedding.child_price %>
+      </p>
+    </div>
+    <div class="col-4 text-left">
+      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @wedding.title %>" data-adult="<%= @wedding.adult_price %>" data-productType="StaticPage" data-productId="<%= @wedding.id %>" data-child="<%= @wedding.child_price %>">Заказать</button>
+
+      <!-- The Modal Order Tour -->
+      <%= render partial: 'shared/order_tour', :locals => { product_type: "StaticPage", product_id: @wedding.id} %>
+      <!-- End Modal Order Tour  -->
+    </div>
+  </div>
+  <div class="short-content">
+    <h2>Описание:</h2>
+    <p>
+      <%= @wedding.short_content %>
+    </p>
+  </div>
+  <div class="full-content">
+    <p><%= @wedding.content.html_safe %></p>
+  </div>
+  <div class="form-container">
+    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "StaticPage", product_id: @wedding.id} %>
+  </div>
+
+  <%= render 'shared/add_comment' %>
+</div>
+<%= render "shared/footer" %>

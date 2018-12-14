@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
   end
 
   def wedding
-
+    @wedding = StaticPage.find(1)
   end
 
   def spa

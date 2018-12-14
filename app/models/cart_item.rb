@@ -42,6 +42,8 @@ class CartItem < ApplicationRecord
       Boat.find(self.product_id)
     when 'Shop'
       Shop.find(self.product_id)
+    when 'StaticPage'
+      StaticPage.find(self.product_id)
     end
   end
 end
