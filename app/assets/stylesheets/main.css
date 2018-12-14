@@ -970,7 +970,6 @@ td, th {
 
 @media (min-width: 480px) and (max-width: 767px) {
   .side-menubar {
-    height: 500px;
     overflow-y: scroll;
   }
 }
@@ -1045,12 +1044,6 @@ td, th {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-@media (min-width: 480px) and (max-width: 767px) {
-  .side-menubar .menu-contact {
-    display: none;
-  }
 }
 
 .side-menubar .menu-contact .email {

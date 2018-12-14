@@ -18,4 +18,93 @@
   .imagesModal .close {
     right: -30px;
   }
+  #second-menu.main-menu nav ul li img {
+    margin-left: -10px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .currency {
+    margin-left: 0;
+  }
+  .container {
+    width: 95%;
+  }
+  .advantages .col-lg-4 {
+    width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .btn-group, .btn-group-vertical {
+    margin-right: 160px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header-17 .total-header-area .container .row.align-items-center {
+    justify-content: center;
+  }
+  .header-17 .total-header-area .container .row.align-items-center .logo {
+    margin-left: 10px !important;
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 810px) {
+  .tour-container {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-17 .total-header-area {
+    background-color: transparent;
+  }
+  #main-menu-container,
+  #social-link-container .instagram,
+  #social-link-container .facebook,
+  #social-link-container .vk,
+  #social-link-container .currency,
+  #social-link-container > img,
+  .scrolled-menu-container {
+    display: none !important;
+  }
+  .header-17 .total-header-area .container .row.align-items-center {
+    justify-content: space-around;
+  }
+  .total-brand-17 img {
+    margin: 0;
+  }
+  .side-menubar nav {
+    top: 25%;
+  }
+  .side-menubar.open-menubar nav ul {
+    flex-direction: column;
+  }
+  .call-request {
+    position: inherit;
+    display: inline-block;
+    left: 0;
+    top: -20px;
+  }
+  .asana-banner .main-container .contact-info .container p.mail {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 479px) {
+  .footer-widget-17 {
+    display: none;
+  }
+  .side-menubar {
+    display: none;
+  }
+  .side-menubar.open-menubar {
+    display: inherit;
+  }
+  .side-menubar nav {
+    top: 45%;
+  }
 }

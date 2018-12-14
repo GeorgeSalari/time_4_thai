@@ -197,23 +197,83 @@
 
   <div class="side-menubar">
     <nav>
-      <ul class="color-17">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#our_advantages">features</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#price">Pricing</a></li>
+      <ul class="d-flex">
+        <li>
+          <div class="dropdown tours">
+            <a href="#">
+              Экскурсии
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="<%= sea_tours_path %>">Морские экскурсии</a>
+              <a class="dropdown-item" href="<%= land_tours_path %>">Сухопутные</a>
+              <a class="dropdown-item" href="<%= evening_shows_path %>">Вечерние шоу</a>
+              <a class="dropdown-item" href="<%= phuket_tours_path %>">По Пхукету</a>
+              <a class="dropdown-item" href="<%= avia_tours_path %>">Авиатуры</a>
+              <a class="dropdown-item" href="<%= individual_path %>">Индивидуальные</a>
+            </div>
+            <%= image_tag('down-chevron.svg')%>
+          </div>
+        </li>
+        <li>
+          <a class="shoping-button" href="<%= shops_path %>">
+            Шопинг
+          </a>
+        </li>
+        <li>
+          <a class="shoping-button" href="<%= boats_path %>">
+            Аренда Лодок
+          </a>
+        </li>
+          <li>
+            <div class="dropdown property">
+            <a href="#">
+              Недвижимость
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="<%= realty_rent_path %>">Аренда</a>
+              <a class="dropdown-item" href="<%= realty_buy_path %>">Покупка</a>
+            </div>
+            <%= image_tag('down-chevron.svg')%>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown services">
+            <a href="#">
+              Услуги
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="<%= transfers_path %>">Трансферы в/из Аэропорта</a>
+              <a class="dropdown-item" href="<%= photoshoot_path %>">Фотосессии</a>
+              <a class="dropdown-item" href="<%= wedding_path %>">Свадебные церемонии</a>
+              <a class="dropdown-item" href="<%= ferries_path %>">Паромы на острова</a>
+              <a class="dropdown-item" href="<%= spa_path %>">СПА</a>
+            </div>
+            <%= image_tag('down-chevron.svg')%>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown price-list">
+            <a href="#">
+              Прайс
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Скачать</a>
+              <a class="dropdown-item" href="#">Открыть</a>
+            </div>
+            <%= image_tag('down-chevron.svg')%>
+          </div>
+        </li>
       </ul>
     </nav>
     <div class="menu-contact">
       <div class="email">
-        <a href="mailto:info@execution.com">info@execution.com</a> <br>
-        <a href="javascript:;">+880 1956 236 452</a>
+        <a href="mailto:cocotours.phuket@gmail.com">cocotours.phuket@gmail.com</a> <br>
+        <a href="javascript:;">+66 83 539 0539</a>
       </div>
       <div class="social-contact color-8 d-flex justify-content-center">
-        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-google-plus"></i></a>
+        <a href="https://www.instagram.com/phuket_budget_tours/" target="_blank" class="instagram"> <%= image_tag('insta.svg')%> </a>
+        <a href="#" class="facebook"> <%= image_tag('facebook.svg')%></a>
+        <a href="#" class="vk"> <%= image_tag('vk.svg')%></a>
       </div>
     </div>
   </div>

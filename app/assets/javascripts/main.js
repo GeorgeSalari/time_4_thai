@@ -23,11 +23,6 @@ $(document).ready(function(){
             $('.side-menubar').toggleClass('open-menubar');
             $("span", this).toggleClass("lnr-menu lnr-cross");
         });
-      $('.side-menubar nav ul li a').on('click', function(e){
-        e.preventDefault();
-        $('.side-menubar').toggleClass('open-menubar');
-        $(".toggle-btn span").toggleClass("lnr-menu lnr-cross");
-      });
 
     //------- Add smooth scrolling to all links
 
