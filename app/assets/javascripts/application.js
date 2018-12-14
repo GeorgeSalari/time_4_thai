@@ -221,6 +221,7 @@ function currentSlide(n, product) {
 
 function showSlides(n, product) {
   var i;
+  debugger
   if (product != undefined) {
     var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
     var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);

@@ -9,7 +9,7 @@ $(document).ready(function(){
   images.each(function(){
     this.onclick = function(){
       openModal(<%= "imageModal_0" %>);
-      currentSlide($(this).attr('class').split(' ').pop(), "")
+      currentSlide($(this).attr('class').split(' ').pop())
     }
   })
 
