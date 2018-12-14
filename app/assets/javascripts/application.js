@@ -215,19 +215,20 @@ function plusSlides(n, product) {
 }
 
 function currentSlide(n, product) {
+  console.log ('currentSlide product = ' + product)
   showSlides( slideIndex = parseInt(n), product );
 }
 
 function showSlides(n, product) {
+  console.log ('showSlides product = ' + product)
   var i;
   console.log ('начало i = ' + i)
   var slides = document.getElementsByClassName("mySlides_"+product+mySlidesId);
   console.log ('slides class = ' + $(slides).attr('class'))
-  console.log ('slides length = ' + $(slides).length)
+  // console.log ('slides length = ' + $(slides).length)
   var dots = document.getElementsByClassName("demo_"+product+mySlidesId);
   console.log ('dots class = ' + $(dots).attr('class'))
   console.log ('n = ' + n)
-  console.log ('product = ' + product)
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
