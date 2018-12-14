@@ -6,7 +6,7 @@ class LandToursController < ApplicationController
   # GET /land_tours
   # GET /land_tours.json
   def index
-    @land_tours = LandTour.all
+    @land_tours = LandTour.order(order_number: :asc)
   end
 
   # GET /land_tours/1

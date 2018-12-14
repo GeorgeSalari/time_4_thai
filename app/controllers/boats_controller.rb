@@ -6,7 +6,7 @@ class BoatsController < ApplicationController
   # GET /boats
   # GET /boats.json
   def index
-    @boats = Boat.all
+    @boats = Boat.order(order_number: :asc)
   end
 
   # GET /boats/1

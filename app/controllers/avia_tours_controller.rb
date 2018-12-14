@@ -6,7 +6,7 @@ class AviaToursController < ApplicationController
   # GET /avia_tours
   # GET /avia_tours.json
   def index
-    @avia_tours = AviaTour.all
+    @avia_tours = AviaTour.order(order_number: :asc)
   end
 
   # GET /avia_tours/1

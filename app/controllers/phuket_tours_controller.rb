@@ -6,7 +6,7 @@ class PhuketToursController < ApplicationController
   # GET /phuket_tours
   # GET /phuket_tours.json
   def index
-    @phuket_tour = PhuketTour.all
+    @phuket_tour = PhuketTour.order(order_number: :asc)
   end
 
   # GET /phuket_tours/1

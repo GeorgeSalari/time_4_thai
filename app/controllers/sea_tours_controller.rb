@@ -6,7 +6,7 @@ class SeaToursController < ApplicationController
   # GET /sea_tours
   # GET /sea_tours.json
   def index
-    @sea_tours = SeaTour.all
+    @sea_tours = SeaTour.order(order_number: :asc)
   end
 
   # GET /sea_tours/1

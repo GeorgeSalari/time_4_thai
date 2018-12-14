@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @shops = Shop.order(order_number: :asc)
   end
 
   # GET /shops/1

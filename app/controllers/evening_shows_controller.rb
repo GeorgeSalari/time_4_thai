@@ -6,7 +6,7 @@ class EveningShowsController < ApplicationController
   # GET /evening_shows
   # GET /evening_shows.json
   def index
-    @evening_shows = EveningShow.all
+    @evening_shows = EveningShow.order(order_number: :asc)
   end
 
   # GET /evening_shows/1
