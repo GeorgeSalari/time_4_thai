@@ -78,9 +78,19 @@
     margin: 0;
   }
   .side-menubar nav {
-    max-height: 56%;
+    max-height: 50%;
     overflow: scroll;
-    top: 41%;
+    top: 44%;
+    width: 211px;
+  }
+  .side-menubar.open-menubar nav ul li {
+    text-align: center;
+  }
+  .side-menubar nav ul li .dropdown-menu {
+    min-width: 211px;
+  }
+  .side-menubar nav ul li .dropdown-menu.display-dropdown-menu a {
+    padding-left: 20px;
   }
   .side-menubar .display-dropdown-menu {
     position: inherit;
