@@ -82,6 +82,8 @@
     overflow: scroll;
     top: 44%;
     width: 211px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   .side-menubar.open-menubar nav ul li {
     text-align: center;
