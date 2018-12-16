@@ -119,7 +119,9 @@
 }
 
 @media (max-width: 479px) {
-  .footer-widget-17 {
+  .footer-widget-17,
+  .call-request,
+  .asana-banner .main-container .contact-info .container p.mail {
     display: none;
   }
 }
