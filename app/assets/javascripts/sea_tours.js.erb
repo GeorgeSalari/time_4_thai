@@ -1,4 +1,10 @@
 $(document).ready(function(){
+  $('#add_new_comment').submit(function(){
+    $('#comment-submit').hide();
+    $('#loading-comment').show();
+    $('.please-wait').show();
+  })
+
   $('.images-container .mask').click(function(){
     var modal_id = $(this).parent().attr('class').split(' ').pop();
     openModal($("#"+modal_id)[0] );
