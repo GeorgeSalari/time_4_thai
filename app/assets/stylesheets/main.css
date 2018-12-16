@@ -3567,6 +3567,7 @@ td, th {
   height: 633px;
   background-color: rgba(4, 128, 154, 0.3);
   padding: 0;
+  width: fit-content;
 }
 
 .rectangle-7 {
@@ -4374,14 +4375,6 @@ td, th {
   width: 23px;
 }
 
-.reviews-block {
-  height: 600px;
-}
-
-.reviews-block {
-  margin-top: 50px;
-}
-
 .mask {
   width: 99px;
   height: 99px;
@@ -4391,8 +4384,7 @@ td, th {
 }
 
 .mask img {
-  width: 63px;
-  height: 63px;
+  width: 90%;
   object-fit: contain;
   position: absolute;
   top: 50%;
@@ -4427,11 +4419,11 @@ td, th {
 .reviews-block .images-container {
   width: 30%;
   height: 200px;
-  background-color: blue;
   padding: 0;
   flex: 0 0 30%;
   max-width: 30%;
   margin: 20px auto;
+  position: relative;
 }
 
 .reviews-block .col-9 {
@@ -4668,4 +4660,39 @@ p.mail a {
   margin-top: 5px;
   font-weight: bolder;
   text-shadow: 3px 3px 5px #000000;
+}
+
+.reviews-block {
+  min-height: 200px;
+}
+
+.images-container img {
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.images-container .mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(7, 142, 170, 0.6);
+  top: 0;
+}
+
+.images-container .mask p {
+  font-family: Lato;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  top: 50% !important;
+  transform: translateY(-50%);
+  height: fit-content;
 }

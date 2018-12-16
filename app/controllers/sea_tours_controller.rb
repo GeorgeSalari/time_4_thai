@@ -12,6 +12,7 @@ class SeaToursController < ApplicationController
   # GET /sea_tours/1
   # GET /sea_tours/1.json
   def show
+    @comments = Comment.where(tour_type: "SeaTour", tour_id: params[:id])
   end
 
   # GET /sea_tours/new
