@@ -118,10 +118,30 @@
   }
 }
 
+@media (max-width: 620px) {
+  .modal-dialog {
+    max-width: 95%;
+  }
+  .modal-content {
+    width: 95%;
+    height: auto;
+    padding-bottom: 20px;
+  }
+  .input-container input {
+    width: 80%;
+  }
+}
+
 @media (max-width: 479px) {
   .footer-widget-17,
   .call-request,
   .asana-banner .main-container .contact-info .container p.mail {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .show-sm {
+    display: inherit;
   }
 }
