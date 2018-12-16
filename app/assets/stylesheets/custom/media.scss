@@ -131,6 +131,9 @@
   .input-container input {
     width: 80%;
   }
+  .small_images {
+    width: 100px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -138,6 +141,9 @@
   .call-request,
   .asana-banner .main-container .contact-info .container p.mail {
     display: none;
+  }
+  .small_images {
+    width: 60px;
   }
 }
 
