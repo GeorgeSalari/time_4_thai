@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031034043) do
+ActiveRecord::Schema.define(version: 20181216001419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+    t.integer "order_number"
+  end
+
+  create_table "boats", force: :cascade do |t|
+    t.string "title"
+    t.string "short_content"
+    t.string "content"
+    t.integer "adult_price"
+    t.integer "child_price"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_number"
   end
 
   create_table "call_orders", force: :cascade do |t|
@@ -77,6 +90,18 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "customer_email"
+    t.string "comment"
+    t.json "avatar"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "tour_id"
+    t.string "tour_type"
+  end
+
   create_table "evening_shows", force: :cascade do |t|
     t.string "title"
     t.string "short_content"
@@ -86,6 +111,7 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+    t.integer "order_number"
   end
 
   create_table "individual_tours", force: :cascade do |t|
@@ -108,6 +134,7 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+    t.integer "order_number"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -134,6 +161,7 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+    t.integer "order_number"
   end
 
   create_table "sea_tours", force: :cascade do |t|
@@ -145,6 +173,37 @@ ActiveRecord::Schema.define(version: 20181031034043) do
     t.integer "adult_price", default: 0
     t.integer "child_price", default: 0
     t.json "images"
+    t.integer "order_number"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "title"
+    t.string "short_content"
+    t.string "content"
+    t.integer "adult_price"
+    t.integer "child_price"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_number"
+  end
+
+  create_table "static_pages", force: :cascade do |t|
+    t.string "title"
+    t.string "short_content"
+    t.string "content"
+    t.integer "adult_price"
+    t.integer "child_price"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

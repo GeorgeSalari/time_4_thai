@@ -957,7 +957,7 @@ td, th {
   -moz-transition: all 0.3s 0s;
   -o-transition: all 0.3s 0s;
   transition: all 0.3s 0s;
-  margin-right: -300px;
+  margin-right: -500px;
   position: fixed;
   background: #f9fafc;
   right: 0;
@@ -970,7 +970,6 @@ td, th {
 
 @media (min-width: 480px) and (max-width: 767px) {
   .side-menubar {
-    height: 500px;
     overflow-y: scroll;
   }
 }
@@ -1045,12 +1044,6 @@ td, th {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-@media (min-width: 480px) and (max-width: 767px) {
-  .side-menubar .menu-contact {
-    display: none;
-  }
 }
 
 .side-menubar .menu-contact .email {
@@ -1136,6 +1129,15 @@ td, th {
 .is-sticky .logo img {
   width: 150px;
   height: auto;
+}
+
+.cmpany-number {
+  font-weight: bold;
+  width: 201px;
+  color: red;
+  text-align: center;
+  margin-bottom: -10px;
+  margin-top: -10px;
 }
 
 @media (max-width: 767px) {
@@ -1998,6 +2000,20 @@ td, th {
   display: inline-block;
 }
 
+.path-button-container {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.path-button {
+  width: auto;
+  background-color: #f5a623;
+  border-color: #f5a623;
+  color: white;
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.4), 0 10px 20px 0 rgba(0,0,0,0.4);
+  padding: 5px 10px;
+}
+
 @media (max-width: 767px) {
   .social-icon {
     margin-top: 20px;
@@ -2057,8 +2073,12 @@ td, th {
   line-height: normal;
   letter-spacing: normal;
   color: #078eaa;
-  margin-top: 15px;
+  margin-top: 75px;
   margin-bottom: 0;
+}
+
+.section-title-17 p:first-child {
+  margin-top: 35px;
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -2077,7 +2097,7 @@ td, th {
   width: 44px;
   height: 23px;
   object-fit: contain;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 @media (max-width: 767px) {
@@ -2355,17 +2375,15 @@ td, th {
 }
 
 .asana-banner h1 {
-  width: 700px;
-  height: 173px;
   font-family: Lato;
-  font-size: 144px;
+  font-size: 60px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.27);
+  text-shadow: 3px 3px 5px #000000;
 }
 
 @media (max-width: 767px) {
@@ -2384,7 +2402,7 @@ td, th {
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px #000000;
 }
 
 .banner-bottom-shape {
@@ -2734,13 +2752,6 @@ td, th {
   letter-spacing: normal;
   color: #ffffff;
   margin-left: 25px;
-}
-
-@media (min-width: 768px) and (max-width: 1200px) {
-  .total-brand-17 img {
-    height: 25px;
-    width: auto;
-  }
 }
 
 @media (max-width: 767px) {
@@ -3280,6 +3291,10 @@ td, th {
   font-weight: 700;
 }
 
+.shoping-button {
+  color: #078eaa;
+}
+
 @media (min-width: 768px) and (max-width: 1200px) {
   .cta-18 .cta-content h2 br {
     display: none;
@@ -3469,6 +3484,7 @@ td, th {
 .faq-area-17 {
   position: relative;
   padding-top: 70px;
+  background: #f9fafc;
 }
 
 .rectangle-18 {
@@ -4062,6 +4078,35 @@ td, th {
 .footer-widget-17 p.mail {
   margin-bottom: 10px;
   color: #f5a623;
+  font-weight: 19px;
+}
+
+.garanty {
+  position: absolute;
+  right: 60px;
+  bottom: 0;
+}
+
+.garanty p {
+  font-size: 18px;
+}
+
+.viber-whatsapp-telegram {
+  margin-top: -33px;
+  margin-bottom: 15px;
+}
+
+.viber-whatsapp-telegram img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.viber-whatsapp-telegram img:first-child {
+  margin-left: 0;
+}
+
+.default-footer .container {
+  padding-top: 10px;
 }
 
 .footer-widget-17 .footer-top-shape {
@@ -4559,4 +4604,64 @@ p.mail a {
 
 .header-17 .main-menu#scrolled-menu ul li a:after {
   left: 71%;
+}
+
+.short-content, .full-content {
+  font-size: 17px;
+}
+
+.aventage-image img {
+  width: 69px;
+}
+
+.sun-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.sun-container:nth-child(2) {
+  left: 0;
+  width: 230px;
+  top: 230px;
+}
+
+.sun-container:nth-child(3) {
+  left: 150px;
+  top: 360px;
+}
+
+.sun-container:nth-child(4) {
+  left: auto;
+  right: -10px
+}
+
+.sun-container:nth-child(5) {
+  left: auto;
+  right: 0;
+  top: 230px;
+}
+
+.sun-container:nth-child(6) {
+  left: auto;
+  right: 150px;
+  top: 360px;
+}
+
+
+.asana-banner .sun-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.sun-container p {
+  color: white;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: bolder;
+  text-shadow: 3px 3px 5px #000000;
 }

@@ -1,0 +1,60 @@
+<div class="total-brand-17 d-flex flex-wrap justify-content-md-around justify-content-center align-items-center">
+  <% if !all_tours.empty? %>
+    <% all_tours.each do |tour| %>
+      <div class="tour-container">
+        <div class="imagesContainer">
+          <%= link_to show_path(path, tour) do %>
+            <%= image_tag tour.images.first.url(:main_page) %>
+          <% end %>
+          <p class="tourTitle"><%= tour.title %></p>
+          <p>
+            <%= image_tag 'user.svg' %>
+            B <%= tour.adult_price %>
+            <%= image_tag 'kids-couple.svg' %>
+            B <%= tour.child_price %>
+          </p>
+          <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= tour.title %>" data-adult="<%= tour.adult_price %>" data-productType="<%= product_type %>"" data-productId="<%= tour.id %>" data-child="<%= tour.child_price %>">Заказать</button>
+
+
+          <!-- Start modal images showing -->
+          <div id='<%= "imagesModal_#{product_type}_#{tour.id}" %>' class="modal imagesModal">
+
+            <div class="modal-content">
+              <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{product_type}_#{tour.id}" %>)">&times;</span>
+
+              <% tour.images.each_with_index do |image, index| %>
+                <div class='mySlides <%= "mySlides_#{product_type}_#{tour.id}" %>'>
+                  <%= image_tag image.url %>
+                </div>
+              <% end %>
+              <a class="prev" onclick="plusSlides(-1, '<%= product_type %>') ">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, '<%= product_type %>') ">&#10095;</a>
+              <div class="column">
+                <% tour.images.each_with_index do |image,index| %>
+                  <%= image_tag image.url(:bottom), class: "demo demo_#{product_type}_#{tour.id} cursor", onclick: "currentSlide(#{index + 1}, '#{product_type}')" %>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- END modal images showing -->
+
+
+
+        </div>
+        <div class="shortContentContainer">
+          <p><%= tour.short_content %></p>
+        </div>
+        <div class="buttonsContainer">
+          <button onclick="openModal(<%= "imagesModal_#{product_type}_#{tour.id}" %>);currentSlide(1, '<%= product_type %>')">Фото экскурсии</button>
+          <%= link_to "Подробней", show_path(path, tour) %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- The Modal Order Tour -->
+    <%= render partial: 'shared/order_tour', :locals => { product_type: "", product_id: ''} %>
+    <!-- End Modal Order Tour  -->
+  <% end %>
+</div>

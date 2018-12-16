@@ -1,30 +1,79 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
+<% end %>
+
+<%= render 'shared/navbar' %>
 <p id="notice"><%= notice %></p>
-<div class="text-center">
-  <h2>
+
+<div class="container">
+
+  <h1>
     <%= @evening_show.title %>
-    <button class="btn btn-primary btn-lg float-right" id="order_tour_button" >Заказать</button>
-  </h2>
-  <div class="row">
-    <div class="col-6 text-right">
-      <p>
-        <%= image_tag("adult.png", style: "width: 25px;") %> ->
-        <%= @evening_show.adult_price %>
-      </p>
-    </div>
-    <div class="col-6 text-left">
-      <p>
-        <%= image_tag("child.png", style: "width: 25px;") %> ->
-        <%= @evening_show.child_price %>
-      </p>
+  </h1>
+
+  <div class="text-center">
+    <% @evening_show.images.each_with_index do |image, index| %>
+      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
+    <% end %>
+  </div>
+
+  <!-- Start modal images showing -->
+  <div id='imageModal_0' class="modal imagesModal">
+
+    <div class="modal-content">
+      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
+
+      <% @evening_show.images.each do |image| %>
+        <div class='mySlides <%= "mySlides_0" %>'>
+          <%= image_tag image.url %>
+        </div>
+      <% end %>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <div class="column">
+        <% @evening_show.images.each_with_index do |image,index| %>
+          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
+        <% end %>
+      </div>
+
     </div>
   </div>
-  <h4 class="text-left" >Краткое описание:</h4>
-  <p>
-    <%= @evening_show.short_content %>
-  </p>
-  <h4 class="text-left">Полное описание:</h4>
-  <p><%= @evening_show.content %></p>
+  <!-- END modal images showing -->
+
+  <div class="row price-container">
+    <div class="col-4 text-right">
+      <p class="adult-price">
+        <%= image_tag 'user.svg' %>
+        B <%= @evening_show.adult_price %>
+      </p>
+    </div>
+    <div class="col-4 text-center">
+      <p class="child-price">
+        <%= image_tag 'kids-couple.svg' %>
+        B <%= @evening_show.child_price %>
+      </p>
+    </div>
+    <div class="col-4 text-left">
+      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @evening_show.title %>" data-adult="<%= @evening_show.adult_price %>" data-productType="EveningShow" data-productId="<%= @evening_show.id %>" data-child="<%= @evening_show.child_price %>">Заказать</button>
+
+      <!-- The Modal Order Tour -->
+      <%= render partial: 'shared/order_tour', :locals => { product_type: "EveningShow", product_id: @evening_show.id} %>
+      <!-- End Modal Order Tour  -->
+    </div>
+  </div>
+  <div class="short-content">
+    <h2>Описание:</h2>
+    <p>
+      <%= @evening_show.short_content %>
+    </p>
+  </div>
+  <div class="full-content">
+    <p><%= @evening_show.content.html_safe %></p>
+  </div>
+  <div class="form-container">
+    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "EveningShow", product_id: @evening_show.id} %>
+  </div>
+
+  <%= render 'shared/add_comment' %>
 </div>
-<%= link_to 'Редактировать', edit_evening_show_path(@evening_show), class: "btn btn-warning" %>
-<%= link_to 'Удалить тур', @evening_show, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', evening_shows_path, class: "btn btn-primary float-right" %>
+<%= render "shared/footer" %>

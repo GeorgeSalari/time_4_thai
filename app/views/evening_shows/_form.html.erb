@@ -44,6 +44,21 @@
       <%= form.number_field :child_price, class: "form-control"  %>
     </div>
   </div>
+
+  <div class="form-group row">
+    <%= form.label "Очередность:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.number_field :order_number, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Выберите фотографии:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.file_field :images, multiple: true, class: "form-control" %>
+    </div>
+  </div>
+
   <div class="actions">
       <%= form.submit %>
   </div>

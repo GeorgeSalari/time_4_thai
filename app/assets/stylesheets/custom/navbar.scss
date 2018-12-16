@@ -57,7 +57,10 @@
   }
 
   .sticky-wrapper.is-sticky p.mail a,
-  .sticky-wrapper.is-sticky .dropdown > a, .sticky-wrapper.is-sticky .dropdown > a:focus, .sticky-wrapper.is-sticky .dropdown > a:hover,
+  .sticky-wrapper.is-sticky .dropdown > a,
+  .sticky-wrapper.is-sticky .dropdown > a:focus,
+  .sticky-wrapper.is-sticky .dropdown > a:hover,
+  .sticky-wrapper.is-sticky a.shoping-button,
   .sticky-wrapper.is-sticky p.phone {
     color: white;
   }

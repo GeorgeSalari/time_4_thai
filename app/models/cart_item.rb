@@ -30,6 +30,20 @@ class CartItem < ApplicationRecord
     case self.product_type
     when 'SeaTour'
       SeaTour.find(self.product_id)
+    when 'LandTour'
+      LandTour.find(self.product_id)
+    when 'EveningShow'
+      EveningShow.find(self.product_id)
+    when 'PhuketTour'
+      PhuketTour.find(self.product_id)
+    when 'AviaTour'
+      AviaTour.find(self.product_id)
+    when 'Boat'
+      Boat.find(self.product_id)
+    when 'Shop'
+      Shop.find(self.product_id)
+    when 'StaticPage'
+      StaticPage.find(self.product_id)
     end
   end
 end

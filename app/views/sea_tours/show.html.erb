@@ -7,24 +7,39 @@
 
 <div class="container">
 
-  <div class="text-center">
-    <% @sea_tour.images.each do |image| %>
-      <%= image_tag image.url(:bottom), class: 'small_images' %>
-    <% end %>
-  </div>
-
-  <!-- The Modal Big Images -->
-  <div id="imageModal" class="modal">
-    <div class="modal-content">
-      <span class="close_image">&times;</span>
-      <img id="img01">
-    </div>
-  </div>
-  <!-- End Modal -->
-
   <h1>
     <%= @sea_tour.title %>
   </h1>
+
+  <div class="text-center">
+    <% @sea_tour.images.each_with_index do |image, index| %>
+      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
+    <% end %>
+  </div>
+
+  <!-- Start modal images showing -->
+  <div id='imageModal_0' class="modal imagesModal">
+
+    <div class="modal-content">
+      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
+
+      <% @sea_tour.images.each do |image| %>
+        <div class='mySlides <%= "mySlides_0" %>'>
+          <%= image_tag image.url %>
+        </div>
+      <% end %>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <div class="column">
+        <% @sea_tour.images.each_with_index do |image,index| %>
+          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <!-- END modal images showing -->
+
   <div class="row price-container">
     <div class="col-4 text-right">
       <p class="adult-price">
@@ -47,17 +62,18 @@
     </div>
   </div>
   <div class="short-content">
-    <h2>Краткое описание:</h2>
+    <h2>Описание:</h2>
     <p>
       <%= @sea_tour.short_content %>
     </p>
   </div>
   <div class="full-content">
-    <h2>Полное описание:</h2>
-    <p><%= @sea_tour.content %></p>
+    <p><%= @sea_tour.content.html_safe %></p>
   </div>
   <div class="form-container">
     <%= render partial: 'shared/order_tour_form', :locals => { product_type: "SeaTour", product_id: @sea_tour.id} %>
   </div>
+
+  <%= render 'shared/add_comment' %>
 </div>
 <%= render "shared/footer" %>

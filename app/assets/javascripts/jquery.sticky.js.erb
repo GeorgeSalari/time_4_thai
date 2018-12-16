@@ -58,6 +58,9 @@
             $('#black').show();
             $('#white').hide();
           }
+          $('#second-menu li').click(function(){
+            $(this).find('.dropdown-menu').css({'top': '-'+ ($(this).find('.dropdown-menu').height() + 20) +'px', 'left': '-30px'})
+          })
           if (s.currentTop !== null) {
             s.stickyElement
               .css('width', '')
@@ -71,6 +74,9 @@
             $('#black').hide();
             $('#white').show();
           }
+          $('#second-menu li').click(function(){
+            $(this).find('.dropdown-menu').css({'top': '100%', 'left': '0'})
+          })
           $('.call-request-scroll').show();
           var newTop = documentHeight - s.stickyElement.outerHeight()
             - s.topSpacing - s.bottomSpacing - scrollTop - extra;

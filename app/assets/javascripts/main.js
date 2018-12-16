@@ -23,11 +23,6 @@ $(document).ready(function(){
             $('.side-menubar').toggleClass('open-menubar');
             $("span", this).toggleClass("lnr-menu lnr-cross");
         });
-      $('.side-menubar nav ul li a').on('click', function(e){
-        e.preventDefault();
-        $('.side-menubar').toggleClass('open-menubar');
-        $(".toggle-btn span").toggleClass("lnr-menu lnr-cross");
-      });
 
     //------- Add smooth scrolling to all links
 
@@ -54,32 +49,6 @@ $(document).ready(function(){
         } // End if
     });
 
-
-        var fullPath = location.pathname + location.search + location.hash;
-        if (fullPath == '/') {
-         //--------- Active menu show ---------//
-
-           $(".main-menu nav ul li a").on("click", function(e) {
-              $(".main-menu nav ul li").removeClass("active");
-              $(this).addClass("active");
-              });
-
-            $(window).on('scroll', function(event){
-               var scrollPos = $(document).scrollTop();
-               $(".main-menu#main-menu-container nav ul li a, .side-menubar nav ul li a").each(function () {
-                 var currLink = $(this);
-                 var refElement = $(currLink.attr("href"));
-
-                 if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-                   currLink.parent().addClass("active").siblings().removeClass("active");
-                   return;
-               }
-               else{
-                   currLink.parent().removeClass("active");
-               }
-            })
-           })
-          }
 
     //----- Accordion Color Change
 

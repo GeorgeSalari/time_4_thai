@@ -1,0 +1,65 @@
+<%= form_with(model: boat, local: true) do |form| %>
+  <% if boat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(boat.errors.count, "error") %> prohibited this boat from being saved:</h2>
+
+      <ul>
+      <% boat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group row">
+    <%= form.label "Название тура:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.text_field :title, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Краткое Описание:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.text_field :short_content, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Описание тура:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.text_area :content, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Цена на взрослого:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.number_field :adult_price, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Цена на ребенка:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.number_field :child_price, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Очередность:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.number_field :order_number, class: "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Выберите фотографии:", class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.file_field :images, multiple: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+      <%= form.submit %>
+  </div>
+<% end %>

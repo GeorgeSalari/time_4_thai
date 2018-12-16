@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <%= render 'shared/sea_tours' %>
+  <%= render partial: 'shared/tours', locals: {all_tours: @sea_tours, path: 'sea_tour_path', product_type: 'SeaTour'} %>
 </div>
 
 <%= render "shared/footer" %>
