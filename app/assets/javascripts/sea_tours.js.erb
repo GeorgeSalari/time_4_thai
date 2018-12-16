@@ -44,7 +44,6 @@ $(document).ready(function(){
     this.onclick = function(){
       var modal_id = $(this).parent().attr('class').split(' ').pop();
       openModal($("#"+modal_id)[0] );
-      debugger
       currentSlide( $(this).attr('class').split(' ').pop(), $(this).parent().attr('class').split('_')[1], 'review' );
     }
   })
