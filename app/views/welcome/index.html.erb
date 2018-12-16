@@ -262,7 +262,7 @@
             <a class="next" onclick="plusSlides(1, '<%= comment.tour_type %>', 'review')">&#10095;</a>
             <div class="column">
               <% comment.images.each_with_index do |image,index| %>
-                <%= image_tag image.url(:bottom), class: "demo demo_review_#{comment.tour_type}_#{comment.id}  cursor", onclick: "currentSlide(#{index + 1}, '#{comment.tour_type}' )" %>
+                <%= image_tag image.url(:bottom), class: "demo demo_review_#{comment.tour_type}_#{comment.id}  cursor", onclick: "currentSlide(#{index + 1}, '#{comment.tour_type}', 'review' )" %>
               <% end %>
             </div>
 
