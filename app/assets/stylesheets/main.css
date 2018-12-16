@@ -3667,6 +3667,8 @@ td, th {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+  height: 1px;
+  margin: 0;
 }
 
 .rectangle-7 .info-content label {
@@ -4455,6 +4457,7 @@ td, th {
 }
 
 .rectangle-7 button,
+#comment-submit,
 .all-review-button button {
   margin-top: 30px;
   width: 164px;
@@ -4465,7 +4468,8 @@ td, th {
   color: white;
 }
 
-.rectangle-7 button {
+.rectangle-7 button,
+#comment-submit {
   margin-top: 15px;
 }
 
