@@ -74,6 +74,7 @@
     <%= render partial: 'shared/order_tour_form', :locals => { product_type: "StaticPage", product_id: @transfer.id} %>
   </div>
 
+  <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
   <%= render partial: 'shared/comment_form', :locals => { product_type: "StaticPage", product_id: @transfer.id} %>
 </div>
 <%= render "shared/footer" %>
