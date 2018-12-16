@@ -253,17 +253,20 @@ var slideIndex = 1;
 
 showSlides( parseInt(slideIndex ) );
 
-function plusSlides(n, product) {
-  showSlides( slideIndex += parseInt(n), product );
+function plusSlides(n, product, review) {
+  showSlides( slideIndex += parseInt(n), product, review );
 }
 
-function currentSlide(n, product) {
-  showSlides( slideIndex = parseInt(n), product );
+function currentSlide(n, product, review) {
+  showSlides( slideIndex = parseInt(n), product, review );
 }
 
-function showSlides(n, product) {
+function showSlides(n, product, review) {
   var i;
-  if (product != undefined) {
+  if (review != undefined ) {
+    var slides = document.getElementsByClassName("mySlides_review_"+product+"_"+mySlidesId);
+    var dots = document.getElementsByClassName("demo_review_"+product+"_"+mySlidesId)
+  } else if (product != undefined) {
     var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
     var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);
   } else {

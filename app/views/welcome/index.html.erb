@@ -222,12 +222,12 @@
                 <div class="row">
                   <% comment.images.each_with_index do |image, index| %>
                     <% if index < 2 %>
-                      <div class="col-4 images-container">
-                        <%= image_tag image.url(:main_page), class: "small_images #{index + 1}" %>
+                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>" >
+                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
                       </div>
                     <% elsif index == 2 && comment.images.count > 3 %>
-                      <div class="col-4 images-container">
-                        <%= image_tag image.url(:main_page), class: "small_images #{index + 1}" %>
+                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>">
+                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
                         <div class="mask">
                           <p>
                             +<%= comment.images.count - 2 %> фото
@@ -235,8 +235,8 @@
                         </div>
                       </div>
                     <% elsif index == 2 %>
-                      <div class="col-4 images-container">
-                        <%= image_tag image.url(:main_page), class: "small_images #{index + 1}" %>
+                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>">
+                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
                       </div>
                     <% end %>
                   <% end %>
@@ -246,6 +246,29 @@
           <% end %>
 
         </div>
+
+        <!-- Start modal review images showing -->
+        <div id='<%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>' class="modal imagesModal">
+
+          <div class="modal-content">
+            <span class="close cursor" onclick="closeModal(<%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>)">&times;</span>
+
+            <% comment.images.each do |image| %>
+              <div class='mySlides <%= "mySlides_review_#{comment.tour_type}_#{comment.id}" %>'>
+                <%= image_tag image.url %>
+              </div>
+            <% end %>
+            <a class="prev" onclick="plusSlides(-1, '<%= comment.tour_type %>', 'review')">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, '<%= comment.tour_type %>', 'review')">&#10095;</a>
+            <div class="column">
+              <% comment.images.each_with_index do |image,index| %>
+                <%= image_tag image.url(:bottom), class: "demo demo_review_#{comment.tour_type}_#{comment.id}  cursor", onclick: "currentSlide(#{index + 1}, '#{comment.tour_type}' )" %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+        <!-- END modal images showing -->
 
       <% end %>
 
