@@ -18,21 +18,47 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $('.left-arrow-container').each(function(){
+  $('.left-arrow').hide();
+  $('.arrow-container-left').each(function(){
     var review_length = $('.reviews-block').length
 
     $(this).click(function(){
-      var review_showing = $(this).parent().parent().attr('class').split('-').pop();
-      var before_review;
-      $('.reviews-block').each(function(){
-        $(this).hide();
-      })
-      if ( parseInt(review_showing) == 0) {
-        before_review = review_length - 1
-      } else {
-        before_review = parseInt(review_showing) - 1
+      $('.reviews-block .left-arrow').css('top','100%');
+      if ( $(this).attr('class').includes('left-arrow-container') ){
+        $('.right-arrow').show();
+        $('.arrow-container-right').addClass('right-arrow-container')
+        var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+        var first_before_review, second_before_review;
+        $('.reviews-block').each(function(){
+          $(this).hide();
+        })
+        if (parseInt(review_showing) < 2) {
+          first_before_review = undefined;
+        } else {
+          first_before_review = review_showing - 2
+        }
+
+        if ( parseInt(review_showing) < 1) {
+          second_before_review = undefined;
+        } else {
+          second_before_review = review_showing - 1
+        }
+
+        if (first_before_review != undefined ) {
+          $('.reviews-block.reviews-block-'+first_before_review).css('display', 'inherit');
+        }
+        if (second_before_review != undefined) {
+          $('.reviews-block.reviews-block-'+second_before_review).css('display', 'inherit');
+        }
+
+        if (first_before_review <= 1 ) {
+          $('.left-arrow').hide();
+          $('.arrow-container-left').removeClass('left-arrow-container')
+        } else {
+          $('.left-arrow').show();
+          $('.arrow-container-left').addClass('left-arrow-container')
+        }
       }
-      $('.reviews-block.reviews-block-'+before_review).css('display', 'inherit');
     })
   })
 
@@ -40,17 +66,42 @@ $(document).ready(function(){
     var review_length = $('.reviews-block').length
 
     $(this).click(function(){
-      var review_showing = $(this).parent().parent().attr('class').split('-').pop();
-      var next_review;
-      $('.reviews-block').each(function(){
-        $(this).hide();
-      })
-      if ( parseInt(review_showing) == (review_length - 1) ) {
-        next_review = 0
-      } else {
-        next_review = parseInt(review_showing) + 1
+      if ( $(this).attr('class').includes('right-arrow-container') ){
+        $('.left-arrow').show();
+        $('.arrow-container-left').addClass('left-arrow-container')
+        var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+        var first_next_review, second_next_review;
+        $('.reviews-block').each(function(){
+          $(this).hide();
+        })
+        if ( parseInt(review_showing) == (review_length - 2) ) {
+          first_next_review = undefined
+        } else {
+          first_next_review = parseInt(review_showing) + 2
+        }
+        if ( parseInt(review_showing) == (review_length - 3) ) {
+          second_next_review = undefined
+        } else {
+          second_next_review = parseInt(review_showing) + 3
+        }
+
+        if (first_next_review != undefined) {
+          $('.reviews-block.reviews-block-'+first_next_review).css('display', 'inherit');
+        }
+        if (second_next_review != undefined) {
+          $('.reviews-block.reviews-block-'+second_next_review).css('display', 'inherit');
+        }
+        if (first_next_review >= (review_length - 2) ) {
+          $('.right-arrow').hide();
+          $('.arrow-container-right').removeClass('right-arrow-container')
+        } else {
+          $('.right-arrow').show();
+          $('.arrow-container-right').addClass('right-arrow-container')
+        }
+        if (first_next_review == (review_length - 1)) {
+          $('.reviews-block .left-arrow').css({'top':'50%', 'transform':'translateY(-50%) rotate(90deg)' });
+        }
       }
-      $('.reviews-block.reviews-block-'+next_review).css('display', 'inherit');
     })
   })
 

@@ -193,8 +193,10 @@
 
         <div class='container reviews-block <%= "reviews-block-#{com_index}" %> '>
           <div class="row">
-            <div class="col-1 text-center left-arrow-container">
-              <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
+            <div class="col-1 text-center left-arrow-container arrow-container-left">
+              <% if com_index.even? %>
+                <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
+              <% end %>
             </div>
             <div class="col-2">
               <div class="mask-container">
@@ -207,18 +209,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-8">
-              <p> <span> <%= comment.customer_name %></span> <%= comment.created_at.to_date %></p>
+            <div class='<%= !comment.images.empty? ? "col-4" : "col-8" %>'>
+              <p><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
               <p><%= comment.comment %></p>
             </div>
-            <div class="col-1 text-center right-arrow-container">
-              <%= image_tag('down-chevron.svg', class: 'right-arrow') %>
-            </div>
-          </div>
-          <% if !comment.images.empty? %>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-9">
+            <% if !comment.images.empty? %>
+              <div class="col-4">
                 <div class="row">
                   <% comment.images.each_with_index do |image, index| %>
                     <% if index < 2 %>
@@ -242,8 +238,13 @@
                   <% end %>
                 </div>
               </div>
+            <% end %>
+            <div class="col-1 text-center right-arrow-container arrow-container-right">
+              <% if com_index.even? %>
+                <%= image_tag('down-chevron.svg', class: 'right-arrow') %>
+              <% end %>
             </div>
-          <% end %>
+          </div>
 
         </div>
 
@@ -272,11 +273,6 @@
 
       <% end %>
 
-      <div class="text-center all-review-button">
-        <button>
-          Все отзывы
-        </button>
-      </div>
     </section>
     <!-- End End Project -->
   <% end %>

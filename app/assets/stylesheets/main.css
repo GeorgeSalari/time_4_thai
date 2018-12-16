@@ -4404,13 +4404,14 @@ td, th {
 .reviews-block .left-arrow,
 .reviews-block .right-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
+  top: 100%;
+  transform: rotate(90deg);
   margin: 0;
+  width: 40px;
 }
 
 .reviews-block .right-arrow {
-  transform: translateY(-50%) rotate(270deg);
+  transform: rotate(270deg);
 }
 
 .reviews-block .col-8 p {
@@ -4419,11 +4420,10 @@ td, th {
 
 .reviews-block .images-container {
   width: 30%;
-  height: 200px;
   padding: 0;
   flex: 0 0 30%;
   max-width: 30%;
-  margin: 20px auto;
+  margin: 0 auto;
   position: relative;
   cursor: pointer;
 }
@@ -4718,7 +4718,8 @@ p.mail a {
   text-align: center;
 }
 
-.reviews-block.reviews-block-0 {
+.reviews-block.reviews-block-0,
+.reviews-block.reviews-block-1 {
   display: inherit;
 }
 
@@ -4736,6 +4737,7 @@ p.mail a {
 }
 
 #projects {
+  margin-top: 50px;
   margin-top: 50px;
 }
 
