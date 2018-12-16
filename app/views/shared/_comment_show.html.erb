@@ -6,7 +6,7 @@
         <div class="col-lg-10 col-md-12">
           <div class="section-title-17 text-center">
             <%= image_tag('divider.svg') %>
-            <h2>
+            <h2 class="review-title">
                Отзывы о данном туре
             </h2>
           </div>
@@ -14,11 +14,11 @@
       </div>
     </div>
 
-    <% comments.each do |comment| %>
+    <% comments.each_with_index do |comment, com_index| %>
 
-      <div class="container reviews-block ">
+      <div class='container reviews-block <%= "reviews-block-#{com_index}" %>'>
         <div class="row">
-          <div class="col-1">
+          <div class="col-1 text-center left-arrow-container">
             <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
           </div>
           <div class="col-2">
@@ -33,9 +33,10 @@
             </div>
           </div>
           <div class="col-8">
+            <p><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
             <p><%= comment.comment %></p>
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-center right-arrow-container">
             <%= image_tag('down-chevron.svg', class: 'right-arrow') %>
           </div>
         </div>

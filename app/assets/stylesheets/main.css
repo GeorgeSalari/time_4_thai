@@ -3568,6 +3568,7 @@ td, th {
   background-color: rgba(4, 128, 154, 0.3);
   padding: 0;
   width: fit-content;
+  margin-top: 40px;
 }
 
 .rectangle-7 {
@@ -4424,6 +4425,7 @@ td, th {
   max-width: 30%;
   margin: 20px auto;
   position: relative;
+  cursor: pointer;
 }
 
 .reviews-block .col-9 {
@@ -4662,8 +4664,17 @@ p.mail a {
   text-shadow: 3px 3px 5px #000000;
 }
 
-.reviews-block {
-  min-height: 200px;
+.reviews-block .row {
+  min-height: 100px;
+}
+
+.reviews-block > .row:first-child {
+  margin-top: 30px;
+}
+
+.reviews-block .row .col-8 p span {
+  font-weight: 900;
+  font-size: 18px;
 }
 
 .images-container img {
@@ -4695,4 +4706,29 @@ p.mail a {
   top: 50% !important;
   transform: translateY(-50%);
   height: fit-content;
+}
+
+.reviews-block {
+  display: none;
+}
+
+.reviews-block.reviews-block-0 {
+  display: inherit;
+}
+
+.right-arrow-container,
+.left-arrow-container {
+  cursor: pointer;
+}
+
+.review-title {
+  margin: 0 !important;
+}
+
+.container.reviews-block {
+  padding-top: 0;
+}
+
+#projects {
+  margin-top: 50px;
 }

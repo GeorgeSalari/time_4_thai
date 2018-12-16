@@ -6,5 +6,6 @@ class WelcomeController < ApplicationController
     @land_tours = LandTour.order(order_number: :asc).first(6)
     @evening_shows = EveningShow.order(order_number: :asc).first(6)
     @phuket_tours = PhuketTour.order(order_number: :asc).first(6)
+    @comments = Comment.order(created_at: :desc)
   end
 end
