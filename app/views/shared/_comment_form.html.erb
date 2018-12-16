@@ -6,7 +6,7 @@
         <div class="section-title-17 text-center">
           <div class="rectangle-7">
 
-            <%= form_for 'comment', :url => url_for(:controller => 'comments', :action => 'create') do |f| %>
+            <%= form_for 'comment', :url => url_for(:controller => 'comments', :action => 'create'), :html => {id: 'add_new_comment'} do |f| %>
               <%= f.hidden_field :tour_id, value: product_id %>
               <%= f.hidden_field :tour_type, value: product_type %>
               <h3>Хотите поделиться отзывом?</h3>
@@ -27,6 +27,8 @@
                 </div>
                 <div class="text-center">
                   <%= f.submit 'Отправить', id: 'comment-submit' %>
+                  <%= image_tag 'loading.gif', id: 'loading-comment' %>
+                  <p class="please-wait">Пожалуйста подождите...</p>
                 </div>
               </div>
 

@@ -3564,7 +3564,7 @@ td, th {
 }
 
 .create-review-table-17 {
-  height: 633px;
+  height: 683px;
   background-color: rgba(4, 128, 154, 0.3);
   padding: 0;
   width: fit-content;
@@ -3573,7 +3573,7 @@ td, th {
 
 .rectangle-7 {
   width: 570px;
-  height: 563px;
+  min-height: 563px;
   border-radius: 3px;
   -webkit-backdrop-filter: blur(10.5px);
   backdrop-filter: blur(10.5px);
@@ -4708,8 +4708,14 @@ p.mail a {
   height: fit-content;
 }
 
-.reviews-block {
+.reviews-block,
+.rectangle-7 .info-content p.please-wait {
   display: none;
+}
+
+.rectangle-7 .info-content p.please-wait {
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .reviews-block.reviews-block-0 {
@@ -4731,4 +4737,10 @@ p.mail a {
 
 #projects {
   margin-top: 50px;
+}
+
+#loading-comment {
+  display: none;
+  width: 150px;
+  margin: 0 auto;
 }
