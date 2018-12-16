@@ -12,6 +12,7 @@ class BoatsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def show
+    @comments = Comment.where(tour_type: "Boat", tour_id: params[:id])
   end
 
   # GET /boats/new

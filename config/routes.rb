@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get '/photoshoot', to: 'static_pages#photoshoot'
   get '/wedding', to: 'static_pages#wedding'
   get '/spa', to: 'static_pages#spa'
+  post '/commet', to: 'comments#create'
 end

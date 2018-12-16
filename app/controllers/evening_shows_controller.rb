@@ -12,6 +12,7 @@ class EveningShowsController < ApplicationController
   # GET /evening_shows/1
   # GET /evening_shows/1.json
   def show
+    @comments = Comment.where(tour_type: "EveningShow", tour_id: params[:id])
   end
 
   # GET /evening_shows/new

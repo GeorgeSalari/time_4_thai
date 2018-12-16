@@ -5,30 +5,37 @@ class StaticPagesController < ApplicationController
 
   def individual
     @individual = StaticPage.find(7)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 7)
   end
 
   def realty_rent
     @realty_rent = StaticPage.find(5)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 5)
   end
 
   def realty_buy
     @realty_buy = StaticPage.find(6)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 6)
   end
 
   def transfer
     @transfer = StaticPage.find(4)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 4)
   end
 
   def photoshoot
     @photoshoot = StaticPage.find(3)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 3)
   end
 
   def wedding
     @wedding = StaticPage.find(1)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 1)
   end
 
   def spa
     @spa = StaticPage.find(2)
+    @comments = Comment.where(tour_type: "StaticPage", tour_id: 2)
   end
 
   def new

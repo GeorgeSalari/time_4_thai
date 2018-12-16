@@ -18,6 +18,42 @@
 //= require_tree .
 
 $(document).ready(function(){
+  $('.left-arrow-container').each(function(){
+    var review_length = $('.reviews-block').length
+
+    $(this).click(function(){
+      var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+      var before_review;
+      $('.reviews-block').each(function(){
+        $(this).hide();
+      })
+      if ( parseInt(review_showing) == 0) {
+        before_review = review_length - 1
+      } else {
+        before_review = parseInt(review_showing) - 1
+      }
+      $('.reviews-block.reviews-block-'+before_review).css('display', 'inherit');
+    })
+  })
+
+  $('.right-arrow-container').each(function(){
+    var review_length = $('.reviews-block').length
+
+    $(this).click(function(){
+      var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+      var next_review;
+      $('.reviews-block').each(function(){
+        $(this).hide();
+      })
+      if ( parseInt(review_showing) == (review_length - 1) ) {
+        next_review = 0
+      } else {
+        next_review = parseInt(review_showing) + 1
+      }
+      $('.reviews-block.reviews-block-'+next_review).css('display', 'inherit');
+    })
+  })
+
   if (window.innerHeight < 655 || window.outerWidth < 1100 ) {
     $('.sun-container').css('display', 'none');
   } else {
@@ -217,17 +253,20 @@ var slideIndex = 1;
 
 showSlides( parseInt(slideIndex ) );
 
-function plusSlides(n, product) {
-  showSlides( slideIndex += parseInt(n), product );
+function plusSlides(n, product, review) {
+  showSlides( slideIndex += parseInt(n), product, review );
 }
 
-function currentSlide(n, product) {
-  showSlides( slideIndex = parseInt(n), product );
+function currentSlide(n, product, review) {
+  showSlides( slideIndex = parseInt(n), product, review );
 }
 
-function showSlides(n, product) {
+function showSlides(n, product, review) {
   var i;
-  if (product != undefined) {
+  if (review != undefined ) {
+    var slides = document.getElementsByClassName("mySlides_review_"+product+"_"+mySlidesId);
+    var dots = document.getElementsByClassName("demo_review_"+product+"_"+mySlidesId)
+  } else if (product != undefined) {
     var slides = document.getElementsByClassName("mySlides_"+product+"_"+mySlidesId);
     var dots = document.getElementsByClassName("demo_"+product+"_"+mySlidesId);
   } else {

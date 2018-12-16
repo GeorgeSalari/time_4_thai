@@ -12,6 +12,7 @@ class AviaToursController < ApplicationController
   # GET /avia_tours/1
   # GET /avia_tours/1.json
   def show
+    @comments = Comment.where(tour_type: "AviaTour", tour_id: params[:id])
   end
 
   # GET /avia_tours/new
