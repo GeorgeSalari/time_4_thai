@@ -36,8 +36,8 @@ $(document).ready(function(){
     $('.main-price-container').hide();
   }
   if (window.location.href.includes('boats') ) {
-    $($('.main-price-container')[0]).each(function(){
-      $(this).text("От "+$($('.main-price-container')[0]).text().trim().split(' ')[1]+" THB" )
+    $('.main-price-container').each(function(){
+      $(this).text(" От "+$(this).text().trim().split(' ')[1]+" THB" );
     })
   }
 
