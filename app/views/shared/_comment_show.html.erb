@@ -23,7 +23,7 @@
               <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
             <% end %>
           </div>
-          <div class="col-2">
+          <div class="col-2 avatar-container">
             <div class="mask-container">
               <div class="mask">
                 <% if comment.avatar.url(:bottom) %>
@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-          <div class='<%= !comment.images.empty? ? "col-4" : "col-8" %>'>
+          <div class='<%= !comment.images.empty? ? "col-4 comment-with-images" : "col-8" %>'>
             <p><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
             <p><%= comment.comment %></p>
           </div>
