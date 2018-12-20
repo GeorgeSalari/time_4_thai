@@ -20,11 +20,13 @@
 $(document).ready(function(){
   if ($('.header-no-price td:last-child').length > 0) {
     $('.header-no-price td:last-child').each(function(){
-      if ($(this).attr('class').includes('check-price')) {
-        $(this).text('По запросу');
-      } else {
-        $(this).text('Бесплатно');
-      }
+       $(this).text('Бесплатно');
+    })
+  };
+
+  if ($('.header-no-price.check-price td:last-child').length > 0) {
+    $('.header-no-price.check-price td:last-child').each(function(){
+       $(this).text('По запросу');
     })
   };
 

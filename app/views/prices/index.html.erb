@@ -1,5 +1,6 @@
 <h2>Морские туры</h2>
 <%= table_for @sea_tours, :table_html => { :class => "table table-hover table-bordered price-table" },
+                      :sortable => true,
                       :data_row_html => {
                         :id => lambda { |sea_tour| "sea_tour-#{sea_tour.id}" }} do |table| %>
 
@@ -81,27 +82,26 @@
 <%= table_for @boats, :table_html => { :class => "table table-hover table-bordered price-table" },
                       :sortable => true,
                       :data_row_html => {
-                        :class => 'header-no-price',
+                        :class => 'header-no-price check-price',
                         :id => lambda { |boat| "boat-#{boat.id}" }} do |table| %>
 
   <% table.column :title, :header => "Название тура" %>
   <% table.column :short_content, :header => "Описаине" %>
   <% table.column :adult_price, :header => "Цена",
                   :header_column_html => {
-                    :class => 'no-price check-price' } %>
+                    :class => 'no-price' } %>
 <% end %>
 
 <h2>Разное</h2>
 <%= table_for @static_pages, :table_html => { :class => "table table-hover table-bordered price-table" },
                       :sortable => true,
                       :data_row_html => {
-                        :class => 'header-no-price',
+                        :class => 'header-no-price check-price',
                         :id => lambda { |tour| "tour-#{tour.id}" }} do |table| %>
 
   <% table.column :title, :header => "Название тура" %>
   <% table.column :short_content, :header => "Описаине" %>
   <% table.column :adult_price, :header => "Цена",
                   :header_column_html => {
-                    :class => 'no-price check-price' } %>
+                    :class => 'no-price' } %>
 <% end %>
-
