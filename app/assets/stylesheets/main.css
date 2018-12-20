@@ -4751,3 +4751,22 @@ p.mail a {
 .show-sm {
   display: none;
 }
+
+.price-table thead tr th {
+  width: 8%;
+  vertical-align: middle;
+  padding: 0 10px;
+}
+
+.price-table thead tr th:first-child {
+  width: 10%;
+}
+
+.price-table thead tr th:nth-child(2) {
+  width: 74%;
+}
+
+.price-table thead tr th.no-price {
+  width: 16%;
+  height: 62px;
+}
