@@ -41,17 +41,20 @@ $(document).ready(function(){
     })
   }
 
-  if ($('.header-no-price td:last-child').length > 0) {
-    $('.header-no-price td:last-child').each(function(){
-       $(this).text('Бесплатно');
+  if ($('.header-no-price.check-price td:last-child').length > 0) {
+    $('.header-no-price.check-price td:last-child').each(function(){
+       $(this).text('От '+$(this).text());
     })
   };
 
-  if ($('.header-no-price.check-price td:last-child').length > 0) {
-    $('.header-no-price.check-price td:last-child').each(function(){
-       $(this).text('По запросу');
+  if ($('.header-no-price td:last-child').length > 0) {
+    $('.header-no-price td:last-child').each(function(){
+      if ( !$(this).parent().attr('class').includes('check-price') ) {
+        $(this).text('Бесплатно');
+      }
     })
   };
+
 
   $('.left-arrow').hide();
   $('.arrow-container-left').each(function(){
