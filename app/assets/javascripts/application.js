@@ -32,6 +32,13 @@ $(document).ready(function(){
     $('.price-container').css({'justify-content': 'center'});
   }
 
+  if ( window.location.href.includes('shops') ) {
+    $('.main-price-container').hide();
+  }
+  if (window.location.href.includes('boats') ) {
+    $($('.main-price-container')[0]).text("От "+$($('.main-price-container')[0]).text().trim().split(' ')[1]+" THB" )
+  }
+
   if ($('.header-no-price td:last-child').length > 0) {
     $('.header-no-price td:last-child').each(function(){
        $(this).text('Бесплатно');
