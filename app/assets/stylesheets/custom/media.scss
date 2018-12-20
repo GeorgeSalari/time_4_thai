@@ -40,6 +40,19 @@
   .btn-group, .btn-group-vertical {
     margin-right: 160px;
   }
+  .footer-widget-17 .container {
+    width: 100%;
+  }
+  .footer-widget-17 .container .col-lg-2:first-child{
+    flex: 0 0 28%;
+    max-width: 28%;
+  }
+  .footer-widget-17 .container .col-lg-2:nth-child(5),
+  .footer-widget-17 .container .col-lg-2:nth-child(3),
+  .footer-widget-17 .container .col-lg-2:nth-child(4){
+    flex: 0 0 12%;
+    max-width: 12%;
+  }
 }
 
 @media (max-width: 850px) {
@@ -116,6 +129,13 @@
     bottom: 10px;
     right: 10px;
   }
+  .footer-widget-17 .container .col-lg-2:nth-child(2),
+  .footer-widget-17 .container .col-lg-2:nth-child(3),
+  .footer-widget-17 .container .col-lg-2:nth-child(4),
+  .footer-widget-17 .container .col-lg-2:nth-child(5),
+  .footer-widget-17 .container .col-lg-2:nth-child(6){
+    display: none;
+  }
 }
 
 @media (max-width: 650px) {
@@ -156,10 +176,21 @@
   #orderTour .formButtonsContainer {
     width: 100%;
   }
+  .footer-widget-17 .container .col-lg-2:first-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  .garanty {
+    position: inherit;
+    text-align: center !important;
+    right: 0;
+    left: 0;
+    padding-top: 20px;
+  }
 }
 
 @media (max-width: 479px) {
-  .footer-widget-17,
   .call-request,
   .asana-banner .main-container .contact-info .container p.mail {
     display: none;
