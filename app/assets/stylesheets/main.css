@@ -4758,15 +4758,32 @@ p.mail a {
   padding: 0 10px;
 }
 
+.price-table thead tr th a {
+  color: #f5a623;
+}
+
+.price-table tbody tr td {
+  font-weight: 900;
+}
+
 .price-table thead tr th:first-child {
-  width: 10%;
+  width: 20%;
+  font-weight: 900;
 }
 
 .price-table thead tr th:nth-child(2) {
-  width: 74%;
+  width: 64%;
+}
+
+.price-table tbody tr td:nth-child(2) {
+  font-weight: normal;
 }
 
 .price-table thead tr th.no-price {
   width: 16%;
   height: 62px;
+}
+
+.price-container {
+  padding: 20px 15px;
 }
