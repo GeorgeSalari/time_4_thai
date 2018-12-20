@@ -240,7 +240,11 @@ $(document).ready(function(){
     var clicked_menu_class = $(this).attr('class')
     e.preventDefault();
     $(this).find('.dropdown-item').click(function(){
-      location.href = $(this).attr('href');
+      if ($(this).attr('class').includes('new-window')) {
+        window.open($(this).attr('href'));
+      } else {
+        location.href = $(this).attr('href');
+      }
     })
     $('.dropdown-menu').each(function(){
       $(this).removeClass('display-dropdown-menu');
