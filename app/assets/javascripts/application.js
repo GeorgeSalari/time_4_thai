@@ -18,6 +18,12 @@
 //= require_tree .
 
 $(document).ready(function(){
+  if ($('.header-no-price td:last-child').length > 0) {
+    $('.header-no-price td:last-child').each(function(){
+      $(this).text('Бесплатно');
+    })
+  };
+
   $('.left-arrow').hide();
   $('.arrow-container-left').each(function(){
     var review_length = $('.reviews-block').length

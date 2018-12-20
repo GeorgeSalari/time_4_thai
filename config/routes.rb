@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :sea_tours
   resources :static_pages, only: [:new, :edit, :create, :update]
   resources :call_orders, only: :create
+  resources :prices, only: :index
   post 'order_all', to: 'orders#cart_order'
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
