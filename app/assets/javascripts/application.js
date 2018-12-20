@@ -19,7 +19,7 @@
 
 $(document).ready(function(){
   if (window.location.href.includes('boats') || window.location.href.includes('sea_tours/10') || window.location.href.includes('realty-buy') || window.location.href.includes('transfers') || window.location.href.includes('photoshoot') || window.location.href.includes('wedding') || window.location.href.includes('spa') ) {
-    $($('.price-container').children()[0]).find('p').text('От '+$($('.price-container').children()[0]).find('p').text().trim().split(' ')[1]);
+    $($('.price-container').children()[0]).find('p').text('От '+$($('.price-container').children()[0]).find('p').text().trim().split(' ')[1] + " THB");
     $($('.price-container').children()[1]).find('p').hide();
     $($('.price-container').children()[2]).find('button').css('right', '0');
   }
