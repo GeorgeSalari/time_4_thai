@@ -88,10 +88,10 @@
   <% table.column :short_content, :header => "Описаине" %>
   <% table.column :adult_price, :header => "Цена",
                   :header_column_html => {
-                    :class => 'no-price' } %>
+                    :class => 'no-price check-price' } %>
 <% end %>
 
-<h2>Индивидуальные лодки</h2>
+<h2>Разное</h2>
 <%= table_for @static_pages, :table_html => { :class => "table table-hover table-bordered price-table" },
                       :sortable => true,
                       :data_row_html => {
@@ -102,6 +102,6 @@
   <% table.column :short_content, :header => "Описаине" %>
   <% table.column :adult_price, :header => "Цена",
                   :header_column_html => {
-                    :class => 'no-price' } %>
+                    :class => 'no-price check-price' } %>
 <% end %>
 
