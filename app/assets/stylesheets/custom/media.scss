@@ -274,6 +274,10 @@
   .imagesModal .close {
     right: 0;
   }
+  .price-table tbody tr td:nth-child(2),
+  .price-table thead tr th:nth-child(2) {
+    display: none;
+  }
 }
 
 @media (max-width: 479px) {
