@@ -54,7 +54,7 @@
               <input type="date" name="" value="<%= item.booking_date %>">
             </div>
             <div class="col-4 total-price-container">
-              <p>฿ <span class="item-<%= item.product_id %>-total-price"></span></p>
+              <p>฿ <span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span></p>
               <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= item.item_title %>" data-adult="<%= item.adult_price %>" data-productType="<%= item.product_type %>" data-productId="<%= item.product_id %>" data-child="<%= item.child_price %>" data-date="<%= item.booking_date %>" data-adultcount='<%= item.adult_count %>' data-childcount='<%= item.child_count %>'>Заказать</button>
             </div>
             <div class="col-2 text-center remove-container">
