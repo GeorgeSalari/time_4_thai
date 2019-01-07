@@ -67,7 +67,7 @@ $(document).ready(function(){
         var totalAdultPrice = adult * priceAdult,
             totalChildPrice = child * priceChild;
 
-        $('.'+itemId+' .item-adult-count').on("change paste keyup", function(){
+        $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').on("change paste keyup", function(){
           totalPrice = 0;
           totalAdultPrice = $(this).val() * priceAdult;
           if ( isNaN(totalChildPrice) ) {
@@ -79,7 +79,7 @@ $(document).ready(function(){
           update_total_price();
         })
 
-        $('.'+itemId+' .item-child-count').on("change paste keyup", function(){
+        $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').on("change paste keyup", function(){
           totalPrice = 0;
           totalChildPrice = $(this).val() * priceChild;
           if ( isNaN(totalAdultPrice) ) {
