@@ -57,7 +57,7 @@
               <p>฿ <span class="item-<%= item.product_id %>-total-price"></span></p>
               <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= item.item_title %>" data-adult="<%= item.adult_price %>" data-productType="<%= item.product_type %>" data-productId="<%= item.product_id %>" data-child="<%= item.child_price %>" data-date="<%= item.booking_date %>" data-adultcount='<%= item.adult_count %>' data-childcount='<%= item.child_count %>'>Заказать</button>
             </div>
-            <div class="col-2 text-center">
+            <div class="col-2 text-center remove-container">
               <%= link_to "×", cart_item_path(item), method: :delete %>
             </div>
           </div>
@@ -70,7 +70,7 @@
     <% if @cart.cart_items.count <= 0 %>
       <h2>Ваша корзина пуста! Выберите себе для начало <%= link_to 'туры', root_path %>.</h2>
     <% else %>
-      <div class="text-right">
+      <div class="text-right allToursPriceText-container">
         <p class='allToursPriceText'>Итоговая стоимость: </p>
         <p class="allToursPriceAmount"> ฿ <span id="allToursPrice">0</span></p>
       </div>
