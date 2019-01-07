@@ -84,16 +84,7 @@
                       </div>
                     </li>
                     <li>
-                      <div class="dropdown price-list">
-                        <a href="#">
-                          Прайс
-                        </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Скачать</a>
-                          <a class="dropdown-item new-window" href="<%= prices_path %>" target="_blank">Открыть</a>
-                        </div>
-                        <%= image_tag('down-chevron.svg')%>
-                      </div>
+                      <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
                     </li>
                   </ul>
                 </nav>
@@ -107,6 +98,12 @@
           <a href="https://www.instagram.com/phuket_budget_tours/" target="_blank" class="instagram"> <%= image_tag('insta.svg')%> </a>
           <a href="#" class="facebook"> <%= image_tag('facebook.svg')%></a>
           <a href="#" class="vk"> <%= image_tag('vk.svg')%></a>
+        </div>
+
+        <div class="menu-group d-flex justify-content-end">
+          <a href="#" class="menu-btn toggle-btn hidden-md-up">
+            <%= show_svg "icons/bars.svg" %>
+          </a>
         </div>
 
     </div>
@@ -167,16 +164,7 @@
           </div>
         </li>
         <li>
-          <div class="dropdown price-list">
-            <a href="#">
-              Прайс
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Скачать</a>
-              <a class="dropdown-item new-window" href="<%= prices_path %>" target="_blank">Открыть</a>
-            </div>
-            <%= image_tag('down-chevron.svg')%>
-          </div>
+          <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
         </li>
       </ul>
 
@@ -252,16 +240,7 @@
           </div>
         </li>
         <li>
-          <div class="dropdown price-list">
-            <a href="#">
-              Прайс
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Скачать</a>
-              <a class="dropdown-item new-window" href="<%= prices_path %>" target="_blank">Открыть</a>
-            </div>
-            <%= image_tag('down-chevron.svg')%>
-          </div>
+          <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
         </li>
       </ul>
     </nav>

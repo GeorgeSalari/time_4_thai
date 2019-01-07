@@ -136,6 +136,30 @@
   .footer-widget-17 .container .col-lg-2:nth-child(6){
     display: none;
   }
+  .navbar .logo {
+    padding-left: 30px;
+    padding-top: 7px;
+  }
+  .header-4.header-17.navbar a.toggle-btn {
+    background-color: #00549C;
+  }
+  .header-4.header-17.navbar .is-sticky a.toggle-btn {
+    background-color: #fff;
+  }
+  .navbar .toggle-btn svg path {
+    fill: #fff;
+  }
+  .header-4.header-17.navbar .is-sticky a.toggle-btn svg path {
+    fill: gray;
+  }
+  .header-4.header-17.navbar .total-header-area.default-header > nav,
+  .header-4.header-17.navbar .btn-group {
+    display: none;
+  }
+  .navbar #basket {
+    top: 40%;
+    transform: translateY(-50%);
+  }
 }
 
 @media (max-width: 650px) {
