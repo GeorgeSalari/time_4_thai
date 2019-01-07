@@ -4797,3 +4797,7 @@ p.mail a {
 .container > .price-container {
   padding: 20px 15px;
 }
+
+.navbar .menu-group.d-flex.justify-content-end {
+  display: none !important;
+}

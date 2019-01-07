@@ -160,6 +160,9 @@
     top: 40%;
     transform: translateY(-50%);
   }
+  .navbar .menu-group.d-flex.justify-content-end {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 650px) {
