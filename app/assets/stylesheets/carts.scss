@@ -146,4 +146,89 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .cart-container .item-container {
+    position: relative;
+  }
+  .cart-container .item-container > .col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  .cart-container .item-container > .col-4 p {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    max-width: 300px;
+    width: 100%;
+  }
+  .cart-container .item-container > .col-3.ppls-count {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .cart-container .item-container > .col-3.ppls-count .row .col-5 {
+    text-align: left !important;
+    padding-left: 30px;
+  }
+  .ppls-count .price-container {
+    padding: 0;
+  }
+  .date-total-price {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: static;
+  }
+  .date-total-price > .row {
+    height: 80px;
+  }
+  .total-price-container {
+    flex: 0 0 50%;
+    max-width: 50%;
+    text-align: center;
+    margin: 0;
+    position: static;
+  }
+  .total-price-container button {
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .remove-container {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+  }
+  .cart-container > .row {
+    padding-top: 50px;
+  }
+  .allToursPriceText-container {
+    text-align: left !important;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .orderAllContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .allToursPriceText-container {
+    text-align: center !important;
+  }
+  .allToursPriceText {
+    margin-bottom: 0;
+  }
+  .allToursPriceAmount {
+    margin-top: 0;
+  }
+}
+
 @import 'custom/navbar_cart'
