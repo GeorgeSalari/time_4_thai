@@ -8,7 +8,7 @@
   <div class="cart-container">
     <h1>Ваша корзина</h1>
     <% @cart.cart_items.each do |item| %>
-      <div class="row item-container item-<%= item.product_id %>">
+      <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
         <div class="col-4">
           <%= image_tag item.item_image %>
           <p class="item-title"><%= item.item_title %></p>

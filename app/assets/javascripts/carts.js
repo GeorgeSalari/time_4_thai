@@ -47,11 +47,13 @@ $(document).ready(function(){
   }
 
   $('.item-container').each(function(){
-    var allClasses = $(this).attr('class').split(' '), itemId = allClasses[allClasses.length - 1],
-        adult = parseFloat( $('.'+itemId+' .item-adult-count').val() ),
-        child = parseFloat( $('.'+itemId+' .item-child-count').val() ),
-        priceAdult = parseFloat( $('.'+itemId+' .price-container .adult').text() ),
-        priceChild = parseFloat( $('.'+itemId+' .price-container .child').text() ),
+    debugger
+    var allClasses = $(this).attr('class').split(' '), itemId = allClasses[allClasses.length - 2],
+        itemType = allClasses[allClasses.length - 1],
+        adult = parseFloat( $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').val() ),
+        child = parseFloat( $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').val() ),
+        priceAdult = parseFloat( $('.'+itemId+itemType+' .price-container .adult').text() ),
+        priceChild = parseFloat( $('.'+itemId+itemType+' .price-container .child').text() ),
         totalPrice;
         if ( !isNaN(child) && !isNaN(adult) ) {
           totalPrice = adult * priceAdult + child * priceChild;
