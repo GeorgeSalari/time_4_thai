@@ -4794,6 +4794,6 @@ p.mail a {
   height: 62px;
 }
 
-.price-container {
+.container > .price-container {
   padding: 20px 15px;
 }
