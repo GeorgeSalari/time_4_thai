@@ -155,6 +155,41 @@
     flex: 0 0 33%;
     max-width: 33%;
   }
+  .price-container > .col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center !important;
+  }
+  .price-container > .col-4.adult-price-container {
+    flex: 0 0 50%;
+    max-width: 50%;
+    text-align: center !important;
+  }
+  .price-container > .col-4.child-price-container {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .price-container > .col-4 .orderTourButtonShow {
+    right: 0;
+  }
+  .form-container,
+  .rectangle-7 {
+    width: 100% !important;
+  }
+  #new_order .formButtonsContainer {
+    flex-direction: column;
+  }
+  .rectangle-7 input,
+  .rectangle-7 textarea,
+  .rectangle-7 .info-content,
+  .rectangle-7 .info-content div {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+  .rectangle-7 .info-content div input {
+    width: 50%;
+  }
 }
 
 @media (max-width: 620px) {
