@@ -17,50 +17,74 @@ class BoatsController < ApplicationController
 
   # GET /boats/new
   def new
-    @boat = Boat.new
+    if logged_in?
+      @boat = Boat.new
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /boats/1/edit
   def edit
+    if !logged_in?
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # POST /boats
   # POST /boats.json
   def create
-    @boat = Boat.new(boat_params)
+    if logged_in?
+      @boat = Boat.new(boat_params)
 
-    respond_to do |format|
-      if @boat.save
-        format.html { redirect_to @boat, notice: 'Boat was successfully created.' }
-        format.json { render :show, status: :created, location: @boat }
-      else
-        format.html { render :new }
-        format.json { render json: @boat.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @boat.save
+          format.html { redirect_to @boat, notice: 'Boat was successfully created.' }
+          format.json { render :show, status: :created, location: @boat }
+        else
+          format.html { render :new }
+          format.json { render json: @boat.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /boats/1
   # PATCH/PUT /boats/1.json
   def update
-    respond_to do |format|
-      if @boat.update(boat_params)
-        format.html { redirect_to @boat, notice: 'Boat was successfully updated.' }
-        format.json { render :show, status: :ok, location: @boat }
-      else
-        format.html { render :edit }
-        format.json { render json: @boat.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @boat.update(boat_params)
+          format.html { redirect_to @boat, notice: 'Boat was successfully updated.' }
+          format.json { render :show, status: :ok, location: @boat }
+        else
+          format.html { render :edit }
+          format.json { render json: @boat.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /boats/1
   # DELETE /boats/1.json
   def destroy
-    @boat.destroy
-    respond_to do |format|
-      format.html { redirect_to boats_url, notice: 'Boat was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @boat.destroy
+      respond_to do |format|
+        format.html { redirect_to boats_url, notice: 'Boat was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 

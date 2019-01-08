@@ -17,50 +17,74 @@ class ShopsController < ApplicationController
 
   # GET /shops/new
   def new
-    @shop = Shop.new
+    if logged_in?
+      @shop = Shop.new
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # GET /shops/1/edit
   def edit
+    if !logged_in?
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
+    end
   end
 
   # POST /shops
   # POST /shops.json
   def create
-    @shop = Shop.new(shop_params)
+    if logged_in?
+      @shop = Shop.new(shop_params)
 
-    respond_to do |format|
-      if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
-        format.json { render :show, status: :created, location: @shop }
-      else
-        format.html { render :new }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @shop.save
+          format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+          format.json { render :show, status: :created, location: @shop }
+        else
+          format.html { render :new }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /shops/1
   # PATCH/PUT /shops/1.json
   def update
-    respond_to do |format|
-      if @shop.update(shop_params)
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shop }
-      else
-        format.html { render :edit }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @shop.update(shop_params)
+          format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+          format.json { render :show, status: :ok, location: @shop }
+        else
+          format.html { render :edit }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
   # DELETE /shops/1
   # DELETE /shops/1.json
   def destroy
-    @shop.destroy
-    respond_to do |format|
-      format.html { redirect_to shops_url, notice: 'Shop was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @shop.destroy
+      respond_to do |format|
+        format.html { redirect_to shops_url, notice: 'Shop was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:success] = 'У вас нет доступа!'
+      redirect_to root_path
     end
   end
 
