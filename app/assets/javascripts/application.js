@@ -152,8 +152,10 @@ $(document).ready(function(){
   }
 
   $('.imagesContainer').click(function(e){
-    if (e.target.textContent != "Заказать") {
-      location.href = $(this).find('a')[0].href
+    if (e.target.className == $(this).attr('class')) {
+      if (e.target.textContent != "Заказать") {
+        location.href = $(this).find('a')[0].href
+      }
     }
   })
 
