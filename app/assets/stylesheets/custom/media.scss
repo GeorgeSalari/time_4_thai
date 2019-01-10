@@ -304,6 +304,16 @@
   #orderTour .modal-content {
     top: 120px;
   }
+  .alert.alert-success {
+    font-size: 20px;
+    position: relative;
+  }
+  .alert.alert-success button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
 }
 
 @media (max-width: 400px) {

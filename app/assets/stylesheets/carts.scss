@@ -219,6 +219,20 @@
   }
 }
 
+@media (max-width: 375px) {
+  .date-total-price > .row {
+    height: 120px;
+  }
+  .date-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .total-price-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 320px) {
   .allToursPriceText-container {
     text-align: center !important;
