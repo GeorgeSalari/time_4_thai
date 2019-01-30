@@ -1,8 +1,53 @@
 <button class='call-request-scroll' data-toggle="modal" data-target="#orderCall">
-  <%= image_tag 'phone_order.svg', id: 'phone-order-image' %>
+  <%= show_svg 'phone_order.svg' %>
 </button>
 <div id="top"></div>
   <%= render 'shared/header' %>
+
+  <!-- Start Advantage Section -->
+  <section id="our_advantages" class="section-150 faq-area-17" >
+    <div class="row">
+      <div class="col-3 map-container">
+        <%= show_svg 'map.svg' %>
+      </div>
+      <div class="col-3 text-container">
+        <h2>О нас</h2>
+        <p class="font-weight-bold">
+          Профеcсиональный сервис <br />
+          бронирования туров
+        </p>
+        <p>
+          Мы команда професcионалов которые уже 5 лет занимаются досугом туристов, приезжающим в Тайланд. 
+        </p>
+        <p>
+          Мы любим наших клиентов и беспокоимся за их безопасность и трансфер.
+        </p>
+      </div>
+      <div class="col-4">
+        <div class="grid-template">
+          <div class="pl-40">
+            <%= show_svg 'person.svg' %>
+            <p class="text-center">Персональный<br />подход</p>
+          </div>
+          <div>
+            <%= show_svg 'safety.svg' %>
+            <p class="text-center">Безопасность<br />наших клиентов</p>
+          </div>
+          <div class="pl-40">
+            <%= show_svg 'warranty.svg' %>
+            <p class="text-center">Гарантия качества</p>
+          </div>
+          <div>
+            <%= show_svg 'prices.svg' %>
+            <p class="text-center">Оптимальные цены</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </section>
+  <!-- End Advantage Section -->
+
   <!-- Start brand Area -->
   <section class="section-150" id="main-tours">
 
@@ -13,165 +58,21 @@
             <% if content_for?(:header) %>
               <%= yield(:header) %>
             <% else %>
-              <h2>Популярные экскурсии Пхукета</h2>
-              <%= link_to sea_tours_path do %>
-                <p>МОРСКИЕ ЭКСКУРСИИ</p>
-              <% end %>
+              <h2>Популярные экскурсии</h2>
             <% end %>
           </div>
         </div>
       </div>
       <%= render partial: 'shared/tours', locals: {all_tours: @sea_tours, path: 'sea_tour_path', product_type: 'SeaTour'} %>
       <div class="path-button-container text-center">
-        <%= link_to sea_tours_path, class: 'path-button' do %>
-          Все морские туры
-        <% end %>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <%= link_to land_tours_path do %>
-              <p>СУХОПУТНЫЕ ЭКСКУРСИИ</p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <%= render partial: 'shared/tours', locals: {all_tours: @land_tours, path: 'land_tour_path', product_type: 'LandTour'} %>
-      <div class="path-button-container text-center">
-        <%= link_to land_tours_path, class: 'path-button' do %>
-          Все сухопутные туры
-        <% end %>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <%= link_to evening_shows_path do %>
-              <p>ВЕЧЕРНИЕ ЭКСКУРСИИ</p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <%= render partial: 'shared/tours', locals: {all_tours: @evening_shows, path: 'evening_show_path', product_type: 'EveningShow'} %>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <%= link_to phuket_tours_path do %>
-              <p>ЭКСКУРСИИ ПО ПХУКЕТУ</p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <%= render partial: 'shared/tours', locals: {all_tours: @phuket_tours, path: 'phuket_tour_path', product_type: 'PhuketTour'} %>
-      <div class="path-button-container text-center">
-        <%= link_to phuket_tours_path, class: 'path-button' do %>
-          Все туры по пхукету
+        <%= link_to '#', class: 'path-button' do %>
+          Все экскурсии
         <% end %>
       </div>
     </div>
 
   </section>
   <!-- End brand Area -->
-
-  <!-- Start Advantage Section -->
-  <section id="our_advantages" class="section-150 faq-area-17" >
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <%= image_tag('divider.svg') %>
-            <h2>
-               Наши преимущества
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-center advantages justify-content-center">
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div>
-              <%= image_tag('worker-money-time.svg') %>
-            </div>
-            <h3>Профессиональное обслуживание</h3>
-            <p>Опыт нашей работы в туризме состовляет - 10 лет в разных странах мира. Мы точно знаем как организовать качественный отрых. Сотрудничаем только с проверенными подрядчиками. Наша цель - ваши приятные эмоции и яркие впечатления и полное удовлетворение от наших услуг.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div>
-              <%= image_tag('chronometer.svg') %>
-            </div>
-            <h3>
-              Мы экономим <br />
-              Ваше время
-            </h3>
-            <p>У вас нет необходимости ехать к нам в офис и искать нас на карте. Наш офис сам приедет к вам. Мы идем в ногу со временем, имеем мобильную команду, которая готова выезжать в любое удобное для вас время, в любую точку острова.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div>
-              <%= image_tag('labyrinth.svg') %>
-            </div>
-            <h3>
-              Лицензия <br />
-              и страховка
-            </h3>
-            <p>Мы являемся авторизированным агентством в Тайланде имеющим лицензию на туристическую деятельность. Лицензия № 33-07226. В связи с этим любые страховые случаи покрываются страховкой компании.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div>
-              <%= image_tag('give-money.svg') %>
-            </div>
-            <h3>
-              Гарантия самой низкой цены
-            </h3>
-            <p>Самая низкая ценовая политика среди экскурсионных агентств острова Пхукет. Работа без посредников дает нам возможность не накручивать и не завышать реальную стоимость продукта.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div class= 'aventage-image'>
-              <%= image_tag('discount.svg') %>
-            </div>
-            <h3>
-              Скидки <br />и Акции
-            </h3>
-            <p>Мы постоянно разрабатываем аукционные предложения и скидочную систему. У нас имеются множество приятных бонусов для именинников и постоянных клиентов. А так-же работает система "скидки за друзей".</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="rectangle-18">
-            <div  class= 'aventage-image'>
-              <%= image_tag('icons/headset-solid.svg') %>
-            </div>
-            <h3>
-              Круглосуточная горячая линия
-            </h3>
-            <p>Мы предоставляем круглосуточную поддержку нашим клиентам. Для вас всегда доступен номер нашей горячей линии, на который вас проконсультируют по всевозможным вопросам наши специалисты.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- End Advantage Section -->
 
   <% if @comments %>
     <!-- Start Project -->
@@ -180,7 +81,6 @@
         <div class="row justify-content-center">
           <div class="col-lg-10 col-md-12">
             <div class="section-title-17 text-center">
-              <%= image_tag('divider.svg') %>
               <h2>
                  Последние отзывы
               </h2>

@@ -677,7 +677,8 @@ td, th {
 }
 
 .section-150 {
-  padding: 150px 0 50px;
+  padding: 50px 0;
+  background-color: #f9f9f9;
 }
 
 .flex {
@@ -1222,7 +1223,7 @@ td, th {
 }
 
 .header-17 .default-header .logo img {
-  width: 150px;
+  width: 175px;
   height: auto;
 }
 
@@ -2014,11 +2015,14 @@ td, th {
 
 .path-button {
   width: auto;
-  background-color: #f5a623;
-  border-color: #f5a623;
+  border-color: #0ec9cc;
   color: white;
   box-shadow: 0 8px 10px 0 rgba(0,0,0,0.4), 0 10px 20px 0 rgba(0,0,0,0.4);
   padding: 5px 10px;
+  width: 215px;
+  height: 47px;
+  border-radius: 6px;
+  background-color: #0ec9cc;
 }
 
 @media (max-width: 767px) {
@@ -2063,13 +2067,25 @@ td, th {
 .section-title-17 h2 {
   font-family: Lato;
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 900;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: center;
-  color: #f5a623;
+  color: #000000;
+  position: relative;
+}
+
+.section-title-17 h2::after {
+  display: block;
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: #1fa7f8;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .section-title-17 p {
@@ -2383,14 +2399,21 @@ td, th {
 
 .asana-banner h1 {
   font-family: Lato;
-  font-size: 60px;
-  font-weight: bold;
+  font-size: 40px;
+  letter-spacing: 1.3px;
+  font-weight: 900;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
-  letter-spacing: normal;
   color: #ffffff;
   text-shadow: 3px 3px 5px #000000;
+  margin-top: 40px;
+  text-transform: uppercase;
+}
+
+.asana-banner h1 span {
+  font-size: 100px;
+  letter-spacing: 3.3px;
 }
 
 @media (max-width: 767px) {
@@ -3491,7 +3514,7 @@ td, th {
 .faq-area-17 {
   position: relative;
   padding-top: 70px;
-  background: #f9fafc;
+  background: #fff;
 }
 
 .rectangle-18 {
@@ -3971,7 +3994,7 @@ td, th {
 
 .default-footer {
   background: #242424;
-  padding: 25px 0;
+  padding: 0;
 }
 
 .default-footer p {
@@ -3985,7 +4008,7 @@ td, th {
   font-weight: 500;
 }
 
-.default-footer .footer-copy-right p span {
+.footer-copy-right p span {
   margin: 0 12px;
 }
 
@@ -4069,20 +4092,26 @@ td, th {
 }
 
 .footer-widget-17 {
-  background: #001f34;
-  margin-top: 250px;
+  background: #1a3b5c;
+  margin-top: 80px;
   padding-top: 0;
 }
 
 .footer-widget-17 p {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
-  line-height: normal;
+  line-height: 1.56;
   letter-spacing: normal;
-  color: #ffffff;
-  margin-bottom: 35px;
+  color: #a7bfd6;
+}
+
+.footer-widget-17 .footer-copy-right p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #537da7;
+  line-height: 1.75;
 }
 
 .footer-widget-17 p.phone,
@@ -4116,10 +4145,6 @@ td, th {
   margin-left: 0;
 }
 
-.default-footer .container {
-  padding-top: 10px;
-}
-
 .footer-widget-17 .footer-top-shape {
   border-top: 160px solid transparent;
   border-left: 100vw solid #001f34;
@@ -4149,6 +4174,7 @@ td, th {
 
 .footer-widget-17 > .container {
   width: 90%;
+  padding: 30px 0;
 }
 
 .footer-widget-17 .container .col-lg-2 {
@@ -4586,7 +4612,8 @@ p.mail a {
 }
 
 .header-17 .sticky-wrapper.is-sticky .total-header-area {
-  background-color: #00549C;
+  box-shadow: 0 2px 6px 0 rgba(7, 60, 91, 0.11);
+  background-color: #ffffff;
 }
 
 .scrolled-menu-container {
