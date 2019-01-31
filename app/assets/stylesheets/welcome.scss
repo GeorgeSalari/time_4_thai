@@ -200,7 +200,7 @@ button.call-request:focus {
 }
 
 .tour-container {
-  height: 480px;
+  height: 490px;
   width: 340px;
   border: solid 1px #d8dcdd;
   box-shadow: 0 5px 20px 0 rgba(6, 52, 87, 0.14);
@@ -899,7 +899,7 @@ footer select {
 }
 
 .tourTitleContainer {
-  padding: 5px 16px 10px;
+  padding: 0 16px;
   border-bottom: 1px dashed #dadee3;
 }
 
@@ -907,6 +907,7 @@ footer select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 68px;
 }
 
 .tourTitleContainer .tourTitle {
@@ -918,6 +919,7 @@ footer select {
   letter-spacing: normal;
   color: #000000;
   margin-bottom: 0;
+  width: 80%;
 }
 
 .time-container {

@@ -101,6 +101,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def evening_show_params
-    params.require(:evening_show).permit(:popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
+    params.require(:evening_show).permit(:duration, :tour_program, :included, :necessary, :popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
   end
 end

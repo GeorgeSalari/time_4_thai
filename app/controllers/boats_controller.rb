@@ -100,6 +100,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def boat_params
-      params.require(:boat).permit(:popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
+      params.require(:boat).permit(:duration, :tour_program, :included, :necessary, :popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
     end
 end
