@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181216001419) do
+ActiveRecord::Schema.define(version: 20190131125623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "boats", force: :cascade do |t|
@@ -37,6 +42,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "call_orders", force: :cascade do |t|
@@ -86,6 +96,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "individual_tours", force: :cascade do |t|
@@ -97,6 +112,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "land_tours", force: :cascade do |t|
@@ -109,6 +129,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -136,6 +161,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "sea_tours", force: :cascade do |t|
@@ -148,6 +178,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.integer "child_price", default: 0
     t.json "images"
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -160,6 +195,11 @@ ActiveRecord::Schema.define(version: 20181216001419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
   end
 
   create_table "static_pages", force: :cascade do |t|

@@ -1,65 +1,38 @@
-<section class="footer-widget-17 section-150 relative">
-  <div class="footer-top-shape"></div>
+<footer class="footer-widget-17 relative">
   <div class="container">
     <div class="row">
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <%= image_tag('logo_footer.svg') %>
-        </div>
-        <div class="viber-whatsapp-telegram">
-          <%= image_tag('icons/viber.svg') %>
-          <%= image_tag('icons/whatsapp.svg') %>
-          <%= image_tag('icons/telegram.svg') %>
-        </div>
-        <p class="phone">
-          <%= image_tag('phone.svg') %>
-          +66 83 539 0539
+      <div class="col-4 footer-copy-right">
+        <%= show_svg 'footer-logo.svg' %>
+        <p>&copy; 2019. All Rights Reserved<span>|</span><a href="#">Ghost</a></p>
+      </div>
+      <div class="col-4 footer-info-container">
+        <p>
+          <%= show_svg 'phone.svg' %>
+          +66 96 816 0299
         </p>
-        <p class="mail"> <%= image_tag('mail.svg') %> cocotours.phuket@gmail.com </p>
+        <p>
+          <%= show_svg 'mail-ic.svg' %>
+          info@my.travel
+        </p>
+        <p>
+          <%= show_svg 'pin-ic.svg' %>
+          200/148, Si Sunthon, Talang, Phuket, 83110
+        </p>
       </div>
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <h5>
-            <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
-          </h5>
-          <h5>О компании</h5>
-          <h5>Контакты</h5>
-          <h5>Услуги</h5>
+      <div class="col-4">
+        <div class="footer-select-currency">
+          <select>
+            <option>Сменить валюту (THB)</option>
+            <option>Сменить валюту (USD)</option>
+            <option>Сменить валюту (RUB)</option>
+          </select>
+          <%= show_svg 'arrow-down.svg' %>
         </div>
-      </div>
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <h5>Екскурсии</h5>
+        <div class="social-media">
+          <%= show_svg 'insta.svg' %>
+          <%= show_svg 'vk.svg' %>
+          <%= show_svg 'facebook-ic.svg' %>
         </div>
-      </div>
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <h5><%= link_to 'Шопинг', shops_path %></h5>
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <h5><%= link_to 'Аренда Лодок', boats_path %></h5>
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4">
-        <div class="single-widget mt-20">
-          <h5>Недвижимоcть</h5>
-        </div>
-      </div>
-    </div>
-    <div class="text-right garanty">
-      <p>ГАРАНТИЯ САМОЙ НИЗКОЙ ЦЕНЫ НА ОСТРОВЕ!!!</p>
-      <p>CoCo Travel лицензия: № 33-07226</p>
-    </div>
-  </div>
-</section>
-<!-- End Footer Widget -->
-<footer class="default-footer">
-  <div class="container">
-    <div class="d-flex justify-content-between no-flex-xs">
-      <div class="footer-copy-right">
-        <p>&copy; 2018. All Rights Reserved<span>|</span><a href="#">Ghost</a></p>
       </div>
     </div>
   </div>

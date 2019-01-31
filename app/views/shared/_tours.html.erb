@@ -3,35 +3,26 @@
     <% all_tours.each do |tour| %>
       <div class="tour-container">
         <div class="imagesContainer">
-          <%= link_to show_path(path, tour) do %>
-            <%= image_tag tour.images.first.url(:main_page) %>
-          <% end %>
-          <p class="tourTitle"><%= tour.title %></p>
-          <p class="main-price-container">
-            <%= image_tag 'user.svg' %>
-            B <%= tour.adult_price %>
-            <%= image_tag 'kids-couple.svg' %>
-            B <%= tour.child_price %>
-          </p>
-          <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= tour.title %>" data-adult="<%= tour.adult_price %>" data-productType="<%= product_type %>"" data-productId="<%= tour.id %>" data-child="<%= tour.child_price %>">Заказать</button>
-
-
+          
+          <%= image_tag tour.images.first.url(:main_page), class: 'main-tour-img' %>
+          
+          
           <!-- Start modal images showing -->
-          <div id='<%= "imagesModal_#{product_type}_#{tour.id}" %>' class="modal imagesModal">
+          <div id='<%= "imagesModal_#{tour.class.name}_#{tour.id}" %>' class="modal imagesModal">
 
             <div class="modal-content">
-              <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{product_type}_#{tour.id}" %>)">&times;</span>
+              <span class="close cursor" onclick="closeModal(<%= "imagesModal_#{tour.class.name}_#{tour.id}" %>)">&times;</span>
 
               <% tour.images.each_with_index do |image, index| %>
-                <div class='mySlides <%= "mySlides_#{product_type}_#{tour.id}" %>'>
+                <div class='mySlides <%= "mySlides_#{tour.class.name}_#{tour.id}" %>'>
                   <%= image_tag image.url %>
                 </div>
               <% end %>
-              <a class="prev" onclick="plusSlides(-1, '<%= product_type %>') ">&#10094;</a>
-              <a class="next" onclick="plusSlides(1, '<%= product_type %>') ">&#10095;</a>
+              <a class="prev" onclick="plusSlides(-1, '<%= tour.class.name %>') ">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, '<%= tour.class.name %>') ">&#10095;</a>
               <div class="column">
                 <% tour.images.each_with_index do |image,index| %>
-                  <%= image_tag image.url(:bottom), class: "demo demo_#{product_type}_#{tour.id} cursor", onclick: "currentSlide(#{index + 1}, '#{product_type}')" %>
+                  <%= image_tag image.url(:bottom), class: "demo demo_#{tour.class.name}_#{tour.id} cursor", onclick: "currentSlide(#{index + 1}, '#{tour.class.name}')" %>
                 <% end %>
               </div>
 
@@ -40,15 +31,28 @@
 
           <!-- END modal images showing -->
 
-
-
+          <%#= show_svg 'tour-mask1.svg' %>
+          <button onclick="openModal(<%= "imagesModal_#{tour.class.name}_#{tour.id}" %>);currentSlide(1, '<%= tour.class.name %>')">
+            <%= image_tag '5.png' %>
+          </button>
+        </div>
+        <div class="tourTitleContainer">
+          <%= link_to show_path(path, tour) do %>
+            <p class="tourTitle"><%= tour.title %></p>
+            <%= show_svg 'arrow.svg' %>
+          <% end %>
+        </div>
+        <div>
+          <p class="time-container">
+            <%= show_svg 'clock-regular.svg' %> <%= tour.duration %> часов
+          </p>
+          <p class="main-price-container">
+            взр. – <%= tour.adult_price %>฿, дет. - <%= tour.child_price %>฿
+          </p>
+          <!-- <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= tour.title %>" data-adult="<%= tour.adult_price %>" data-productType="<%= product_type %>"" data-productId="<%= tour.id %>" data-child="<%= tour.child_price %>">Заказать</button> -->
         </div>
         <div class="shortContentContainer">
           <p><%= tour.short_content %></p>
-        </div>
-        <div class="buttonsContainer">
-          <button onclick="openModal(<%= "imagesModal_#{product_type}_#{tour.id}" %>);currentSlide(1, '<%= product_type %>')">Фото экскурсии</button>
-          <%= link_to "Подробней", show_path(path, tour) %>
         </div>
       </div>
     <% end %>

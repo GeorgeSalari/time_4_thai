@@ -1,4 +1,4 @@
-class BoatsController < ApplicationController
+:popular, class BoatsController < ApplicationController
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
   before_action :new_order, :new_call_order, only: [:index, :show]
   rescue_from NoMethodError, :with => :check_error
@@ -100,6 +100,6 @@ class BoatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def boat_params
-      params.require(:boat).permit(:title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
+      params.require(:boat).permit(:duration, :tour_program, :included, :necessary, :popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
     end
 end

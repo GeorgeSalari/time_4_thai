@@ -49,4 +49,18 @@ module ApplicationHelper
       raw file.read
     end
   end
+
+  def get_all_index_tour
+    all_index_tour = []
+    shops = Shop.where(popular: true)
+    boats = Boat.where(popular: true)
+    sea_tours = SeaTour.where(popular: true)
+    land_tours = LandTour.where(popular: true)
+    evening_shows = EveningShow.where(popular: true)
+    phuket_tours = PhuketTour.where(popular: true)
+    avia_tours = AviaTour.where(popular: true)
+    individual_tours = IndividualTour.where(popular: true)
+    all_index_tour = shops + boats + sea_tours + land_tours + evening_shows + phuket_tours + avia_tours + individual_tours
+    all_index_tour
+  end
 end
