@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <%= render partial: 'shared/tours', locals: {all_tours: @sea_tours, path: 'sea_tour_path', product_type: 'SeaTour'} %>
+      <%= render partial: 'shared/tours', locals: {all_tours: @all_index_tour, path: 'sea_tour_path', product_type: 'SeaTour'} %>
       <div class="path-button-container text-center">
         <%= link_to '#', class: 'path-button' do %>
           Все экскурсии

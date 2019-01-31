@@ -59,6 +59,11 @@
     </div>
   </div>
 
+  <div class="form-group row check-box-container">
+    <%= form.label "На главную страницу:", class: "col-2 col-form-label" %>
+    <%= form.check_box :popular %>
+  </div>
+  
   <div class="actions">
       <%= form.submit %>
   </div>
