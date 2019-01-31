@@ -200,15 +200,18 @@ button.call-request:focus {
 }
 
 .tour-container {
-  height: 410px;
+  height: 480px;
   width: 340px;
   border: solid 1px #d8dcdd;
-  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 20px 0 rgba(6, 52, 87, 0.14);
   margin: 30px 30px 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
 }
 
 .shortContentContainer {
-  min-height: 136px;
+  min-height: 127px;
   font-family: Lato;
   font-size: 14px;
   font-weight: normal;
@@ -217,18 +220,19 @@ button.call-request:focus {
   line-height: 1.4;
   letter-spacing: normal;
   color: #4a4a4a;
-  border-left: 3px solid #f5a623;
+  border-left: 3px solid #3bb5eb;
   padding: 0 15px;
   margin: 10px -2px 0px;
   position: relative;
 }
 
 .shortContentContainer p {
-  top: 50%;
+  top: 46%;
   margin-bottom: 10px;
   margin-right: 10px;
   transform: translateY(-50%);
   position: absolute;
+  color: #71787e;
 }
 
 .imagesContainer {
@@ -236,7 +240,24 @@ button.call-request:focus {
   min-height: 217px;
 }
 
-.imagesContainer::before {
+.imagesContainer > button img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imagesContainer > img.main-tour-img {
+  position: absolute;
+  width: 97%;
+  height: 97%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*.imagesContainer::before {
   content: '';
   position: absolute;
   top: 0;
@@ -246,7 +267,7 @@ button.call-request:focus {
   background-color: rgba(0,0,0,0.3);
   z-index: 1;
   cursor: pointer;
-}
+}*/
 
 .imagesContainer > p {
   position: absolute;
@@ -282,17 +303,16 @@ button.call-request:focus {
 
 .imagesContainer > button {
   position: absolute;
-  width: 98px;
-  height: 25px;
-  border-radius: 2px;
-  background-color: #f5a623;
-  border-color: #f5a623;
-  line-height: normal;
-  color: white;
-  top: 172px;
-  right: 30px;
   z-index: 2;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  border: none;
 }
 
 .buttonsContainer {
@@ -878,10 +898,52 @@ footer select {
   fill: #a7bfd6;
 }
 
+.tourTitleContainer {
+  padding: 5px 16px 10px;
+  border-bottom: 1px dashed #dadee3;
+}
 
+.tourTitleContainer a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.tourTitleContainer .tourTitle {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
+  margin-bottom: 0;
+}
 
+.time-container {
+  padding: 17px 18px 0 40px;
+  margin: 0;
+  color: #48494b;
+  position: relative;
+  line-height: 1rem;
+}
 
+.time-container svg {
+  width: 16px;
+  position: absolute;
+  left: 20px;
+  top: 16px;
+}
+
+.time-container svg path {
+  fill: #575c61;
+}
+
+.main-price-container {
+  padding: 7px 22px 0;
+  margin: 0;
+  line-height: 1rem;
+}
 
 
 
