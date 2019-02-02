@@ -40,10 +40,6 @@
           $('.logo.white-logo').show();
           $('.logo.color-logo').hide();
           $('p.phone svg path').css({ fill: "#fff"});
-          if(fullPath != "/") {
-            $('#black').show();
-            $('#white').hide();
-          }
           $('#second-menu li').click(function(){
             $(this).find('.dropdown-menu').css({'top': '-'+ ($(this).find('.dropdown-menu').height() + 20) +'px', 'left': '-30px'})
           })
@@ -56,10 +52,6 @@
             s.currentTop = null;
           }
         } else {
-          if(fullPath != "/") {
-            $('#black').hide();
-            $('#white').show();
-          }
           $('#second-menu li').click(function(){
             $(this).find('.dropdown-menu').css({'top': '100%', 'left': '0'})
           })
