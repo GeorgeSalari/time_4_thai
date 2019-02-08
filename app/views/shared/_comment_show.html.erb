@@ -1,45 +1,29 @@
 <% if comments %>
   <!-- Start Project -->
   <section id="projects" >
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="section-title-17 text-center">
-            <%= image_tag('divider.svg') %>
-            <h2 class="review-title">
-               Отзывы о данном туре
-            </h2>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <% comments.each_with_index do |comment, com_index| %>
 
-      <div class='container reviews-block <%= "reviews-block-#{com_index}" %>'>
+      <div class='reviews-block <%= "reviews-block-#{com_index}" %> <%= "hidden" if com_index > 1 %>'>
         <div class="row">
-          <div class="col-1 text-center arrow-container-left">
-            <% if com_index.even? %>
-              <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
-            <% end %>
-          </div>
           <div class="col-2 avatar-container">
             <div class="mask-container">
               <div class="mask">
                 <% if comment.avatar.url(:bottom) %>
-                  <%= image_tag comment.avatar.url(:bottom) %>
+                  <%= image_tag comment.avatar.url(:bottom), class: 'avatar' %>
                 <% else %>
                   <%= image_tag('avatar.svg') %>
                 <% end %>
               </div>
             </div>
           </div>
-          <div class='<%= !comment.images.empty? ? "col-4 comment-with-images" : "col-8" %>'>
+          <div class='col-8'>
             <p><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
             <p><%= comment.comment %></p>
           </div>
+          <div class="col-2"></div>
           <% if !comment.images.empty? %>
-            <div class="col-4">
+            <div class="col-2"></div>
+            <div class="col-8">
               <div class="row">
                 <% comment.images.each_with_index do |image, index| %>
                   <% if index < 2 %>
@@ -63,14 +47,9 @@
                 <% end %>
               </div>
             </div>
+            <div class="col-2"></div>
           <% end %>
-          <div class="col-1 text-center <%= 'right-arrow-container' if comments.length > 1 %> arrow-container-right">
-            <% if com_index.even? && comments.length > 1 %>
-              <%= image_tag('down-chevron.svg', class: 'right-arrow') %>
-            <% end %>
-          </div>
         </div>
-
       </div>
 
 
@@ -98,6 +77,17 @@
       <!-- END modal images showing -->
 
     <% end %>
+
+    <div class="both-arrow-container">
+      <div class="text-center arrow-container-left">
+        <%= show_svg 'arrow-l.svg' %>
+      </div>
+      <div class="text-center <%= 'right-arrow-container' if comments.length > 1 %> arrow-container-right">
+        <% if comments.length > 2 %>
+          <%= show_svg 'arrow.svg' %>
+        <% end %>
+      </div>
+    </div>
 
   </section>
   <!-- End End Project -->

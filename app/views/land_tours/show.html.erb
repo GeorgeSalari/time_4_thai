@@ -7,74 +7,115 @@
 
 <div class="container">
 
+  <p class="path-history">
+    <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", '#' %> / <%= link_to @land_tour.title, land_tour_path(@land_tour) %>
+  </p>
+
   <h1>
     <%= @land_tour.title %>
   </h1>
 
-  <div class="text-center">
-    <% @land_tour.images.each_with_index do |image, index| %>
-      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
-    <% end %>
-  </div>
+  <div class="row image-container">
+    <div class="col-8">
 
-  <!-- Start modal images showing -->
-  <div id='imageModal_0' class="modal imagesModal">
-
-    <div class="modal-content">
-      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
-
-      <% @land_tour.images.each do |image| %>
-        <div class='mySlides <%= "mySlides_0" %>'>
+      <div class="fotorama" data-navposition="bottom" data-nav="thumbs" click='true' allowfullscreen='true' >
+        <% @land_tour.images.each do |image| %>
           <%= image_tag image.url %>
-        </div>
-      <% end %>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      <div class="column">
-        <% @land_tour.images.each_with_index do |image,index| %>
-          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
-        <% end %>
+        <% end %> 
       </div>
 
-    </div>
-  </div>
-  <!-- END modal images showing -->
+      <div class="short-content">
+        <h2>Описание:</h2>
+        <p>
+          <%= @land_tour.short_content %>
+        </p>
+        <a href="javascript:;" class="full_content_toggle">Читать больше</a>
+      </div>
+      <div class="full-content">
+        <p><%= @land_tour.content.html_safe %></p>
+      </div>
 
-  <div class="row price-container">
-    <div class="col-4 text-right">
-      <p class="adult-price">
-        <%= image_tag 'user.svg' %>
-        B <%= @land_tour.adult_price %>
-      </p>
-    </div>
-    <div class="col-4 text-center">
-      <p class="child-price">
-        <%= image_tag 'kids-couple.svg' %>
-        B <%= @land_tour.child_price %>
-      </p>
-    </div>
-    <div class="col-4 text-left">
-      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @land_tour.title %>" data-adult="<%= @land_tour.adult_price %>" data-productType="LandTour" data-productId="<%= @land_tour.id %>" data-child="<%= @land_tour.child_price %>">Заказать</button>
+      <div class="tour-program">
+        <h2>Программа тура:</h2>
+        <ul>
+          <div class="vertical-line"></div>
+          <% @land_tour.tour_program.split(',').each do |point| %>
+            <li>
+              <%= show_svg 'point.svg' %>
+              <%= point %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-      <!-- The Modal Order Tour -->
-      <%= render partial: 'shared/order_tour', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
-      <!-- End Modal Order Tour  -->
+      <div class="row">
+        <div class="col-6 tour-included">
+          <h2>Что включено:</h2>
+          <ul>
+            <% @land_tour.included.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-6 tour-necessary">
+          <h2>Что брать с собой?</h2>
+          <ul>
+            <% @land_tour.necessary.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+
+      <!-- <div class="row price-container">
+        <div class="col-4 text-right">
+          <p class="adult-price">
+            <%= image_tag 'user.svg' %>
+            B <%= @land_tour.adult_price %>
+          </p>
+        </div>
+        <div class="col-4 text-center">
+          <p class="child-price">
+            <%= image_tag 'kids-couple.svg' %>
+            B <%= @land_tour.child_price %>
+          </p>
+        </div>
+        <div class="col-4 text-left">
+          <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @land_tour.title %>" data-adult="<%= @land_tour.adult_price %>" data-productType="LandTour" data-productId="<%= @land_tour.id %>" data-child="<%= @land_tour.child_price %>">Заказать</button> -->
+
+          <!-- The Modal Order Tour -->
+          <%#= render partial: 'shared/order_tour', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+          <!-- End Modal Order Tour 
+        </div>
+      </div> -->
+
+      <div class="form-container">
+        <%= render partial: 'shared/order_tour_form', :locals => { tour: @land_tour, product_id: @land_tour.id} %>
+      </div>
     </div>
   </div>
-  <div class="short-content">
-    <h2>Описание:</h2>
-    <p>
-      <%= @land_tour.short_content %>
-    </p>
-  </div>
-  <div class="full-content">
-    <p><%= @land_tour.content.html_safe %></p>
-  </div>
-  <div class="form-container">
-    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
-  </div>
 
-  <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
-  <%= render partial: 'shared/comment_form', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+  <div class="row">
+    <div class="section-title-17 text-center col-12">
+      <h2 class="review-title">
+         Отзывы
+      </h2>
+    </div>
+    <div class="col-7">
+      <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
+    </div>
+    <div class="col-5">
+      <%= render partial: 'shared/comment_form', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+    </div>
+  </div>
 </div>
 <%= render "shared/footer" %>
