@@ -4857,3 +4857,67 @@ p.mail a {
 .navbar .menu-group.d-flex.justify-content-end {
   display: none !important;
 }
+
+.comment-tour-title {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.comment-costumer span {
+  font-weight: bold;
+}
+
+.comment-content {
+  font-style: italic;
+  color: #60768a;
+}
+
+.index-review-block .col-6 {
+  margin-top: 30px;
+}
+
+.both-arrow-container {
+  display: flex;
+  justify-content: center;
+}
+
+.both-arrow-container svg {
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.both-arrow-container svg path {
+  fill: #0ec9cc;
+}
+
+.arrow-container-left svg {
+  display: none;
+}
+
+.reviews-block .tour-avatar-container {
+  position: relative;
+  min-height: 310px;
+}
+
+.reviews-block .tour-avatar-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 499px;
+  height: 307px;
+  z-index: 1;
+}
+
+.reviews-block .tour-avatar-container svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 307px;
+  z-index: 2;
+}

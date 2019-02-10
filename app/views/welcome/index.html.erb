@@ -91,88 +91,31 @@
 
       <% @comments.each_with_index do |comment, com_index| %>
 
-        <div class='container reviews-block <%= "reviews-block-#{com_index}" %> '>
+        <div class='container index-review-block reviews-block <%= "reviews-block-#{com_index}" %> <%= "hidden" if com_index > 0 %>'>
           <div class="row">
-            <div class="col-1 text-center left-arrow-container arrow-container-left">
-              <% if com_index.even? %>
-                <%= image_tag('down-chevron.svg', class: 'left-arrow') %>
-              <% end %>
+            <div class="col-6 tour-avatar-container">
+              <%= show_svg 'comment-mask.svg' %>
+              <%= image_tag find_item_tour(comment.tour_id, comment.tour_type).images.first.url(:main_page) %>
             </div>
-            <div class="col-2 avatar-container">
-              <div class="mask-container">
-                <div class="mask">
-                  <% if comment.avatar.url(:bottom) %>
-                    <%= image_tag comment.avatar.url(:bottom) %>
-                  <% else %>
-                    <%= image_tag('avatar.svg') %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <div class='<%= !comment.images.empty? ? "col-4 comment-with-images" : "col-8" %>'>
-              <p><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
-              <p><%= comment.comment %></p>
-            </div>
-            <% if !comment.images.empty? %>
-              <div class="col-4">
-                <div class="row">
-                  <% comment.images.each_with_index do |image, index| %>
-                    <% if index < 2 %>
-                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>" >
-                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
-                      </div>
-                    <% elsif index == 2 && comment.images.count > 3 %>
-                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>">
-                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
-                        <div class="mask">
-                          <p>
-                            +<%= comment.images.count - 2 %> фото
-                          </p>
-                        </div>
-                      </div>
-                    <% elsif index == 2 %>
-                      <div class="col-4 images-container <%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>">
-                        <%= image_tag image.url(:main_page), class: "review_small_images #{index + 1}" %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-            <div class="col-1 text-center right-arrow-container arrow-container-right">
-              <% if com_index.even? %>
-                <%= image_tag('down-chevron.svg', class: 'right-arrow') %>
-              <% end %>
+            <div class="col-6">
+              <p class="comment-tour-title"><%= find_item_tour(comment.tour_id, comment.tour_type).title %></p>
+              <p class="comment-content"><%= comment.comment %></p>
+              <p class="comment-costumer"><span><%= comment.customer_name %></span> <%= comment.created_at %></p>
             </div>
           </div>
-
         </div>
-
-        <!-- Start modal review images showing -->
-        <div id='<%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>' class="modal imagesModal">
-
-          <div class="modal-content">
-            <span class="close cursor" onclick="closeModal(<%= "reviewImagesModal_#{comment.tour_type}_#{comment.id}" %>)">&times;</span>
-
-            <% comment.images.each do |image| %>
-              <div class='mySlides <%= "mySlides_review_#{comment.tour_type}_#{comment.id}" %>'>
-                <%= image_tag image.url %>
-              </div>
-            <% end %>
-            <a class="prev" onclick="plusSlides(-1, '<%= comment.tour_type %>', 'review')">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, '<%= comment.tour_type %>', 'review')">&#10095;</a>
-            <div class="column">
-              <% comment.images.each_with_index do |image,index| %>
-                <%= image_tag image.url(:bottom), class: "demo demo_review_#{comment.tour_type}_#{comment.id}  cursor", onclick: "currentSlide(#{index + 1}, '#{comment.tour_type}', 'review' )" %>
-              <% end %>
-            </div>
-
-          </div>
-        </div>
-        <!-- END modal images showing -->
-
       <% end %>
 
+      <div class="both-arrow-container">
+        <div class="text-center arrow-container-left">
+          <%= show_svg 'arrow-l.svg' %>
+        </div>
+        <div class="text-center <%= 'right-arrow-container' if @comments.length > 1 %> arrow-container-right">
+          <% if @comments.length > 2 %>
+            <%= show_svg 'arrow.svg' %>
+          <% end %>
+        </div>
+      </div>
     </section>
     <!-- End End Project -->
   <% end %>
