@@ -18,6 +18,57 @@
 //= require_tree .
 
 $(document).ready(function(){
+  var tourTitle,
+      adultPrice,
+      childPrice,
+      totalAdultPrice,
+      totalChildPrice;
+
+  function calc_total_price(){
+    adultPrice = parseInt( $('#adult-price').text().slice(0,-1) );
+    totalAdultPrice = parseInt( $('#adult_count').val() ) * adultPrice;
+    childPrice = parseInt( $('#child-price').text().slice(0,-1) );
+    totalChildPrice = parseInt( $('#child_count').val() ) * childPrice;
+    $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
+  }
+
+  calc_total_price();
+  
+
+  $('.pplsCounter svg').click(function(){
+    var input_id = $(this).parent().attr('class').split(' ')[0],
+        click_value = $(this).parent().attr('class').split(' ')[1],
+        input_value = parseInt( $('#'+input_id).val() );
+    if (click_value == 'plus') {
+      $('#'+input_id).val(input_value + 1)
+      calc_total_price();
+    } else {
+      if (input_id == 'adult_count') {
+        if (input_value > 1) {
+          $('#'+input_id).val(input_value - 1);
+          calc_total_price();
+        }
+      } else {
+        if (input_value >= 1) {
+          $('#'+input_id).val(input_value - 1);
+          calc_total_price();
+        }
+      }
+    }
+  })
+
+  fotoramaDefaults = {
+    width: '90%',
+    maxwidth: '100%',
+    swipe: true,
+    maxheight: 400,
+    thumbmargin: 14,
+    thumbwidth: 90,
+    thumbheight: 60,
+    allowfullscreen: true,
+    nav: 'thumbs'
+  }
+
   if (window.location.href.includes('boats') || window.location.href.includes('sea_tours/10') || window.location.href.includes('realty-buy') || window.location.href.includes('transfers') || window.location.href.includes('photoshoot') || window.location.href.includes('wedding') || window.location.href.includes('spa') || window.location.href.includes('individual')|| window.location.href.includes('phuket_tours/4') || window.location.href.includes('realty-rent') ) {
     $($('.price-container').children()[0]).find('p').text('От '+$($('.price-container').children()[0]).find('p').text().trim().split(' ')[1] + " THB");
     $($('.price-container').children()[1]).find('p').hide();
@@ -55,6 +106,25 @@ $(document).ready(function(){
     })
   };
 
+  function find_preview_review(){
+    var array = [], return_value, val_index;
+    $('.reviews-block.hidden').each(function(){
+      array.push( parseInt($(this).attr('class').split(' ')[1].split('-')[2]) )
+    })
+    $.each(array, function(index, value){
+      if (index != value) {
+        val_index = index - 1;
+        return false;
+      }
+    })
+    if (val_index == undefined) {
+      return_value = array[array.length - 1] + 2
+    } else {
+      return_value = array[val_index] + 2
+    }
+    return return_value;
+  }
+
 
   $('.left-arrow').hide();
   $('.arrow-container-left').each(function(){
@@ -63,81 +133,98 @@ $(document).ready(function(){
     $(this).click(function(){
       $('.reviews-block .left-arrow').css('top','100%');
       if ( $(this).attr('class').includes('left-arrow-container') ){
-        $('.right-arrow').show();
+        $('.arrow-container-right svg').show();
         $('.arrow-container-right').addClass('right-arrow-container')
-        var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+
+        var review_showing = find_preview_review();
         var first_before_review, second_before_review;
+
         $('.reviews-block').each(function(){
-          $(this).hide();
+          $(this).addClass('hidden');
         })
+        
         if (parseInt(review_showing) < 2) {
           first_before_review = undefined;
         } else {
-          first_before_review = review_showing - 2
+          first_before_review = review_showing - 3
         }
 
         if ( parseInt(review_showing) < 1) {
           second_before_review = undefined;
         } else {
-          second_before_review = review_showing - 1
+          second_before_review = review_showing - 2
         }
 
         if (first_before_review != undefined ) {
-          $('.reviews-block.reviews-block-'+first_before_review).css('display', 'inherit');
+          $('.reviews-block.reviews-block-'+first_before_review).removeClass('hidden');
         }
         if (second_before_review != undefined) {
-          $('.reviews-block.reviews-block-'+second_before_review).css('display', 'inherit');
+          $('.reviews-block.reviews-block-'+second_before_review).removeClass('hidden');
         }
 
         if (first_before_review <= 1 ) {
-          $('.left-arrow').hide();
+          $(this).find('svg').hide();
           $('.arrow-container-left').removeClass('left-arrow-container')
         } else {
-          $('.left-arrow').show();
+          $(this).find('svg').show();
           $('.arrow-container-left').addClass('left-arrow-container')
         }
       }
     })
   })
 
+  function find_next_review() {
+    var array = [], return_value;
+    $('.reviews-block.hidden').each(function(){
+      array.push( parseInt($(this).attr('class').split(' ')[1].split('-')[2]) )
+    })
+    if (jQuery.inArray( 0, array ) == 0) {
+      $.each(array, function(index, value){
+        if (index != value) {
+          return_value = value - 1;
+          return false;
+        }
+      })
+    } else {
+      return_value = array[0] - 1
+    }
+    return return_value;
+  }
+
   $('.right-arrow-container').each(function(){
     var review_length = $('.reviews-block').length
 
     $(this).click(function(){
       if ( $(this).attr('class').includes('right-arrow-container') ){
-        $('.left-arrow').show();
+        $('.arrow-container-left svg').show();
         $('.arrow-container-left').addClass('left-arrow-container')
-        var review_showing = $(this).parent().parent().attr('class').split('-').pop();
+        
+        var review_showing = find_next_review();
         var first_next_review, second_next_review;
-        $('.reviews-block').each(function(){
-          $(this).hide();
-        })
-        if ( parseInt(review_showing) == (review_length - 2) ) {
+        $('.reviews-block').addClass('hidden');
+        if ( parseInt(review_showing) == (review_length - 1) ) {
           first_next_review = undefined
         } else {
-          first_next_review = parseInt(review_showing) + 2
+          first_next_review = parseInt(review_showing) + 1
         }
-        if ( parseInt(review_showing) == (review_length - 3) ) {
+        if ( parseInt(review_showing) == (review_length - 2) ) {
           second_next_review = undefined
         } else {
-          second_next_review = parseInt(review_showing) + 3
+          second_next_review = parseInt(review_showing) + 2
         }
 
         if (first_next_review != undefined) {
-          $('.reviews-block.reviews-block-'+first_next_review).css('display', 'inherit');
+          $('.reviews-block.reviews-block-'+first_next_review).removeClass('hidden');
         }
         if (second_next_review != undefined) {
-          $('.reviews-block.reviews-block-'+second_next_review).css('display', 'inherit');
+          $('.reviews-block.reviews-block-'+second_next_review).removeClass('hidden');
         }
         if (first_next_review >= (review_length - 2) ) {
-          $('.right-arrow').hide();
+          $(this).find('svg').hide();
           $('.arrow-container-right').removeClass('right-arrow-container')
         } else {
-          $('.right-arrow').show();
+          $(this).find('svg').show();
           $('.arrow-container-right').addClass('right-arrow-container')
-        }
-        if (first_next_review == (review_length - 1)) {
-          $('.reviews-block .left-arrow').css({'top':'50%', 'transform':'translateY(-50%) rotate(90deg)' });
         }
       }
     })
@@ -162,12 +249,6 @@ $(document).ready(function(){
   if ( parseInt( $('.layer').text() ) > 9 ) {
     $('.layer').css('right', '6px')
   }
-
-  var tourTitle;
-  var adultPrice;
-  var childPrice;
-  var totalAdultPrice;
-  var totalChildPrice;
 
   $('.calc_price').each(function(){
     $(this).click(function(e){

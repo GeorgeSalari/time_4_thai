@@ -7,38 +7,27 @@
 
 <div class="container">
 
+  <p class="path-history">
+    <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", '#' %> / <%= link_to @sea_tour.title, sea_tour_path(@sea_tour) %>
+  </p>
+
   <h1>
     <%= @sea_tour.title %>
   </h1>
 
-  <div class="text-center">
-    <% @sea_tour.images.each_with_index do |image, index| %>
-      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
-    <% end %>
-  </div>
-
-  <!-- Start modal images showing -->
-  <div id='imageModal_0' class="modal imagesModal">
-
-    <div class="modal-content">
-      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
-
-      <% @sea_tour.images.each do |image| %>
-        <div class='mySlides <%= "mySlides_0" %>'>
+  <div class="row image-container">
+    <div class="col-8">
+      <div class="fotorama" data-navposition="bottom" data-nav="thumbs" click='true' allowfullscreen='true' >
+        <% @sea_tour.images.each do |image| %>
           <%= image_tag image.url %>
-        </div>
-      <% end %>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      <div class="column">
-        <% @sea_tour.images.each_with_index do |image,index| %>
-          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
-        <% end %>
+        <% end %> 
       </div>
+    </div>
 
+    <div class="col-4">
+      
     </div>
   </div>
-  <!-- END modal images showing -->
 
   <div class="row price-container">
     <div class="col-4 text-right adult-price-container">

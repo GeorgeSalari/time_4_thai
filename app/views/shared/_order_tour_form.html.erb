@@ -1,51 +1,77 @@
 <%= form_for @order, :html => {class: 'fix'} do |f| %>
   <%= f.hidden_field :quantity, value: 1 %>
-  <%= f.hidden_field :product_type, value: product_type %>
+  <%= f.hidden_field :product_type, value: tour.class.name %>
   <%= f.hidden_field :product_id, value: product_id %>
-  <div class="row">
-    <div class="col-6">
-      <div class="form-input">
-        <label>Дата тура</label>
-        <%= f.date_field :booking_date %>
-      </div>
-      <div class="pplsCounter adult row">
-        <div class="col-5">
-          <%= image_tag 'user.svg' %>
-          <label>Взрослых</label>
-        </div>
-        <div class="col-7">
-          <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true %>
-        </div>
-      </div>
-      <div class="pplsCounter row">
-        <div class="col-5">
-          <%= image_tag 'kids-couple.svg' %>
-          <label>Детей</label>
-        </div>
-        <div class="col-7">
-          <%= f.number_field :child_count, id: "child_count" %>
-        </div>
-      </div>
-      <div class="calcTotalPrice">
-        <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
+
+  <div class="order-form-duration">
+    <%= show_svg 'clock-regular.svg' %>
+    <%= tour.duration %> часов
+  </div>
+
+  <div class="order-form-price">
+    <p>
+      <span id="adult-price"><%= tour.adult_price %>฿</span> Взрослый
+    </p>
+    <p>
+      <span id="child-price"><%= tour.child_price %>฿</span> Детский
+    </p>
+  </div>
+
+  <div class="form-input">
+    <%= show_svg 'calendar-alt-regular.svg' %>
+    <%= f.date_field :booking_date %>
+  </div>
+
+  <div class="pplsCounterContainer">
+    <h2>
+      <%= show_svg 'user.svg' %>
+      Количество людей
+    </h2>
+    <div class="pplsCounter adult">
+      <label>Взрослых</label>
+      <div>
+        <span class="adult_count minus">
+          <%= show_svg 'minus.svg' %>
+        </span>
+        <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true, value: 1, readonly: true %>
+        <span class="adult_count plus">
+          <%= show_svg 'plus.svg' %>
+        </span>
       </div>
     </div>
-    <div class="col-6">
-      <div class="form-input">
-        <label>Ваше имя</label>
-        <%= f.text_field :customer_name, :required => true, autocomplete: 'name' %>
+    <div class="pplsCounter">
+      <label>Детей</label>
+      <div>
+        <span class="child_count minus">
+          <%= show_svg 'minus.svg' %>
+        </span>
+        <%= f.number_field :child_count, id: "child_count", value: 0, readonly: true %>
+        <span class="child_count plus">
+          <%= show_svg 'plus.svg' %>
+        </span>
       </div>
-
-      <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
-
-      <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
-
-      <%= f.text_area :customer_comment, placeholder: "Комментарий", autocomplete: false %>
-
     </div>
   </div>
+
+  <div class="calcTotalPrice">
+    <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
+  </div>
+
+  <div class="user-info-inputs">
+    <%= f.text_field :customer_name, :required => true, autocomplete: 'name', placeholder: 'Ваше имя' %>
+
+    <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
+
+    <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
+
+    <%= f.text_area :customer_comment, placeholder: "Комментарий", autocomplete: false %>
+  </div>
+
   <div class="formButtonsContainer">
-    <button type="button" class="btn btn-primary cart">Добавить в корзину</button>
-    <%= f.submit "Забронировать сейчас", class: "btn btn-primary book" %>
+    <button type="button" class="btn btn-primary cart">Забронировать</button>
+    <%= f.button :submit, class: "btn btn-primary book" do %>
+      <%= show_svg 'heart.svg' %>
+      В избранное
+    <% end %>
   </div>
 <% end %>

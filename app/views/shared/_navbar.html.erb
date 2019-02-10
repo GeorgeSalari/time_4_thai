@@ -3,183 +3,56 @@
   <div class="total-header-area default-header">
     <div class="container">
 
-        <div class="main-menu" id="main-menu-container">
-          <nav>
-            <ul class="d-flex">
-              <li>
-                <p class="phone">
-                  <%= image_tag('phone.svg') %>
-                  +66 83 539 0539
-                </p>
-              </li>
-              <li>
-                <button class="call-request" data-toggle="modal" data-target="#orderCall">Заказать звонок</button>
-              </li>
-            </ul>
-          </nav>
-        </div>
         <div class="logo">
           <%= link_to root_path do %>
             <%= image_tag('logo.svg')%>
           <% end %>
         </div>
 
-        <div class="scrolled-menu-container">
-          <div class="row align-items-center second-menu-row">
-
-              <div class="main-menu" id="scrolled-menu">
-                <nav>
-                  <ul class="d-flex">
-                    <li>
-                      <div class="dropdown tours">
-                        <a href="#">
-                          Экскурсии
-                        </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="<%= sea_tours_path %>">Морские экскурсии</a>
-                          <a class="dropdown-item" href="<%= land_tours_path %>">Сухопутные</a>
-                          <a class="dropdown-item" href="<%= evening_shows_path %>">Вечерние шоу</a>
-                          <a class="dropdown-item" href="<%= phuket_tours_path %>">По Пхукету</a>
-                          <a class="dropdown-item" href="<%= avia_tours_path %>">Авиатуры</a>
-                          <a class="dropdown-item" href="<%= individual_path %>">Индивидуальные</a>
-                        </div>
-                        <%= image_tag('down-chevron.svg')%>
-                      </div>
-                    </li>
-                    <li>
-                      <a class="shoping-button" href="<%= shops_path %>">
-                        Шопинг
-                      </a>
-                    </li>
-                    <li>
-                      <a class="shoping-button" href="<%= boats_path %>">
-                        Аренда Лодок
-                      </a>
-                    </li>
-                      <li>
-                        <div class="dropdown property">
-                        <a href="#">
-                          Недвижимость
-                        </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="<%= realty_rent_path %>">Аренда</a>
-                          <a class="dropdown-item" href="<%= realty_buy_path %>">Покупка</a>
-                        </div>
-                        <%= image_tag('down-chevron.svg')%>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="dropdown services">
-                        <a href="#">
-                          Услуги
-                        </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="<%= transfers_path %>">Трансферы в/из Аэропорта</a>
-                          <a class="dropdown-item" href="<%= photoshoot_path %>">Фотосессии</a>
-                          <a class="dropdown-item" href="<%= wedding_path %>">Свадебные церемонии</a>
-                          <a class="dropdown-item" href="<%= ferries_path %>">Паромы на острова</a>
-                          <a class="dropdown-item" href="<%= spa_path %>">СПА</a>
-                        </div>
-                        <%= image_tag('down-chevron.svg')%>
-                      </div>
-                    </li>
-                    <li>
-                      <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-
+        <div class="right-part">
+          <div class="menu-group d-flex justify-content-end">
+            <a href="#" class="menu-btn toggle-btn hidden-md-up">
+              <%= show_svg "icons/bars.svg" %>
+            </a>
           </div>
-        </div>
 
-        <div class="btn-group" id="social-link-container">
-          <p class="mail"> <%= image_tag('mail.svg') %> <a href="mailto:cocotours.phuket@gmail.com">cocotours.phuket@gmail.com</a> <br> </p>
-          <a href="https://www.instagram.com/phuket_budget_tours/" target="_blank" class="instagram"> <%= image_tag('insta.svg')%> </a>
-          <a href="#" class="facebook"> <%= image_tag('facebook.svg')%></a>
-          <a href="#" class="vk"> <%= image_tag('vk.svg')%></a>
-        </div>
+          <div class="main-menu" id="main-menu-container">
+            <nav>
+              <ul class="d-flex">
+                <li>
+                  <p class="phone">
+                    <%= show_svg 'phone.svg' %>
+                    +66 83 539 0539
+                  </p>
+                </li>
+                <li>
+                  <button class="call-request" data-toggle="modal" data-target="#orderCall">Заказать звонок</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
-        <div class="menu-group d-flex justify-content-end">
-          <a href="#" class="menu-btn toggle-btn hidden-md-up">
-            <%= show_svg "icons/bars.svg" %>
-          </a>
+          <div class="select-currency">
+            <select>
+              <option>Бат(THB)</option>
+              <option>Доллар(USD)</option>
+              <option>Рубли(RUB)</option>
+            </select>
+            <%= show_svg 'arrow-down.svg' %>
+          </div>
+
+          <%= link_to carts_path do %>
+            <div id="basket">
+              <span id='white' class="hidden"><%= image_tag('shopping-cart-white.svg')%></span>
+              <span id='black'><%= image_tag('shopping-cart.svg')%></span>
+              <div class="Oval-2">
+                <span class="layer"><%= @cart.cart_items.count %></span>
+              </div>
+            </div>
+          <% end %>
         </div>
 
     </div>
-
-     <nav>
-      <ul class="d-flex">
-        <li>
-          <div class="dropdown tours">
-            <a href="#">
-              Экскурсии
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="<%= sea_tours_path %>">Морские экскурсии</a>
-              <a class="dropdown-item" href="<%= land_tours_path %>">Сухопутные</a>
-              <a class="dropdown-item" href="<%= evening_shows_path %>">Вечерние шоу</a>
-              <a class="dropdown-item" href="<%= phuket_tours_path %>">По Пхукету</a>
-              <a class="dropdown-item" href="<%= avia_tours_path %>">Авиатуры</a>
-              <a class="dropdown-item" href="<%= individual_path %>">Индивидуальные</a>
-            </div>
-            <%= image_tag('down-chevron.svg')%>
-          </div>
-        </li>
-        <li>
-          <a class="shoping-button" href="<%= shops_path %>">
-            Шопинг
-          </a>
-        </li>
-        <li>
-          <a class="shoping-button" href="<%= boats_path %>">
-            Аренда Лодок
-          </a>
-        </li>
-          <li>
-            <div class="dropdown property">
-            <a href="#">
-              Недвижимость
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="<%= realty_rent_path %>">Аренда</a>
-              <a class="dropdown-item" href="<%= realty_buy_path %>">Покупка</a>
-            </div>
-            <%= image_tag('down-chevron.svg')%>
-          </div>
-        </li>
-        <li>
-          <div class="dropdown services">
-            <a href="#">
-              Услуги
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="<%= transfers_path %>">Трансферы в/из Аэропорта</a>
-              <a class="dropdown-item" href="<%= photoshoot_path %>">Фотосессии</a>
-              <a class="dropdown-item" href="<%= wedding_path %>">Свадебные церемонии</a>
-              <a class="dropdown-item" href="<%= ferries_path %>">Паромы на острова</a>
-              <a class="dropdown-item" href="<%= spa_path %>">СПА</a>
-            </div>
-            <%= image_tag('down-chevron.svg')%>
-          </div>
-        </li>
-        <li>
-          <a class="shoping-button" href="<%= prices_path %>" target="_blank">Прайс</a>
-        </li>
-      </ul>
-
-    </nav>
-
-    <%= link_to carts_path do %>
-      <div id="basket">
-        <span id='white' class="hidden"><%= image_tag('shopping-cart-white.svg')%></span>
-        <span id='black'><%= image_tag('shopping-cart.svg')%></span>
-        <div class="Oval-2">
-          <span class="layer"><%= @cart.cart_items.count %></span>
-        </div>
-      </div>
-    <% end %>
-
   </div>
 
 
@@ -256,7 +129,9 @@
       </div>
     </div>
   </div>
-  <%= render 'shared/flash', flash: flash %>
 
 </header>
+<div class="flash">
+  <%= render 'shared/flash', flash: flash %>
+</div>
 <%= render 'shared/order_call_modale' %>

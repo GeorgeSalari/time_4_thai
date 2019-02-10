@@ -37,7 +37,7 @@
           </button>
         </div>
         <div class="tourTitleContainer">
-          <%= link_to show_path(path, tour) do %>
+          <%= link_to show_path(tour.class.name, tour) do %>
             <p class="tourTitle"><%= tour.title %></p>
             <%= show_svg 'arrow.svg' %>
           <% end %>

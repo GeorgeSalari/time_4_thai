@@ -30,6 +30,20 @@ module ApplicationHelper
       boat_path(tour)
     when 'shop_path'
       shop_path(tour)
+    when 'SeaTour'
+      sea_tour_path(tour)
+    when 'LandTour'
+      land_tour_path(tour)
+    when 'EveningShow'
+      evening_show_path(tour)
+    when 'PhuketTour'
+      phuket_tour_path(tour)
+    when 'AviaTour'
+      avia_tour_path(tour)
+    when 'Boat'
+      boat_path(tour)
+    when 'Shop'
+      shop_path(tour)
     else
       sea_tour_path(tour)
     end
@@ -63,4 +77,26 @@ module ApplicationHelper
     all_index_tour = shops + boats + sea_tours + land_tours + evening_shows + phuket_tours + avia_tours + individual_tours
     all_index_tour
   end
+
+  def find_item_tour(product_id, product_type)
+    case product_type
+    when 'SeaTour'
+      SeaTour.find(product_id)
+    when 'LandTour'
+      LandTour.find(product_id)
+    when 'EveningShow'
+      EveningShow.find(product_id)
+    when 'PhuketTour'
+      PhuketTour.find(product_id)
+    when 'AviaTour'
+      AviaTour.find(product_id)
+    when 'Boat'
+      Boat.find(product_id)
+    when 'Shop'
+      Shop.find(product_id)
+    when 'StaticPage'
+      StaticPage.find(product_id)
+    end
+  end
+  
 end
