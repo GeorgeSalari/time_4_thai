@@ -33,7 +33,9 @@
               </div>
               <div class="col-7">
                 <div>
-                  <p class="cart-item-title"><%= item.item_title %></p>
+                  <%= link_to show_path(item.product_type, item)  do %>
+                    <p class="cart-item-title"><%= item.item_title %></p>
+                  <% end %>
                   <%= link_to "×", cart_item_path(item), method: :delete, class: 'delete-cart-item' %>
                 </div>
                 <div class="total-price-container">
