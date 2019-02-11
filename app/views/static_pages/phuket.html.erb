@@ -1,0 +1,130 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
+<% end %>
+<%= render 'shared/navbar' %>
+<!-- Start Banner Area -->
+<section class="asana-banner relative">
+  <%= image_tag 'main.jpg', id: 'mainHeaderImd' %>
+  <div class="main-container">
+    <div class="container">
+      <%= render 'shared/flash', flash: flash %>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-8">
+          <div class="asana-banner-content text-center">
+            <h1 class="text-white">экскурсии на<br/><span>Пхукете</span></h1>
+          </div>
+        </div>
+      </div>
+
+</section>
+
+<div class="container main-content">
+	<div class="row">
+		<div class="col-3">
+			<div class="left-menu">
+				<label class="container-label">Юговосточная Азия
+				  <input type="checkbox" value="avia_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Вечерние шоу
+				  <input type="checkbox" value="evening_shows" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Индивидуальные
+				  <input type="checkbox" value="individual_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Сухопутные
+				  <input type="checkbox" value="land_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Туры по Пхукету
+				  <input type="checkbox" value="phuket_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Морские
+				  <input type="checkbox" value="sea_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Лодки
+				  <input type="checkbox" value="boats" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Шоппинг
+				  <input type="checkbox" value="shops" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Фотоссесии/Церемонии
+				  <input type="checkbox" value="photoshoots" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Недвижимость
+				  <input type="checkbox" value="realty" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">СПА
+				  <input type="checkbox" value="spa" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-label">Трансферы
+				  <input type="checkbox" value="transfers" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
+			</div>
+		</div>
+		<div class="col-9" id="phuket-tour-container">
+			<div class="avia_tours block-tours-container show">
+				<h2>Юговосточная Азия</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @avia_tours} %>
+			</div>
+			<div class="evening_shows block-tours-container show">
+				<h2>Вечерние шоу</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @evening_shows} %>
+			</div>
+			<div class="individual_tours block-tours-container show">
+				<h2>Индивидуальные Туры</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @individual_tours} %>
+			</div>
+			<div class="land_tours block-tours-container show">
+				<h2>Сухопутные Туры</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @land_tours} %>
+			</div>
+			<div class="phuket_tours block-tours-container show">
+				<h2>Туры по Пхукету</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @phuket_tours} %>
+			</div>
+			<div class="sea_tours block-tours-container show">
+				<h2>Морские Туры</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @sea_tours} %>
+			</div>
+			<div class="boats block-tours-container show">
+				<h2>Индивидуальные Лодки</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @boats} %>
+			</div>
+			<div class="shops block-tours-container show">
+				<h2>Шоппинг</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @shops} %>
+			</div>
+			<div class="photoshoots block-tours-container show">
+				<h2>Фотоссесии/Свадебные Церемонии</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @photoshoots} %>
+			</div>
+			<div class="realty block-tours-container show">
+				<h2>Аренда/Покупка Недвижимости</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @realty} %>
+			</div>
+			<div class="spa block-tours-container show">
+				<h2>СПА Процедуры</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @spa} %>
+			</div>
+			<div class="transfers block-tours-container show">
+				<h2>Трансферы</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @transfers} %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Start Footer Widget -->
+<%= render "shared/footer" %>

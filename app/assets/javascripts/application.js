@@ -24,6 +24,25 @@ $(document).ready(function(){
       totalAdultPrice,
       totalChildPrice;
 
+  $('.container-label input').change(function(){
+    if ($(this).parent().find('input').is(':checked')) {
+      $('#phuket-tour-container .'+$(this).val()).addClass('show')
+      $('#phuket-tour-container .'+$(this).val()).removeClass('hidden')
+      $('#phuket-tour-container .block-tours-container.show').css('margin-top', '50px')
+      $($('#phuket-tour-container .block-tours-container.show')[0]).css('margin-top', '0')
+    } else {
+      debugger
+      $('#phuket-tour-container .'+$(this).val()).removeClass('show')
+      $('#phuket-tour-container .'+$(this).val()).addClass('hidden')
+      $('#phuket-tour-container .block-tours-container.show').css('margin-top', '50px')
+      $($('#phuket-tour-container .block-tours-container.show')[0]).css('margin-top', '0')
+    }
+  })
+
+  $('.region-container .active.phuket').click(function(){
+    window.location.href = '/phuket'
+  })
+
   $('.full_content_show').click(function(){
     $(this).hide();
     $('.full-content').show();

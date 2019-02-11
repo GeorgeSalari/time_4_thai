@@ -31,7 +31,6 @@
 
           <!-- END modal images showing -->
 
-          <%#= show_svg 'tour-mask1.svg' %>
           <button onclick="openModal(<%= "imagesModal_#{tour.class.name}_#{tour.id}" %>);currentSlide(1, '<%= tour.class.name %>')">
             <%= image_tag '5.png' %>
           </button>
@@ -49,7 +48,6 @@
           <p class="main-price-container">
             взр. – <%= tour.adult_price %>฿, дет. - <%= tour.child_price %>฿
           </p>
-          <!-- <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= tour.title %>" data-adult="<%= tour.adult_price %>" data-productType="<%= product_type %>"" data-productId="<%= tour.id %>" data-child="<%= tour.child_price %>">Заказать</button> -->
         </div>
         <div class="shortContentContainer">
           <p><%= tour.short_content %></p>

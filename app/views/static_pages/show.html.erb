@@ -1,0 +1,100 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag    'sea_tours' %>
+<% end %>
+
+<%= render 'shared/navbar' %>
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <p class="path-history">
+    <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", '#' %> / <%= link_to @shop.title, shop_path(@shop) %>
+  </p>
+
+  <h1>
+    <%= @shop.title %>
+  </h1>
+
+  <div class="row image-container">
+    <div class="col-8">
+
+      <div class="fotorama" data-navposition="bottom" data-nav="thumbs" click='true' allowfullscreen='true' >
+        <% @shop.images.each do |image| %>
+          <%= image_tag image.url %>
+        <% end %> 
+      </div>
+
+      <div class="short-content">
+        <h2>Описание:</h2>
+        <p>
+          <%= @shop.short_content %>
+        </p>
+        <a href="javascript:;" class="full_content_show">Читать больше</a>
+      </div>
+      <div class="full-content">
+        <p><%= @shop.content.html_safe %></p>
+        <a href="javascript:;" class="full_content_hide">Скрыть</a>
+      </div>
+
+      <div class="tour-program">
+        <h2>Программа тура:</h2>
+        <ul>
+          <div class="vertical-line"></div>
+          <% @shop.tour_program.split(',').each do |point| %>
+            <li>
+              <%= show_svg 'point.svg' %>
+              <%= point %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-6 tour-included">
+          <h2>Что включено:</h2>
+          <ul>
+            <% @shop.included.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-6 tour-necessary">
+          <h2>Что брать с собой?</h2>
+          <ul>
+            <% @shop.necessary.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="form-container">
+        <%= render partial: 'shared/order_tour_form', :locals => { tour: @shop, product_id: @shop.id} %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="row">
+    <div class="section-title-17 text-center col-12">
+      <h2 class="review-title">
+         Отзывы
+      </h2>
+    </div>
+    <div class="col-7">
+      <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
+    </div>
+    <div class="col-5">
+      <%= render partial: 'shared/comment_form', :locals => { product_type: @shop.class.name, product_id: @shop.id} %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

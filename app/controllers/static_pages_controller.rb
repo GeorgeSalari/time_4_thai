@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :new_order, :new_call_order, only: [:individual, :realty_rent, :realty_buy, :transfer, :photoshoot, :wedding, :spa]
+  before_action :new_order, :new_call_order, only: [:individual, :realty_rent, :realty_buy, :transfer, :photoshoot, :wedding, :spa, :phuket]
   rescue_from NoMethodError, :with => :check_error
   before_action :set_static_page, only: [:edit, :update]
 
@@ -36,6 +36,21 @@ class StaticPagesController < ApplicationController
   def spa
     @spa = StaticPage.find(2)
     @comments = Comment.where(tour_type: "StaticPage", tour_id: 2)
+  end
+
+  def phuket
+    @sea_tours = SeaTour.order(order_number: :asc)
+    @land_tours = LandTour.order(order_number: :asc)
+    @evening_shows = EveningShow.order(order_number: :asc)
+    @avia_tours = AviaTour.order(order_number: :asc)
+    @individual_tours = IndividualTour.order(order_number: :asc)
+    @phuket_tours = PhuketTour.order(order_number: :asc)
+    @boats = Boat.order(order_number: :asc)
+    @shops = Shop.order(order_number: :asc)
+    @photoshoots = '' #TO DO
+    @realty = '' #TO DO
+    @spa = '' #TO DO
+    @transfers = '' #TO DO
   end
 
   def new

@@ -671,6 +671,41 @@ button.call-request:focus {
   margin-top: 40px;
 }
 
+.region-container .col-3.active {
+  cursor: pointer;
+}
+
+.region-container .col-3.coming-soon {
+  position: relative;
+}
+
+.region-container .col-3.coming-soon .mask {
+  display: none;
+}
+
+.region-container .col-3.coming-soon:hover .mask {
+  display: inherit;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  border: none;
+  border-radius: 0;
+  opacity: 0.8;
+}
+
+.region-container .col-3.coming-soon .mask p {
+  color: #000;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: 900;
+  transform: translate(-50%, -50%);
+}
+
 .region-container > div {
   display: flex;
   flex-direction: column;
