@@ -65,7 +65,7 @@
       </div>
       <%= render partial: 'shared/tours', locals: {all_tours: @all_index_tour, path: 'sea_tour_path', product_type: 'SeaTour'} %>
       <div class="path-button-container text-center">
-        <%= link_to '#', class: 'path-button' do %>
+        <%= link_to phuket_path, class: 'path-button' do %>
           Все экскурсии
         <% end %>
       </div>
@@ -91,7 +91,7 @@
 
       <% @comments.each_with_index do |comment, com_index| %>
 
-        <div class='container index-review-block reviews-block <%= "reviews-block-#{com_index}" %> <%= "hidden" if com_index > 0 %>'>
+        <div class='container <%= "reviews-block-#{com_index}" %> index-review-block reviews-block <%= "hidden" if com_index > 1 %>'>
           <div class="row">
             <div class="col-6 tour-avatar-container">
               <%= show_svg 'comment-mask.svg' %>

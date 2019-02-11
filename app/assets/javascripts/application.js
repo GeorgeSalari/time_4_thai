@@ -21,37 +21,165 @@ $(document).ready(function(){
   var tourTitle,
       adultPrice,
       childPrice,
-      totalAdultPrice,
-      totalChildPrice;
+      totalAdultPrice = 0,
+      totalChildPrice = 0,
+      totalToursPrice = 0;
+
+  $('.container-label input').change(function(){
+    if ($(this).parent().find('input').is(':checked')) {
+      $('#phuket-tour-container .'+$(this).val()).addClass('show')
+      $('#phuket-tour-container .'+$(this).val()).removeClass('hidden')
+      $('#phuket-tour-container .block-tours-container.show').css('margin-top', '50px')
+      $($('#phuket-tour-container .block-tours-container.show')[0]).css('margin-top', '0')
+    } else {
+      $('#phuket-tour-container .'+$(this).val()).removeClass('show')
+      $('#phuket-tour-container .'+$(this).val()).addClass('hidden')
+      $('#phuket-tour-container .block-tours-container.show').css('margin-top', '50px')
+      $($('#phuket-tour-container .block-tours-container.show')[0]).css('margin-top', '0')
+    }
+  })
+
+  $('.region-container .active.phuket').click(function(){
+    window.location.href = '/phuket'
+  })
+
+  $('.full_content_show').click(function(){
+    $(this).hide();
+    $('.full-content').show();
+  })
+
+  $('.full_content_hide').click(function(){
+    $(this).hide();
+    $('.full-content').hide();
+    $('.full_content_show').show();
+  })
 
   function calc_total_price(){
+    var input_class = $('#adult_count').attr('class'),
+        adult_count,
+        child_count;
+    
+    if (input_class == undefined) {
+      adult_count = $('#adult_count').val();
+      child_count = $('#child_count').val()
+    } else {
+      $('.'+input_class.split(' ')[0]).each(function(){
+        adult_count = $(this).val();
+        adultPrice = $(this).parent().parent().find('span.adult.hidden').text();
+        totalAdultPrice = parseInt( adult_count ) * parseInt( adultPrice );
+        childPrice = $(this).parent().parent().parent().find('span.child.hidden').text();
+        child_count = $(this).parent().parent().parent().find('#child_count').val();
+        totalChildPrice = parseInt( child_count ) * parseInt( childPrice );
+        $(this).parent().parent().parent().parent().find('.total-price-container p').text(totalAdultPrice + totalChildPrice + ' ฿')
+      })
+    }
+
     adultPrice = parseInt( $('#adult-price').text().slice(0,-1) );
-    totalAdultPrice = parseInt( $('#adult_count').val() ) * adultPrice;
+    totalAdultPrice = parseInt( adult_count ) * adultPrice;
     childPrice = parseInt( $('#child-price').text().slice(0,-1) );
-    totalChildPrice = parseInt( $('#child_count').val() ) * childPrice;
+    totalChildPrice = parseInt( child_count ) * childPrice;
     $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
   }
 
   calc_total_price();
   
+  function calc_total_chart_price(){
+    totalAdultPrice = 0;
+    totalChildPrice = 0;
+    totalToursPrice = 0;
+    $('#cart-block .item-container').each(function(){
+      var allClasses = $(this).attr('class').split(' '), itemId = allClasses[allClasses.length - 2],
+          itemType = allClasses[allClasses.length - 1],
+          adult = parseFloat( $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').val() ),
+          child = parseFloat( $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').val() ),
+          priceAdult = parseFloat( $(this).find('span.adult.hidden').text() ),
+          priceChild = parseFloat( $(this).find('span.child.hidden').text() ),
+          totalPrice;
+          
+          if ( !isNaN(child) && !isNaN(adult) ) {
+            totalPrice = adult * priceAdult + child * priceChild;
+          } else if ( !isNaN(adult) ) {
+            totalPrice = adult * priceAdult;
+          } else if (!isNaN(child) ) {
+            totalPrice = child * priceChild;
+          } else {
+            totalPrice = 0;
+          }
+          var totalAdultPrice = adult * priceAdult,
+              totalChildPrice = child * priceChild;
+
+          $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').on("change paste keyup", function(){
+            totalPrice = 0;
+            totalAdultPrice = $(this).val() * priceAdult;
+            if ( isNaN(totalChildPrice) ) {
+              totalPrice += totalAdultPrice
+            } else {
+              totalPrice += totalAdultPrice + totalChildPrice;
+            }
+            $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+            update_total_price();
+          })
+
+          $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').on("change paste keyup", function(){
+            totalPrice = 0;
+            totalChildPrice = $(this).val() * priceChild;
+            if ( isNaN(totalAdultPrice) ) {
+              totalPrice += totalChildPrice
+            } else {
+              totalPrice += totalAdultPrice + totalChildPrice;
+            }
+            $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+            update_total_price();
+          })
+      $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+      totalToursPrice += totalPrice;
+    });
+
+    $('#allToursPrice').text(totalToursPrice);
+  }
+
+  calc_total_chart_price();
 
   $('.pplsCounter svg').click(function(){
     var input_id = $(this).parent().attr('class').split(' ')[0],
         click_value = $(this).parent().attr('class').split(' ')[1],
-        input_value = parseInt( $('#'+input_id).val() );
+        input_value,
+        input_class = $(this).parent().parent().find('input').attr('class');
+
+    if (input_class == undefined) {
+      input_value = parseInt( $('#'+input_id).val() )
+    } else {
+      input_value = parseInt( $('#'+input_id + '.' +input_class.split(' ').join(".") ).val() )
+    }
+
     if (click_value == 'plus') {
-      $('#'+input_id).val(input_value + 1)
+      if (input_class == undefined) {
+        $('#'+input_id).val(input_value + 1)
+      } else {
+        $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value + 1)
+      }
       calc_total_price();
+      calc_total_chart_price();
     } else {
       if (input_id == 'adult_count') {
         if (input_value > 1) {
-          $('#'+input_id).val(input_value - 1);
+          if (input_class == undefined) {
+            $('#'+input_id).val(input_value - 1)
+          } else {
+            $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value - 1)
+          }
           calc_total_price();
+          calc_total_chart_price();
         }
       } else {
         if (input_value >= 1) {
-          $('#'+input_id).val(input_value - 1);
+          if (input_class == undefined) {
+            $('#'+input_id).val(input_value - 1)
+          } else {
+            $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value - 1)
+          }
           calc_total_price();
+          calc_total_chart_price();
         }
       }
     }
@@ -169,6 +297,11 @@ $(document).ready(function(){
           $(this).find('svg').show();
           $('.arrow-container-left').addClass('left-arrow-container')
         }
+        if ($('#projects').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#projects").offset().top
+          }, 500);
+        }
       }
     })
   })
@@ -201,6 +334,7 @@ $(document).ready(function(){
         
         var review_showing = find_next_review();
         var first_next_review, second_next_review;
+        
         $('.reviews-block').addClass('hidden');
         if ( parseInt(review_showing) == (review_length - 1) ) {
           first_next_review = undefined
@@ -225,6 +359,11 @@ $(document).ready(function(){
         } else {
           $(this).find('svg').show();
           $('.arrow-container-right').addClass('right-arrow-container')
+        }
+        if ($('#projects').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#projects").offset().top
+          }, 500);
         }
       }
     })
@@ -371,35 +510,23 @@ $(document).ready(function(){
       newOrderForm = "#new_order"
       $(this).attr("disabled", true);
     }
-
     $.post( "/cart_items", $(newOrderForm).serialize() )
       .done(function(){
-        var t = $(newOrderForm+' button.cart'), b = $('.Oval-2');
-        t.parent().append("<div id=add_cart>1</div>");
-        var e = $('#add_cart');
-        if ( newOrderForm.includes('fix') ) {
-          new_position_top = $(newOrderForm).offset().top - $('.Oval-2').offset().top - 70
-          new_position_left = $('.Oval-2').offset().left - $(newOrderForm).offset().left + 15
+        $('#orderTour').modal('toggle');
+        $('.modal-item-title').text( $('#tour-title').text() );
+        $('.modal-price-container p').text( $('#finalTotalPrice').text() );
+        $('#modal_order_booking_date').val( $('#order_booking_date').val() );
+        $('#modal_adult_count').val( $('#adult_count').val() );
+        $('#modal_child_count').val( $('#child_count').val() );
+        $('#moda-tour-img').attr( 'src', $('.fotorama__loaded--img.fotorama__active').find('.fotorama__img').attr('src') )
+        
+        var itemsCount = parseInt( $('.layer').text() );
+        if (itemsCount < 9) {
+          $('.layer').text(itemsCount + 1);
         } else {
-          $("#new_order.fix #add_cart").remove();
-          new_position_top = $('#orderTour .modal-body').offset().top - $('.Oval-2').offset().top
-          new_position_left = $('.Oval-2').offset().left - $('#orderTour .modal-body').offset().left
+          $('.layer').css('right', '4px');
+          $('.layer').text(itemsCount + 1);
         }
-
-        e.animate({top: -new_position_top, left: new_position_left}, 1000, function(){
-          if ( !newOrderForm.includes('fix') ) {
-            $('#orderTour').modal('toggle');
-          }
-          e.remove();
-          var itemsCount = parseInt( $('.layer').text() );
-          if (itemsCount < 9) {
-            $('.layer').text(itemsCount + 1);
-          } else {
-            $('.layer').css('right', '6px');
-            $('.layer').text(itemsCount + 1);
-          }
-
-        });
       })
       .fail(function(){
         $('#orderTour').modal('toggle');

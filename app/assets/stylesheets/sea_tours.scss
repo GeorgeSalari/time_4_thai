@@ -69,6 +69,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 30px;
+  position: relative;
 }
 
 #new_order .formButtonsContainer input,
@@ -279,6 +280,10 @@ body {
 
 b, strong {
   font-weight: 900;
+}
+
+.path-history {
+  padding-top: 15px;
 }
 
 .path-history a {
@@ -557,6 +562,154 @@ b, strong {
 
 .arrow-container-left svg {
   display: none;
+}
+
+.asana-banner .main-container,
+.asana-banner img {
+  height: 400px !important;
+  min-height: 400px !important;
+}
+
+.main-content .col-3 .left-menu {
+  width: 250px;
+  border-radius: 6px;
+  box-shadow: 0 5px 20px 0 rgba(6, 52, 87, 0.14);
+  background-color: #ffffff;
+  padding: 30px 24px;
+}
+
+.main-content .col-3 .left-menu input {
+  margin-right: 11px;
+  margin-bottom: 10px;
+}
+
+.main-content .col-3 .left-menu p {
+  display: inline;
+}
+
+.container.main-content {
+  margin-top: 57px;
+}
+
+/* Customize the label (the container) */
+.container-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #cdd1d4;
+}
+
+/* On mouse-over, add a grey background color */
+.container-label:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-label input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-label .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#phuket-tour-container .tour-container {
+  width: 270px;
+  height: 515px;
+  margin: 0;
+}
+
+#phuket-tour-container .shortContentContainer {
+  height: 155px;
+}
+
+#phuket-tour-container .tourTitleContainer .tourTitle {
+  font-size: 16px;
+}
+
+.container #phuket-tour-container h2 {
+  margin: 0;
+  margin-top: -16px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  position: relative;
+}
+
+.container #phuket-tour-container h2:after {
+  display: block;
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: #1fa7f8;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+}
+
+#phuket-tour-container .block-tours-container {
+  margin-top: 50px;
+}
+
+#phuket-tour-container .block-tours-container.show:first-child {
+  margin-top: 0;
+}
+
+.navbar #undefined-sticky-wrapper.sticky-wrapper {
+  padding-top: 0;
 }
 
 @import 'custom/navbar_cart'

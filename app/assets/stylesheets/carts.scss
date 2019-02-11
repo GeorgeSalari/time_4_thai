@@ -2,17 +2,40 @@
   min-height: 50vh;
 }
 
-.cart-container h1,
 .cart-container h2 {
+  font-size: 20px;
   font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
   text-align: center;
-  color: #f5a623;
-  margin: 30px 0;
 }
 
-.cart-container > .row {
-  padding: 30px 0;
-  border-bottom: 1px solid #e2e4e4;
+.cart-container h1 {
+  font-size: 36px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  position: relative;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cart-container h1:after {
+  display: block;
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: #1fa7f8;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .item-title {
@@ -131,19 +154,14 @@
 
 .allToursPriceText,
 .allToursPriceAmount {
-  color: #000;
-  height:45px;
-  vertical-align: middle;
+  font-size: 28px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
   display: inline-block;
-  margin-top: 20px;
-}
-
-.allToursPriceAmount {
-  color: #078eaa;
-  font-weight: bold;
-  font-size: 46px;
-  min-width: 150px;
-  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -211,6 +229,367 @@
     text-align: left !important;
     padding-left: 10px;
   }
+}
+
+.cart-favorit-switching {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-favorit-switching button {
+  width: 185px;
+  height: 47px;
+  border-radius: 6px;
+  color: #1fa7f8;
+  border-color: #1fa7f8;
+  outline: none;
+  cursor: pointer;
+}
+
+.cart-favorit-switching button#cart-favorites {
+  display: flex;
+  justify-content: center;
+  margin-left: -4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.cart-favorit-switching button#cart-favorites svg {
+  margin-top: 3px;
+  margin-right: 9px;
+}
+
+.cart-favorit-switching button#cart-favorites.active svg path {
+  fill: #fff;
+}
+
+.cart-favorit-switching button.active {
+  background-color: #1fa7f8;
+  color: #fff;
+}
+
+.cart-container .row.item-container {
+  border-radius: 6px;
+  box-shadow: 0 5px 20px 0 rgba(6, 52, 87, 0.14);
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 30px;
+}
+
+.cart-item-title {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.delete-cart-item {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  font-size: 32px;
+  line-height: 18px;
+  color: #d0021b;
+}
+
+.row.item-container .col-7 > div {
+  max-width: 80%;
+}
+
+.total-price-container {
+  margin-top: 9px;
+  padding: 0;
+}
+
+.total-price-container p {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.date-container {
+  padding: 0;
+}
+
+.date-container input {
+  height: 35px;
+  border: solid 1px #d2dbe2;
+  width: 255px;
+  padding-left: 40px;
+  color: #4a4a4a;
+  border-radius: 6px;
+  position: relative;
+}
+
+.date-container svg {
+  position: absolute;
+  left: 14px;
+  top: 22%;
+  z-index: 2;
+}
+
+.row.item-container .col-5.p-0 img {
+  width: 100%;
+}
+
+.pplsCounterContainer .pplsCounter {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pplsCounterContainer {
+  position: relative;
+}
+
+.row.item-container .col-7 button {
+  position: absolute;
+  bottom: 9px;
+  right: 0;
+  width: 132px;
+  height: 40px;
+  border-radius: 6px;
+  border-color: #1fa7f8;
+  color: #1fa7f8;
+  cursor: pointer;
+}
+
+.pplsCounterContainer .pplsCounter.adult {
+  padding-top: 15px;
+}
+
+.pplsCounterContainer .pplsCounter > div {
+  display: flex;
+  margin-left: 26px;
+}
+
+.pplsCounterContainer .pplsCounter label {
+  min-width: 65px;
+}
+
+.pplsCounterContainer .pplsCounter > div input {
+  width: 30px;
+  border: none;
+  margin-left: 5px;
+  margin-top: -10px;
+  background: transparent;
+  font-size: 16px;
+  margin-right: -7px;
+  text-align: center;
+}
+
+.order-form-container {
+  border-radius: 9px;
+  border: 8px solid #0ec9cc;
+  padding: 30px 68px;
+}
+
+#new_order .form-input {
+  margin-top: 20px;
+}
+
+.orderAllContainer {
+  width: 100%;
+}
+
+#new_order .form-input input {
+  border-radius: 4px;
+}
+
+#new_order > textarea {
+  margin-bottom: 0;
+}
+
+/* The container */
+.container-radio {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#new_order .container-radio.last {
+  margin-bottom: 20px;
+}
+
+#new_order .container-radio.second {
+  margin-top: -6px;
+}
+
+#new_order .container-radio.second span:last-child {
+  top: 12px;
+}
+
+#new_order .container-radio.second span:first-child {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.58;
+  letter-spacing: normal;
+  color: #71787e;
+  margin-top: -10px;
+}
+
+/* Hide the browser's default radio button */
+.container-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  border: 1px solid #1fa7f8;
+}
+
+/* On mouse-over, add a grey background color */
+.container-radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-radio input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-radio .checkmark:after {
+  top: 2px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #1fa7f8;
+}
+
+.btn-primary.book {
+  width: 215px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #0ec9cc;
+  border-color: #0ec9cc;
+  cursor: pointer;
+}
+
+#favorites-block .row.item-container .col-5.p-0 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+#favorites-block .row.item-container .col-7 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#favorites-block .row.item-container .col-5.p-0 img {
+  height: 109px;
+  widows: 170px;
+}
+
+#favorites-block .date-container input:disabled {
+  border: none;
+}
+
+#favorites-block .row.item-container .col-7 > div {
+  max-width: 90%;
+  display: flex;
+}
+
+#favorites-block .cart-item-title {
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+
+#favorites-block .total-price-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#favorites-block .date-container svg {
+  left: 0;
+  top: 16%;
+}
+
+#favorites-block .date-container input {
+  padding-left: 25px;
+}
+
+#favorites-block .child_count,
+#favorites-block .adult_count {
+  display: none;
+}
+
+#favorites-block .pplsCounterContainer {
+  margin-top: -14px;
+}
+
+#favorites-block .pplsCounterContainer .pplsCounter > div {
+  margin-left: 0;
+}
+
+#favorites-block .pplsCounterContainer .pplsCounter {
+  padding: 0;
+}
+
+.cart-container #favorites-block .row.item-container {
+  padding: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  min-height: 175px;
+}
+
+#favorites-block label {
+  margin-bottom: 0;
+  width: auto;
+}
+
+#favorites-block .pplsCounterContainer .pplsCounter > div input {
+  margin-top: -2px;
+  margin-left: -2px;
+}
+
+#favorites-block .row.item-container .col-7 button {
+  background-color: #0ec9cc;
+  color: #fff;
+  border-color: #0ec9cc;
 }
 
 @media (max-width: 650px) {

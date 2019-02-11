@@ -7,74 +7,97 @@
 
 <div class="container">
 
-  <h1>
+  <p class="path-history">
+    <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", phuket_path %> / <%= link_to @avia_tour.title, avia_tour_path(@avia_tour) %>
+  </p>
+
+  <h1 id="tour-title">
     <%= @avia_tour.title %>
   </h1>
 
-  <div class="text-center">
-    <% @avia_tour.images.each_with_index do |image, index| %>
-      <%= image_tag image.url(:bottom), class: "small_images #{index + 1}" %>
-    <% end %>
-  </div>
+  <div class="row image-container">
+    <div class="col-8">
 
-  <!-- Start modal images showing -->
-  <div id='imageModal_0' class="modal imagesModal">
-
-    <div class="modal-content">
-      <span class="close cursor" onclick="closeModal(<%= "imageModal_0" %>)">&times;</span>
-
-      <% @avia_tour.images.each do |image| %>
-        <div class='mySlides <%= "mySlides_0" %>'>
+      <div class="fotorama" data-navposition="bottom" data-nav="thumbs" click='true' allowfullscreen='true' >
+        <% @avia_tour.images.each do |image| %>
           <%= image_tag image.url %>
-        </div>
-      <% end %>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      <div class="column">
-        <% @avia_tour.images.each_with_index do |image,index| %>
-          <%= image_tag image.url(:bottom), class: "demo demo_0 cursor", onclick: "currentSlide(#{index + 1})" %>
-        <% end %>
+        <% end %> 
       </div>
 
-    </div>
-  </div>
-  <!-- END modal images showing -->
+      <div class="short-content">
+        <h2>Описание:</h2>
+        <p>
+          <%= @avia_tour.short_content %>
+        </p>
+        <a href="javascript:;" class="full_content_show">Читать больше</a>
+      </div>
+      <div class="full-content">
+        <p><%= @avia_tour.content.html_safe %></p>
+        <a href="javascript:;" class="full_content_hide">Скрыть</a>
+      </div>
 
-  <div class="row price-container">
-    <div class="col-4 text-right">
-      <p class="adult-price">
-        <%= image_tag 'user.svg' %>
-        B <%= @avia_tour.adult_price %>
-      </p>
-    </div>
-    <div class="col-4 text-center">
-      <p class="child-price">
-        <%= image_tag 'kids-couple.svg' %>
-        B <%= @avia_tour.child_price %>
-      </p>
-    </div>
-    <div class="col-4 text-left">
-      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @avia_tour.title %>" data-adult="<%= @avia_tour.adult_price %>" data-productType="AviaTour" data-productId="<%= @avia_tour.id %>" data-child="<%= @avia_tour.child_price %>">Заказать</button>
+      <div class="tour-program">
+        <h2>Программа тура:</h2>
+        <ul>
+          <div class="vertical-line"></div>
+          <% @avia_tour.tour_program.split(',').each do |point| %>
+            <li>
+              <%= show_svg 'point.svg' %>
+              <%= point %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-      <!-- The Modal Order Tour -->
-      <%= render partial: 'shared/order_tour', :locals => { product_type: "AviaTour", product_id: @avia_tour.id} %>
-      <!-- End Modal Order Tour  -->
+      <div class="row">
+        <div class="col-6 tour-included">
+          <h2>Что включено:</h2>
+          <ul>
+            <% @avia_tour.included.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-6 tour-necessary">
+          <h2>Что брать с собой?</h2>
+          <ul>
+            <% @avia_tour.necessary.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="short-content">
-    <h2>Описание:</h2>
-    <p>
-      <%= @avia_tour.short_content %>
-    </p>
-  </div>
-  <div class="full-content">
-    <p><%= @avia_tour.content.html_safe %></p>
-  </div>
-  <div class="form-container">
-    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "AviaTour", product_id: @avia_tour.id} %>
+
+    <div class="col-4">
+      <div class="form-container">
+        <%= render partial: 'shared/order_tour_form', :locals => { tour: @avia_tour, product_id: @avia_tour.id} %>
+      </div>
+    </div>
+
   </div>
 
-  <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
-  <%= render partial: 'shared/comment_form', :locals => { product_type: "AviaTour", product_id: @avia_tour.id} %>
+  <div class="row">
+    <div class="section-title-17 text-center col-12">
+      <h2 class="review-title">
+         Отзывы
+      </h2>
+    </div>
+    <div class="col-7">
+      <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
+    </div>
+    <div class="col-5">
+      <%= render partial: 'shared/comment_form', :locals => { product_type: @avia_tour.class.name, product_id: @avia_tour.id} %>
+    </div>
+  </div>
 </div>
+
+<%= render 'shared/order_tour' %>
+
 <%= render "shared/footer" %>

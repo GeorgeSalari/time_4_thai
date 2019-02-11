@@ -884,7 +884,7 @@ td, th {
 }
 
 .total-header-area {
-  padding: 20px 0;
+  padding: 0;
   background: #fff;
   position: relative;
   z-index: 999999;
@@ -4527,17 +4527,15 @@ td, th {
 }
 
 .modal-header {
-  border: solid 2px #d8dcdd;
+  border:none;
   position: relative;
 }
 
 .modal-header button.close {
   position: absolute;
-  right: -40px;
-  color: white;
+  right: 20px;
   font-size: 40px;
-  color: white;
-  top: -20px;
+  top: 10px;
 }
 
 .modal-header button.close:focus {
@@ -4555,18 +4553,30 @@ td, th {
 }
 
 .modal-header button.close span {
-  color: white;
+  color: #bbc1c6;
 }
 
 h5.modal-title {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 900;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #078eaa;
+  color: #000000;
   width: 100%;
+}
+
+h5.modal-title::after {
+  display: block;
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: #1fa7f8;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modal-footer {
@@ -4668,6 +4678,14 @@ p.mail a {
   font-size: 16px;
   color: #545c62;
   line-height: 1.56;
+}
+
+.short-content a, .full-content a {
+  color: #1fa7f8;
+}
+
+.short-content a:hover, .full-content a:hover {
+  text-decoration: underline;
 }
 
 .aventage-image img {
@@ -4921,3 +4939,145 @@ p.mail a {
   height: 307px;
   z-index: 2;
 }
+
+#orderTour .modal-body .button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#orderTour .modal-body .button-container a {
+  width: 260px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #0ec9cc;
+  border: 1px solid #0ec9cc;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+#orderTour .modal-body .button-container button {
+  width: 260px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #1fa7f8;
+  color: #1fa7f8;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+#orderTour .modal-body .row.item-container {
+  border-radius: 6px;
+  box-shadow: 0 5px 20px 0 rgba(6, 52, 87, 0.14);
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  min-height: 150px;
+  border: 1px solid #d2dbe2;
+}
+
+#orderTour .modal-body .row.item-container .col-4 img {
+  width: 100%;
+  height: 110px;
+}
+
+#orderTour .modal-body .row.item-container .col-7 > div {
+  max-width: 90%;
+  display: flex;
+}
+
+#orderTour .modal-body .modal-item-title {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+#orderTour .modal-body .modal-date-container {
+  display: flex;
+}
+
+#orderTour .modal-body .modal-price-container p {
+  margin: 6px 0;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+#orderTour .modal-body .modal-date-container input {
+  border: none;
+  color: #71787e;
+}
+
+#orderTour .modal-body .modal-date-container svg {
+  margin-top: 4px;
+  margin-right: 7px;
+}
+
+#orderTour .modal-body .modal-pplsCounterContainer {
+  display: flex;
+}
+
+#orderTour .modal-pplsCounter {
+  display: flex;
+}
+
+#orderTour .modal-pplsCounter input {
+  border: none;
+  margin-left: 10px;
+  margin-top: -7px;
+  width: 30px;
+}
+
+#orderTour .modal-content {
+  height: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
