@@ -17,14 +17,6 @@ $(document).ready(function(){
     }
   })
 
-  function update_total_price() {
-    totalToursPrice = 0;
-    $('.total-price-container').each(function(){
-      totalToursPrice += parseFloat( $(this).find('p span').text() )
-    });
-    $('#allToursPrice').text(totalToursPrice);
-  }
-
   function update_all_items() {
     var item_count = 0;
     $('.item-SeaTour-adult-count').each(function(){

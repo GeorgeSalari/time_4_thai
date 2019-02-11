@@ -2,64 +2,54 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title" id="orderCallLabel">Забронировать екскурсию</h5>
+        <h5 class="modal-title" id="orderCallLabel">Добавлено в корзину</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p id="orderTourTitle"></p>
-        <%= form_for @order do |f| %>
-          <%= f.hidden_field :quantity, value: 1 %>
-          <%= f.hidden_field :product_type, value: product_type %>
-          <%= f.hidden_field :product_id, value: product_id %>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-input">
-                <label>Дата тура</label>
-                <%= f.date_field :booking_date %>
+        <div class="favorit-container">
+          <div class="row item-container item-2 SeaTour">
+            <div class="col-4 p-0">
+              <img src="https://time-4-thai.s3.amazonaws.com/uploads/sea_tour/images/2/bottom_Screen_Shot_2019-01-29_at_08.16.18.png" alt="Bottom screen shot 2019 01 29 at 08.16.18">
+            </div>
+            <div class="col-8">
+              <div>
+                <p class="modal-item-title">Экскурсия на 11 островов и остров Ранг Яй</p>
               </div>
-              <div class="pplsCounter adult row">
-                <div class="col-5">
-                  <%= image_tag 'user.svg' %>
+              <div class="modal-price-container">
+                <p>2500 ฿</p>
+              </div>
+
+              <div class="modal-date-container">
+                <%= show_svg 'calendar-alt-regular.svg' %>
+                <input type="text" name="" value="" disabled="true" placeholder="Дата не выбрана" id="modal_order_booking_date">
+              </div>
+
+              <div class="modal-pplsCounterContainer">
+
+                <div class="modal-pplsCounter adult">
                   <label>Взрослых</label>
+                  <input type="number" name="" value="1" class="item-adult-count item-2-adult-count item-SeaTour-adult-count" id="modal_adult_count" readonly="true">
                 </div>
-                <div class="col-7">
-                  <%= f.number_field :adult_count, min: 1, id: "adult_count", :required => true %>
-                </div>
-              </div>
-              <div class="pplsCounter row">
-                <div class="col-5">
-                  <%= image_tag 'kids-couple.svg' %>
+
+                <div class="modal-pplsCounter">
                   <label>Детей</label>
+                  <input type="number" name="" value="0" class="item-child-count item-2-child-count item-SeaTour-child-count" id="modal_child_count" readonly="true">
                 </div>
-                <div class="col-7">
-                  <%= f.number_field :child_count, id: "child_count" %>
-                </div>
-              </div>
-              <div class="calcTotalPrice">
-                <p>Итоговая стоимость: <span id="finalTotalPrice">0 ฿</span></p>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-input">
-                <label>Ваше имя</label>
-                <%= f.text_field :customer_name, :required => true, autocomplete: 'name' %>
-              </div>
 
-              <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
-
-              <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
-
-              <%= f.text_area :customer_comment, placeholder: "Комментарий", autocomplete: false %>
+              </div>
 
             </div>
           </div>
-          <div class="formButtonsContainer">
-            <button type="button" class="btn btn-primary cart">Добавить в корзину</button>
-            <%= f.submit "Забронировать сейчас", class: "btn btn-primary book" %>
-          </div>
-        <% end %>
+      
+        </div>
+        <div class="button-container">
+          <%= link_to 'Перейти к оплате', carts_path %>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            Продолжить выбор экскурсий
+          </button>
+        </div>
       </div>
     </div>
   </div>
