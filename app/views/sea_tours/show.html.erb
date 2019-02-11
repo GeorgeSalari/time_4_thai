@@ -17,53 +17,84 @@
 
   <div class="row image-container">
     <div class="col-8">
+
       <div class="fotorama" data-navposition="bottom" data-nav="thumbs" click='true' allowfullscreen='true' >
         <% @sea_tour.images.each do |image| %>
           <%= image_tag image.url %>
         <% end %> 
       </div>
+
+      <div class="short-content">
+        <h2>Описание:</h2>
+        <p>
+          <%= @sea_tour.short_content %>
+        </p>
+        <a href="javascript:;" class="full_content_show">Читать больше</a>
+      </div>
+      <div class="full-content">
+        <p><%= @sea_tour.content.html_safe %></p>
+        <a href="javascript:;" class="full_content_hide">Скрыть</a>
+      </div>
+
+      <div class="tour-program">
+        <h2>Программа тура:</h2>
+        <ul>
+          <div class="vertical-line"></div>
+          <% @sea_tour.tour_program.split(',').each do |point| %>
+            <li>
+              <%= show_svg 'point.svg' %>
+              <%= point %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-6 tour-included">
+          <h2>Что включено:</h2>
+          <ul>
+            <% @sea_tour.included.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-6 tour-necessary">
+          <h2>Что брать с собой?</h2>
+          <ul>
+            <% @sea_tour.necessary.split(',').each do |point| %>
+              <li>
+                <%= show_svg 'checkmark.svg' %>
+                <%= point %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="col-4">
-      
+      <div class="form-container">
+        <%= render partial: 'shared/order_tour_form', :locals => { tour: @sea_tour, product_id: @sea_tour.id} %>
+      </div>
     </div>
+    
   </div>
 
-  <div class="row price-container">
-    <div class="col-4 text-right adult-price-container">
-      <p class="adult-price">
-        <%= image_tag 'user.svg' %>
-        B <%= @sea_tour.adult_price %>
-      </p>
+  <div class="row">
+    <div class="section-title-17 text-center col-12">
+      <h2 class="review-title">
+         Отзывы
+      </h2>
     </div>
-    <div class="col-4 text-center child-price-container">
-      <p class="child-price">
-        <%= image_tag 'kids-couple.svg' %>
-        B <%= @sea_tour.child_price %>
-      </p>
+    <div class="col-7">
+      <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
     </div>
-    <div class="col-4 text-left">
-      <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @sea_tour.title %>" data-adult="<%= @sea_tour.adult_price %>" data-productType="SeaTour" data-productId="<%= @sea_tour.id %>" data-child="<%= @sea_tour.child_price %>">Заказать</button>
-
-      <!-- The Modal Order Tour -->
-      <%= render partial: 'shared/order_tour', :locals => { product_type: "SeaTour", product_id: @sea_tour.id} %>
-      <!-- End Modal Order Tour  -->
+    <div class="col-5">
+      <%= render partial: 'shared/comment_form', :locals => { product_type: @sea_tour.class.name, product_id: @sea_tour.id} %>
     </div>
   </div>
-  <div class="short-content">
-    <h2>Описание:</h2>
-    <p>
-      <%= @sea_tour.short_content %>
-    </p>
-  </div>
-  <div class="full-content">
-    <p><%= @sea_tour.content.html_safe %></p>
-  </div>
-  <div class="form-container">
-    <%= render partial: 'shared/order_tour_form', :locals => { product_type: "SeaTour", product_id: @sea_tour.id} %>
-  </div>
-
-  <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
-  <%= render partial: 'shared/comment_form', :locals => {product_type: "SeaTour", product_id: @sea_tour.id} %>
 </div>
 <%= render "shared/footer" %>

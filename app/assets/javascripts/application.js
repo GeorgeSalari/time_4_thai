@@ -180,6 +180,11 @@ $(document).ready(function(){
           $(this).find('svg').show();
           $('.arrow-container-left').addClass('left-arrow-container')
         }
+        if ($('#projects').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#projects").offset().top
+          }, 500);
+        }
       }
     })
   })
@@ -212,6 +217,7 @@ $(document).ready(function(){
         
         var review_showing = find_next_review();
         var first_next_review, second_next_review;
+        
         $('.reviews-block').addClass('hidden');
         if ( parseInt(review_showing) == (review_length - 1) ) {
           first_next_review = undefined
@@ -236,6 +242,11 @@ $(document).ready(function(){
         } else {
           $(this).find('svg').show();
           $('.arrow-container-right').addClass('right-arrow-container')
+        }
+        if ($('#projects').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#projects").offset().top
+          }, 500);
         }
       }
     })

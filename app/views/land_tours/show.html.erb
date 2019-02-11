@@ -76,33 +76,11 @@
     </div>
 
     <div class="col-4">
-
-      <!-- <div class="row price-container">
-        <div class="col-4 text-right">
-          <p class="adult-price">
-            <%= image_tag 'user.svg' %>
-            B <%= @land_tour.adult_price %>
-          </p>
-        </div>
-        <div class="col-4 text-center">
-          <p class="child-price">
-            <%= image_tag 'kids-couple.svg' %>
-            B <%= @land_tour.child_price %>
-          </p>
-        </div>
-        <div class="col-4 text-left">
-          <button data-toggle="modal" data-target="#orderTour" class="orderTourButtonShow" data-title="<%= @land_tour.title %>" data-adult="<%= @land_tour.adult_price %>" data-productType="LandTour" data-productId="<%= @land_tour.id %>" data-child="<%= @land_tour.child_price %>">Заказать</button> -->
-
-          <!-- The Modal Order Tour -->
-          <%#= render partial: 'shared/order_tour', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
-          <!-- End Modal Order Tour 
-        </div>
-      </div> -->
-
       <div class="form-container">
         <%= render partial: 'shared/order_tour_form', :locals => { tour: @land_tour, product_id: @land_tour.id} %>
       </div>
     </div>
+    
   </div>
 
   <div class="row">
@@ -115,7 +93,7 @@
       <%= render partial: 'shared/comment_show', :locals => { comments: @comments } %>
     </div>
     <div class="col-5">
-      <%= render partial: 'shared/comment_form', :locals => { product_type: "LandTour", product_id: @land_tour.id} %>
+      <%= render partial: 'shared/comment_form', :locals => { product_type: @land_tours.class.name, product_id: @land_tour.id} %>
     </div>
   </div>
 </div>
