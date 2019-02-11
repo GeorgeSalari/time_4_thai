@@ -126,8 +126,74 @@
       </div>
     </div>
 
-    <div id="favorites-block hidden">
-      
+    <div id="favorites-block" class="hidden">
+      <div class="row">
+        <% @cart.cart_items.each do |item| %>
+          <div class="col-6">
+            <div class="favorit-container">
+              <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
+                <div class="col-5 p-0">
+                  <%= image_tag item.item_image %>
+                </div>
+                <div class="col-7">
+                  <div>
+                    <%= link_to show_path(item.product_type, item)  do %>
+                      <p class="cart-item-title"><%= item.item_title %></p>
+                    <% end %>
+                    <%= link_to "×", cart_item_path(item), method: :delete, class: 'delete-cart-item' %>
+                  </div>
+                  <div class="total-price-container">
+                    <p><span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span>฿</p>
+                  </div>
+
+                  <div class="date-container">
+                    <%= show_svg 'calendar-alt-regular.svg' %>
+                    <input type="text" name="" value="<%= item.booking_date %>" disabled='true' placeholder='<%= "Дата не выбрана" if item.booking_date.nil? %>'>
+                  </div>
+
+                  <div class="pplsCounterContainer">
+
+                    <div class="pplsCounter adult">
+                      <span class="adult hidden"><%= item.adult_price %></span>
+                      <label>Взрослых</label>
+                      <div>
+                        <span class="adult_count minus">
+                          <%= show_svg 'minus.svg' %>
+                        </span>
+                        <%#= f.number_field :adult_count, min: 1, id: "adult_count", :required => true, value: 1, readonly: true %>
+                        <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count item-<%= item.product_id %>-adult-count item-<%= item.product_type %>-adult-count' id='adult_count' readonly='true'>
+                        <span class="adult_count plus">
+                          <%= show_svg 'plus.svg' %>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="pplsCounter">
+                      <span class="child hidden"><%= item.child_price %></span>
+                      <label>Детей</label>
+                      <div>
+                        <span class="child_count minus">
+                          <%= show_svg 'minus.svg' %>
+                        </span>
+                        <%#= f.number_field :child_count, id: "child_count", value: 0, readonly: true %>
+                        <input type="number" name="" value="<%= item.child_count %>" class='item-child-count item-<%= item.product_id %>-child-count item-<%= item.product_type %>-child-count' id='child_count' readonly='true'>
+                        <span class="child_count plus">
+                          <%= show_svg 'plus.svg' %>
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <button>В Корзину</button>
+
+                </div>
+              </div>
+          
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
 
   </div>
