@@ -3,6 +3,20 @@ $(document).ready(function(){
       submit_count = 0,
       last = false;
 
+  $('.cart-favorit-switching button').click(function(){
+    if ($(this).attr('id') == "cart-favorites") {
+      $('#favorites-block').removeClass('hidden');
+      $('#cart-block').addClass('hidden');
+      $('.cart-favorit-switching button').removeClass('active');
+      $(this).addClass('active');
+    } else {
+      $('#favorites-block').addClass('hidden');
+      $('#cart-block').removeClass('hidden');
+      $('.cart-favorit-switching button').removeClass('active');
+      $(this).addClass('active');
+    }
+  })
+
   function update_total_price() {
     totalToursPrice = 0;
     $('.total-price-container').each(function(){
