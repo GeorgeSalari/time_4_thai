@@ -518,6 +518,7 @@ $(document).ready(function(){
         $('#modal_order_booking_date').val( $('#order_booking_date').val() );
         $('#modal_adult_count').val( $('#adult_count').val() );
         $('#modal_child_count').val( $('#child_count').val() );
+        $('#moda-tour-img').attr( 'src', $('.fotorama__loaded--img.fotorama__active').find('.fotorama__img').attr('src') )
         
         var itemsCount = parseInt( $('.layer').text() );
         if (itemsCount < 9) {

@@ -21,6 +21,10 @@ class CartItem < ApplicationRecord
     self.update(cart_item_params(params) )
   end
 
+  def item_tour
+    find_item_tour()
+  end
+
   private
   def cart_item_params(params)
     {adult_count: params[:adult_count], child_count: params[:child_count], booking_date: params[:booking_date]}

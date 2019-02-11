@@ -4993,6 +4993,11 @@ p.mail a {
   border: 1px solid #d2dbe2;
 }
 
+#orderTour .modal-body .row.item-container .col-4 img {
+  width: 100%;
+  max-height: 110px;
+}
+
 #orderTour .modal-body .row.item-container .col-7 > div {
   max-width: 90%;
   display: flex;
