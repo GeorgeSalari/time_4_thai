@@ -11,7 +11,7 @@
     <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", phuket_path %> / <%= link_to @avia_tour.title, avia_tour_path(@avia_tour) %>
   </p>
 
-  <h1>
+  <h1 id="tour-title">
     <%= @avia_tour.title %>
   </h1>
 
@@ -97,4 +97,7 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/order_tour' %>
+
 <%= render "shared/footer" %>

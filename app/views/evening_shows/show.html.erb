@@ -11,7 +11,7 @@
     <%= link_to 'Главная', root_path %> / <%= link_to "Экскурсии на Пхукете", phuket_path %> / <%= link_to @evening_show.title, evening_show_path(@evening_show) %>
   </p>
 
-  <h1>
+  <h1 id="tour-title">
     <%= @evening_show.title %>
   </h1>
 
@@ -97,4 +97,7 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/order_tour' %>
+
 <%= render "shared/footer" %>
