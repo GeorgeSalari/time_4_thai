@@ -6,95 +6,157 @@
 
 <div class="container">
   <div class="cart-container">
-    <h1>Ваша корзина</h1>
-    <% @cart.cart_items.each do |item| %>
-      <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
-        <div class="col-4">
-          <%= image_tag item.item_image %>
-          <p class="item-title"><%= item.item_title %></p>
-        </div>
-        <div class="col-3 ppls-count">
-          <div class="row pb20 pt10">
-            <div class="col-5 text-right">
-              <%= image_tag 'user.svg' %>
-              <p>
-                Взрослыx
-              </p>
+    <h1>Ваши бронирования</h1>
+
+    <div class="cart-favorit-switching">
+      <button id="cart-basket" class="active">Корзина</button>
+      <button id="cart-favorites"><%= show_svg 'heart.svg' %>Избранное</button>
+    </div>
+
+    <div class="allToursPriceText-container text-right">
+      <p class='allToursPriceText'>Итого:</p>
+      <p class="allToursPriceAmount">&nbsp;<span id="allToursPrice">0</span>฿</p>
+    </div>
+
+    <div class="row">
+      <div class="col-7">
+        <% @cart.cart_items.each do |item| %>
+          <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
+            <div class="col-5 p-0">
+              <%= image_tag item.item_image %>
             </div>
-            <div class="col-4 price-container">
-              <p>
-                ฿ <span class="adult"><%= item.adult_price %></span>
-              </p>
-            </div>
-            <div class="col-3">
-              × <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count item-<%= item.product_id %>-adult-count item-<%= item.product_type %>-adult-count'>
+            <div class="col-7">
+              <div>
+                <p class="cart-item-title"><%= item.item_title %></p>
+                <%= link_to "×", cart_item_path(item), method: :delete, class: 'delete-cart-item' %>
+              </div>
+              <div class="total-price-container">
+                <p><span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span>฿</p>
+                <!-- <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= item.item_title %>" data-adult="<%= item.adult_price %>" data-productType="<%= item.product_type %>" data-productId="<%= item.product_id %>" data-child="<%= item.child_price %>" data-date="<%= item.booking_date %>" data-adultcount='<%= item.adult_count %>' data-childcount='<%= item.child_count %>'>Заказать</button> -->
+              </div>
+
+              <div class="date-container">
+                <%= show_svg 'calendar-alt-regular.svg' %>
+                <input type="date" name="" value="<%= item.booking_date %>">
+              </div>
+
+
+              <!-- <div class="row pb20 pt10">
+                <div class="col-5 text-right">
+                  <%= image_tag 'user.svg' %>
+                  <p>
+                    Взрослыx
+                  </p>
+                </div>
+                <div class="col-4 price-container">
+                  <p>
+                    ฿ <span class="adult"><%= item.adult_price %></span>
+                  </p>
+                </div>
+                <div class="col-3">
+                  × <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count item-<%= item.product_id %>-adult-count item-<%= item.product_type %>-adult-count'>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 text-right">
+                  <%= image_tag 'kids-couple.svg' %>
+                  <p>
+                    Детей
+                  </p>
+                </div>
+                <div class="col-4 price-container">
+                  <p>
+                    ฿ <span class="child"><%= item.child_price %></span>
+                  </p>
+                </div>
+                <div class="col-3">
+                  × <input type="number" name="" value="<%= item.child_count %>" class='item-child-count item-<%= item.product_id %>-child-count item-<%= item.product_type %>-child-count' >
+                </div>
+              </div> -->
+
+              <div class="pplsCounterContainer">
+
+                <div class="pplsCounter adult">
+                  <span class="adult hidden"><%= item.adult_price %></span>
+                  <label>Взрослых</label>
+                  <div>
+                    <span class="adult_count minus">
+                      <%= show_svg 'minus.svg' %>
+                    </span>
+                    <%#= f.number_field :adult_count, min: 1, id: "adult_count", :required => true, value: 1, readonly: true %>
+                    <input type="number" name="" value="<%= item.adult_count %>" class='item-adult-count item-<%= item.product_id %>-adult-count item-<%= item.product_type %>-adult-count' id='adult_count' readonly='true'>
+                    <span class="adult_count plus">
+                      <%= show_svg 'plus.svg' %>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="pplsCounter">
+                  <span class="child hidden"><%= item.child_price %></span>
+                  <label>Детей</label>
+                  <div>
+                    <span class="child_count minus">
+                      <%= show_svg 'minus.svg' %>
+                    </span>
+                    <%#= f.number_field :child_count, id: "child_count", value: 0, readonly: true %>
+                    <input type="number" name="" value="<%= item.child_count %>" class='item-child-count item-<%= item.product_id %>-child-count item-<%= item.product_type %>-child-count' id='child_count' readonly='true'>
+                    <span class="child_count plus">
+                      <%= show_svg 'plus.svg' %>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <button>В избранное</button>
+
             </div>
           </div>
-          <div class="row">
-            <div class="col-5 text-right">
-              <%= image_tag 'kids-couple.svg' %>
-              <p>
-                Детей
-              </p>
-            </div>
-            <div class="col-4 price-container">
-              <p>
-                ฿ <span class="child"><%= item.child_price %></span>
-              </p>
-            </div>
-            <div class="col-3">
-              × <input type="number" name="" value="<%= item.child_count %>" class='item-child-count item-<%= item.product_id %>-child-count item-<%= item.product_type %>-child-count' >
-            </div>
-          </div>
-        </div>
-        <div class="col-5 date-total-price">
-          <div class="row">
-            <div class="col-6 date-container">
-              <label>Дата экскурсии</label>
-              <input type="date" name="" value="<%= item.booking_date %>">
-            </div>
-            <div class="col-4 total-price-container">
-              <p>฿ <span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span></p>
-              <button data-toggle="modal" data-target="#orderTour" class="orderTourButton" data-title="<%= item.item_title %>" data-adult="<%= item.adult_price %>" data-productType="<%= item.product_type %>" data-productId="<%= item.product_id %>" data-child="<%= item.child_price %>" data-date="<%= item.booking_date %>" data-adultcount='<%= item.adult_count %>' data-childcount='<%= item.child_count %>'>Заказать</button>
-            </div>
-            <div class="col-2 text-center remove-container">
-              <%= link_to "×", cart_item_path(item), method: :delete %>
-            </div>
+        <% end %>
+      </div>
+      <div class="col-5">
+        <div class="order-form-container">
+          <h2>Контактные данные</h2>
+          <div class="orderAllContainer">
+            <%= form_for @order, :url => {:controller => :orders, action: :cart_order, method: :patch } do |f| %>
+              <div class="form-input">
+                <%= f.text_field :customer_name, :required => true, autocomplete: 'name', placeholder: 'Ваше имя' %>
+              </div>
+              <div class="form-input">
+                <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
+              </div>
+              <div class="form-input">
+                <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
+              </div>
+              <%= f.text_area :customer_comment, placeholder: "Откуда вас забрать/ &#10;дополнительные  комментарии".html_safe, autocomplete: false %>
+              <label class="container-radio">Оплатить наличными курьеру
+                <input type="radio" name='radio' checked="checked" value="courier">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container-radio second">
+                Оплатить картой через курьера
+                <span>Курьер прибудет в назначеное время с терминалом</span>
+                <input type="radio" name="radio" value="card_via_courier">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container-radio last">Оплатить картой он-лайн
+                <input type="radio" name="radio" value="online">
+                <span class="checkmark"></span>
+              </label>
+              <div class="text-center">
+                <%= f.submit "Подтвердить заказ", class: "btn btn-primary book" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
+
     <!-- The Modal Order Tour -->
     <%= render partial: 'shared/order_tour', :locals => { product_type: "", product_id: ''} %>
     <!-- End Modal Order Tour  -->
     <% if @cart.cart_items.count <= 0 %>
-      <h2>Ваша корзина пуста! Выберите себе для начало <%= link_to 'туры', root_path %>.</h2>
-    <% else %>
-      <div class="text-right allToursPriceText-container">
-        <p class='allToursPriceText'>Итоговая стоимость: </p>
-        <p class="allToursPriceAmount"> ฿ <span id="allToursPrice">0</span></p>
-      </div>
-      <h2>Контактные данные</h2>
-      <div class="orderAllContainer">
-        <%= form_for @order, :url => {:controller => :orders, action: :cart_order, method: :patch } do |f| %>
-          <div class="form-input">
-            <label>Ваше имя</label>
-            <%= f.text_field :customer_name, :required => true, autocomplete: 'name' %>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <%= f.text_field :customer_phone, placeholder: "Телефон", :required => true, autocomplete: 'tel' %>
-            </div>
-            <div class="col-6">
-              <%= f.email_field :customer_email, placeholder: "E-mail", autocomplete: 'email' %>
-            </div>
-          </div>
-          <%= f.text_area :customer_comment, placeholder: "Комментарий", autocomplete: false %>
-          <div class="text-center">
-            <%= f.submit "Подтвердить заказ", class: "btn btn-primary book" %>
-          </div>
-        <% end %>
-      </div>
+      <h2>Выберите себе <%= link_to 'туры', root_path %>.</h2>
     <% end %>
   </div>
 </div>

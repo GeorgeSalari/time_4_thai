@@ -103,6 +103,14 @@
   font-size: 16px;
 }
 
+#undefined-sticky-wrapper.sticky-wrapper {
+  padding-top: 20px;
+}
+
+#undefined-sticky-wrapper.sticky-wrapper.is-sticky .phone-container {
+  margin-top: 4px;
+}
+
 .logo {
   display: inline-block;
   margin-left: 0px;
@@ -982,7 +990,9 @@ footer select {
   line-height: 1rem;
 }
 
-
+.navbar #undefined-sticky-wrapper.sticky-wrapper {
+  padding-top: 0;
+}
 
 
 

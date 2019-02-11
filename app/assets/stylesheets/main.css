@@ -884,7 +884,7 @@ td, th {
 }
 
 .total-header-area {
-  padding: 20px 0;
+  padding: 0;
   background: #fff;
   position: relative;
   z-index: 999999;

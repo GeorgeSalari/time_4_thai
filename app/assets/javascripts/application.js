@@ -22,7 +22,8 @@ $(document).ready(function(){
       adultPrice,
       childPrice,
       totalAdultPrice,
-      totalChildPrice;
+      totalChildPrice,
+      totalToursPrice = 0;
 
   $('.container-label input').change(function(){
     if ($(this).parent().find('input').is(':checked')) {
@@ -55,33 +56,131 @@ $(document).ready(function(){
   })
 
   function calc_total_price(){
+    var input_class = $('#adult_count').attr('class'),
+        adult_count,
+        child_count;
+    
+    if (input_class == undefined) {
+      adult_count = $('#adult_count').val();
+      child_count = $('#child_count').val()
+    } else {
+      $('.'+input_class.split(' ')[0]).each(function(){
+        adult_count = $(this).val();
+        adultPrice = $(this).parent().parent().find('span.adult.hidden').text();
+        totalAdultPrice = parseInt( adult_count ) * parseInt( adultPrice );
+        childPrice = $(this).parent().parent().parent().find('span.child.hidden').text();
+        child_count = $(this).parent().parent().parent().find('#child_count').val();
+        totalChildPrice = parseInt( child_count ) * parseInt( childPrice );
+        $(this).parent().parent().parent().parent().find('.total-price-container p').text(totalAdultPrice + totalChildPrice + ' ฿')
+      })
+    }
+
     adultPrice = parseInt( $('#adult-price').text().slice(0,-1) );
-    totalAdultPrice = parseInt( $('#adult_count').val() ) * adultPrice;
+    totalAdultPrice = parseInt( adult_count ) * adultPrice;
     childPrice = parseInt( $('#child-price').text().slice(0,-1) );
-    totalChildPrice = parseInt( $('#child_count').val() ) * childPrice;
+    totalChildPrice = parseInt( child_count ) * childPrice;
     $('#finalTotalPrice').text( totalAdultPrice + totalChildPrice + ' ฿')
   }
 
   calc_total_price();
   
+  function calc_total_chart_price(){
+    totalAdultPrice = 0;
+    totalChildPrice = 0;
+    totalToursPrice = 0;
+    $('.item-container').each(function(){
+      var allClasses = $(this).attr('class').split(' '), itemId = allClasses[allClasses.length - 2],
+          itemType = allClasses[allClasses.length - 1],
+          adult = parseFloat( $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').val() ),
+          child = parseFloat( $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').val() ),
+          priceAdult = parseFloat( $(this).find('span.adult.hidden').text() ),
+          priceChild = parseFloat( $(this).find('span.child.hidden').text() ),
+          totalPrice;
+          
+          if ( !isNaN(child) && !isNaN(adult) ) {
+            totalPrice = adult * priceAdult + child * priceChild;
+          } else if ( !isNaN(adult) ) {
+            totalPrice = adult * priceAdult;
+          } else if (!isNaN(child) ) {
+            totalPrice = child * priceChild;
+          } else {
+            totalPrice = 0;
+          }
+          var totalAdultPrice = adult * priceAdult,
+              totalChildPrice = child * priceChild;
+
+          $('.'+itemId+' .item-adult-count.item-'+itemType+'-adult-count').on("change paste keyup", function(){
+            totalPrice = 0;
+            totalAdultPrice = $(this).val() * priceAdult;
+            if ( isNaN(totalChildPrice) ) {
+              totalPrice += totalAdultPrice
+            } else {
+              totalPrice += totalAdultPrice + totalChildPrice;
+            }
+            $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+            update_total_price();
+          })
+
+          $('.'+itemId+' .item-child-count.item-'+itemType+'-child-count').on("change paste keyup", function(){
+            totalPrice = 0;
+            totalChildPrice = $(this).val() * priceChild;
+            if ( isNaN(totalAdultPrice) ) {
+              totalPrice += totalChildPrice
+            } else {
+              totalPrice += totalAdultPrice + totalChildPrice;
+            }
+            $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+            update_total_price();
+          })
+      $('.'+itemId+'-total-price-'+itemType).text(totalPrice);
+      totalToursPrice += totalPrice;
+    });
+
+    $('#allToursPrice').text(totalToursPrice);
+  }
+
+  calc_total_chart_price();
 
   $('.pplsCounter svg').click(function(){
     var input_id = $(this).parent().attr('class').split(' ')[0],
         click_value = $(this).parent().attr('class').split(' ')[1],
-        input_value = parseInt( $('#'+input_id).val() );
+        input_value,
+        input_class = $(this).parent().parent().find('input').attr('class');
+
+    if (input_class == undefined) {
+      input_value = parseInt( $('#'+input_id).val() )
+    } else {
+      input_value = parseInt( $('#'+input_id + '.' +input_class.split(' ').join(".") ).val() )
+    }
+
     if (click_value == 'plus') {
-      $('#'+input_id).val(input_value + 1)
+      if (input_class == undefined) {
+        $('#'+input_id).val(input_value + 1)
+      } else {
+        $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value + 1)
+      }
       calc_total_price();
+      calc_total_chart_price();
     } else {
       if (input_id == 'adult_count') {
         if (input_value > 1) {
-          $('#'+input_id).val(input_value - 1);
+          if (input_class == undefined) {
+            $('#'+input_id).val(input_value - 1)
+          } else {
+            $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value - 1)
+          }
           calc_total_price();
+          calc_total_chart_price();
         }
       } else {
         if (input_value >= 1) {
-          $('#'+input_id).val(input_value - 1);
+          if (input_class == undefined) {
+            $('#'+input_id).val(input_value - 1)
+          } else {
+            $('#'+input_id + '.' +input_class.split(' ').join(".") ).val(input_value - 1)
+          }
           calc_total_price();
+          calc_total_chart_price();
         }
       }
     }

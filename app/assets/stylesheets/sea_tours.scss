@@ -281,6 +281,10 @@ b, strong {
   font-weight: 900;
 }
 
+.path-history {
+  padding-top: 15px;
+}
+
 .path-history a {
   color: #71787e;
 }
@@ -701,6 +705,10 @@ b, strong {
 
 #phuket-tour-container .block-tours-container.show:first-child {
   margin-top: 0;
+}
+
+.navbar #undefined-sticky-wrapper.sticky-wrapper {
+  padding-top: 0;
 }
 
 @import 'custom/navbar_cart'
