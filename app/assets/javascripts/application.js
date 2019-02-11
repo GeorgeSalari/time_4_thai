@@ -24,6 +24,17 @@ $(document).ready(function(){
       totalAdultPrice,
       totalChildPrice;
 
+  $('.full_content_show').click(function(){
+    $(this).hide();
+    $('.full-content').show();
+  })
+
+  $('.full_content_hide').click(function(){
+    $(this).hide();
+    $('.full-content').hide();
+    $('.full_content_show').show();
+  })
+
   function calc_total_price(){
     adultPrice = parseInt( $('#adult-price').text().slice(0,-1) );
     totalAdultPrice = parseInt( $('#adult_count').val() ) * adultPrice;

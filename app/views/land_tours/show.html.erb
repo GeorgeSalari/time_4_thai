@@ -29,10 +29,11 @@
         <p>
           <%= @land_tour.short_content %>
         </p>
-        <a href="javascript:;" class="full_content_toggle">Читать больше</a>
+        <a href="javascript:;" class="full_content_show">Читать больше</a>
       </div>
       <div class="full-content">
         <p><%= @land_tour.content.html_safe %></p>
+        <a href="javascript:;" class="full_content_hide">Скрыть</a>
       </div>
 
       <div class="tour-program">

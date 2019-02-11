@@ -4670,6 +4670,14 @@ p.mail a {
   line-height: 1.56;
 }
 
+.short-content a, .full-content a {
+  color: #1fa7f8;
+}
+
+.short-content a:hover, .full-content a:hover {
+  text-decoration: underline;
+}
+
 .aventage-image img {
   width: 69px;
 }
