@@ -35,7 +35,8 @@ class OrdersController < ApplicationController
       :customer_name,
       :customer_phone,
       :customer_email,
-      :customer_comment
+      :customer_comment,
+      :payment
     )
   end
 end

@@ -119,7 +119,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def static_page_params
-    params.require(:static_page).permit(:title, :short_content, :content, :adult_price, :child_price, {images: []})
+    params.require(:static_page).permit(:duration, :tour_program, :included, :necessary, :popular, :title, :short_content, :content, :adult_price, :order_number, :child_price, {images: []})
   end
 
 end

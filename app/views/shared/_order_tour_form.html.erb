@@ -69,9 +69,13 @@
 
   <div class="formButtonsContainer">
     <button type="button" class="btn btn-primary cart">Забронировать</button>
-    <%= f.button :submit, class: "btn btn-primary book" do %>
+    <button type="button" class="btn btn-primary book">
       <%= show_svg 'heart.svg' %>
       В избранное
-    <% end %>
+    </button>
+    <%# f.button :submit, class: "btn btn-primary book" do %>
+      <%# show_svg 'heart.svg' %>
+      <!-- В избранное -->
+    <%# end %>
   </div>
 <% end %>

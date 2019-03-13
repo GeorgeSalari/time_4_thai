@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_cart
+  before_action :set_favorite
 
   private
   def log_in(user)
@@ -30,5 +31,12 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:cart_id] = @cart.id
+  end
+
+  def set_favorite
+    @favorite = Favorite.find(session[:favorite_id])
+  rescue ActiveRecord::RecordNotFound
+    @favorite = Favorite.create
+    session[:favorite_id] = @favorite.id
   end
 end

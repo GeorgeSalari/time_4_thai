@@ -14,7 +14,6 @@
     </div>
 
     <div id="cart-block">
-
       <% if @cart.cart_items.count <= 0 %>
         <h2>Выберите себе <%= link_to 'туры', root_path %>.</h2>
       <% end %>
@@ -27,7 +26,7 @@
       <div class="row">
         <div class="col-7">
           <% @cart.cart_items.each do |item| %>
-            <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
+            <div class="row item-container item-<%= item.product_id %> cart-item <%= item.product_type %>">
               <div class="col-5 p-0">
                 <%= image_tag item.item_image %>
               </div>
@@ -81,7 +80,11 @@
 
                 </div>
 
-                <button>В избранное</button>
+                <% if check_favorites_items(item) %>
+                  <button class="book from-cart">В избранное</button>
+                <% else %>
+                  <button class="book from-cart" disabled="true">В избранное</button>
+                <% end %>
 
               </div>
             </div>
@@ -103,17 +106,20 @@
                 </div>
                 <%= f.text_area :customer_comment, placeholder: "Откуда вас забрать/ &#10;дополнительные  комментарии".html_safe, autocomplete: false %>
                 <label class="container-radio">Оплатить наличными курьеру
-                  <input type="radio" name='radio' checked="checked" value="courier">
+                  <!-- <input type="radio" name='radio' checked="checked" value="courier"> -->
+                  <%= f.radio_button :payment, 'courier', checked: true %>
                   <span class="checkmark"></span>
                 </label>
                 <label class="container-radio second">
                   Оплатить картой через курьера
                   <span>Курьер прибудет в назначеное время с терминалом</span>
-                  <input type="radio" name="radio" value="card_via_courier">
+                  <!-- <input type="radio" name="radio" value="card_via_courier"> -->
+                  <%= f.radio_button :payment, 'card_via_courier', checked: false %>
                   <span class="checkmark"></span>
                 </label>
                 <label class="container-radio last">Оплатить картой он-лайн
-                  <input type="radio" name="radio" value="online">
+                  <!-- <input type="radio" name="radio" value="online" disabled="true"> -->
+                  <%= f.radio_button :payment, 'online', checked: false, disabled: true %>
                   <span class="checkmark"></span>
                 </label>
                 <div class="text-center">
@@ -128,7 +134,7 @@
 
     <div id="favorites-block" class="hidden">
       <div class="row">
-        <% @cart.cart_items.each do |item| %>
+        <% @favorite.favorite_items.each do |item| %>
           <div class="col-6">
             <div class="favorit-container">
               <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
@@ -140,7 +146,7 @@
                     <%= link_to show_path(item.product_type, item.item_tour )  do %>
                       <p class="cart-item-title"><%= item.item_title %></p>
                     <% end %>
-                    <%= link_to "×", cart_item_path(item), method: :delete, class: 'delete-cart-item' %>
+                    <%= link_to "×", favorite_item_path(item), method: :delete, class: 'delete-cart-item' %>
                   </div>
                   <div class="total-price-container">
                     <p><span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span>฿</p>
@@ -185,7 +191,11 @@
 
                   </div>
 
-                  <button>В Корзину</button>
+                  <% if check_carts_items(item) %>
+                    <button class="cart from-favorites">В Корзину</button>
+                  <% else %>
+                    <button class="cart from-favorites" disabled="true">В Корзине</button>
+                  <% end %>
 
                 </div>
               </div>

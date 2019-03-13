@@ -503,14 +503,34 @@ $(document).ready(function(){
   })
 
   $('button.cart').click(function(){
-    var submit_button = $(this), newOrderForm, new_position_top, new_position_left ;
+
+    var submit_button = $(this), newOrderForm, new_position_top, new_position_left, data ;
+
     if ($(this).parent().parent().attr('class') == "fix") {
-      newOrderForm = "#new_order.fix"
+      newOrderForm = "#new_order.fix";
+      data = $(newOrderForm).serialize();
+    } else if ($(this).attr('class').includes('from-favorites')) {
+      var tour_type = $($($(this).parent().find('div:first-child')[0]).find('a')[0]).attr('href').split('/')[1],
+          tour_id = $($($(this).parent().find('div:first-child')[0]).find('a')[0]).attr('href').split('/')[2],
+          adult_count = $(this).parent().find('#adult_count').val(),
+          child_count = $(this).parent().find('#child_count').val(),
+          booking_date = $(this).parent().find('.date-container input').val();
+
+      data = {
+        product_id: tour_id,
+        product_type: tour_type,
+        quantity: 1,
+        adult_count: adult_count,
+        child_count: child_count,
+        booking_date: booking_date
+      };
+      
     } else {
-      newOrderForm = "#new_order"
+      newOrderForm = "#new_order";
+      data = $(newOrderForm).serialize();
       $(this).attr("disabled", true);
     }
-    $.post( "/cart_items", $(newOrderForm).serialize() )
+    $.post( "/cart_items", data )
       .done(function(){
         $('#orderTour').modal('toggle');
         $('.modal-item-title').text( $('#tour-title').text() );
@@ -532,6 +552,65 @@ $(document).ready(function(){
         $('#orderTour').modal('toggle');
         alert( "Что то пошло не так, попробуйте снова!" );
       })
+
+    if ($(this).attr('class').includes('from-favorites')) {
+      window.location.href = '/carts';
+    }
+  })
+
+  $('button.book').click(function(){
+    var submit_button = $(this), newOrderForm, new_position_top, new_position_left, data ;
+    if ($(this).parent().parent().attr('class') == "fix") {
+      newOrderForm = "#new_order.fix";
+      data = $(newOrderForm).serialize();
+    } else if ($(this).attr('class').includes('from-cart')) {
+      var tour_type = $($($(this).parent().find('div:first-child')[0]).find('a')[0]).attr('href').split('/')[1],
+          tour_id = $($($(this).parent().find('div:first-child')[0]).find('a')[0]).attr('href').split('/')[2],
+          adult_count = $(this).parent().find('#adult_count').val(),
+          child_count = $(this).parent().find('#child_count').val(),
+          booking_date = $(this).parent().find('.date-container input').val();
+      data = {
+        product_id: tour_id,
+        product_type: tour_type,
+        quantity: 1,
+        adult_count: adult_count,
+        child_count: child_count,
+        booking_date: booking_date
+      };
+      
+    } else {
+      newOrderForm = "#new_order";
+      data = $(newOrderForm).serialize();
+      $(this).attr("disabled", true);
+    }
+    $.post( "/favorite_items", data )
+      .done(function(){
+        $('#orderTour').modal('toggle');
+        $('h5.modal-title').text('Добавлено в избранные');
+        $('.button-container a').text('Перейти к избранным');
+        $('.modal-item-title').text( $('#tour-title').text() );
+        $('.modal-price-container p').text( $('#finalTotalPrice').text() );
+        $('#modal_order_booking_date').val( $('#order_booking_date').val() );
+        $('#modal_adult_count').val( $('#adult_count').val() );
+        $('#modal_child_count').val( $('#child_count').val() );
+        $('#moda-tour-img').attr( 'src', $('.fotorama__loaded--img.fotorama__active').find('.fotorama__img').attr('src') )
+        
+        var itemsCount = parseInt( $('.layer').text() );
+        if (itemsCount < 9) {
+          $('.layer').text(itemsCount + 1);
+        } else {
+          $('.layer').css('right', '4px');
+          $('.layer').text(itemsCount + 1);
+        }
+      })
+      .fail(function(){
+        $('#orderTour').modal('toggle');
+        alert( "Что то пошло не так, попробуйте снова!" );
+      })
+
+    if ($(this).attr('class').includes('from-cart')) {
+      window.location.href = '/carts';
+    }
   })
 
 })
