@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-7">
           <% @cart.cart_items.each do |item| %>
-            <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
+            <div class="row item-container item-<%= item.product_id %> cart-item <%= item.product_type %>">
               <div class="col-5 p-0">
                 <%= image_tag item.item_image %>
               </div>
@@ -106,17 +106,20 @@
                 </div>
                 <%= f.text_area :customer_comment, placeholder: "Откуда вас забрать/ &#10;дополнительные  комментарии".html_safe, autocomplete: false %>
                 <label class="container-radio">Оплатить наличными курьеру
-                  <input type="radio" name='radio' checked="checked" value="courier">
+                  <!-- <input type="radio" name='radio' checked="checked" value="courier"> -->
+                  <%= f.radio_button :payment, 'courier', checked: true %>
                   <span class="checkmark"></span>
                 </label>
                 <label class="container-radio second">
                   Оплатить картой через курьера
                   <span>Курьер прибудет в назначеное время с терминалом</span>
-                  <input type="radio" name="radio" value="card_via_courier">
+                  <!-- <input type="radio" name="radio" value="card_via_courier"> -->
+                  <%= f.radio_button :payment, 'card_via_courier', checked: false %>
                   <span class="checkmark"></span>
                 </label>
                 <label class="container-radio last">Оплатить картой он-лайн
-                  <input type="radio" name="radio" value="online">
+                  <!-- <input type="radio" name="radio" value="online" disabled="true"> -->
+                  <%= f.radio_button :payment, 'online', checked: false, disabled: true %>
                   <span class="checkmark"></span>
                 </label>
                 <div class="text-center">

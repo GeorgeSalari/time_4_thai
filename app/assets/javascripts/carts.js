@@ -19,16 +19,16 @@ $(document).ready(function(){
 
   function update_all_items() {
     var item_count = 0;
-    $('.item-SeaTour-adult-count').each(function(){
-      var productId = $(this).parent().parent().parent().parent().attr('class').split('-').pop(),
-          productType = $(this).attr('class').split(' ').pop().split('-')[1],
-          adultCount = $(this).val(),
-          childCount = $(this).parent().parent().parent().find('.item-child-count').val(),
-          bookingDate = $(this).parent().parent().parent().parent().find('.date-container input').val();
+    $('.item-container.cart-item').each(function(){
+      var productId = $(this).attr('class').split(' ')[2].split('-')[1],
+          productType = $(this).attr('class').split(' ').pop(),
+          adultCount = $(this).find('#adult_count').val(),
+          childCount = $(this).find('#child_count').val(),
+          bookingDate = $(this).find('.date-container input').val();
 
       item_count += 1;
 
-      if ($('.item-SeaTour-adult-count').length == item_count) {
+      if ($('.item-container.cart-item').length == item_count) {
         last = true;
       }
 

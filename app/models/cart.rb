@@ -57,7 +57,8 @@ class Cart < ApplicationRecord
       customer_name: params[:order][:customer_name],
       customer_phone: params[:order][:customer_phone],
       customer_email: params[:order][:customer_email],
-      customer_comment: params[:order][:customer_comment]
+      customer_comment: params[:order][:customer_comment],
+      payment: params[:order][:payment]
     }
   end
 end
