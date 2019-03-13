@@ -1,4 +1,49 @@
 module ApplicationHelper
+  def check_favorites_items(item)
+    @favorite.favorite_items.find_by(product_id: item.product_id, product_type: item.product_type).nil?
+  end
+
+  def check_carts_items(item)
+    @cart.cart_items.find_by(product_id: item.product_id, product_type: item.product_type).nil?
+  end
+
+  def transform_tour_type(type)
+    case type
+    when 'sea_tours'
+      'SeaTour'
+    when 'land_tours'
+      'LandTour'
+    when 'evening_shows'
+      'EveningShow'
+    when 'phuket_tours'
+      'PhuketTour'
+    when 'avia_tours'
+      'AviaTour'
+    when 'boats'
+      'Boat'
+    when 'shops'
+      'Shop'
+    when 'static_pages'
+      'StaticPage'
+    when 'SeaTour'
+      'SeaTour'
+    when 'LandTour'
+      'LandTour'
+    when 'EveningShow'
+      'EveningShow'
+    when 'PhuketTour'
+      'PhuketTour'
+    when 'AviaTour'
+      'AviaTour'
+    when 'Boat'
+      'Boat'
+    when 'Shop'
+      'Shop'
+    when 'StaticPage'
+      'StaticPage'
+    end
+  end
+
   def bootstrap_class_for_flash(flash_type)
     case flash_type
     when 'success'

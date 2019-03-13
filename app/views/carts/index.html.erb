@@ -14,7 +14,6 @@
     </div>
 
     <div id="cart-block">
-
       <% if @cart.cart_items.count <= 0 %>
         <h2>Выберите себе <%= link_to 'туры', root_path %>.</h2>
       <% end %>
@@ -81,7 +80,11 @@
 
                 </div>
 
-                <button>В избранное</button>
+                <% if check_favorites_items(item) %>
+                  <button class="book from-cart">В избранное</button>
+                <% else %>
+                  <button class="book from-cart" disabled="true">В избранное</button>
+                <% end %>
 
               </div>
             </div>
@@ -128,7 +131,7 @@
 
     <div id="favorites-block" class="hidden">
       <div class="row">
-        <% @cart.cart_items.each do |item| %>
+        <% @favorite.favorite_items.each do |item| %>
           <div class="col-6">
             <div class="favorit-container">
               <div class="row item-container item-<%= item.product_id %> <%= item.product_type %>">
@@ -140,7 +143,7 @@
                     <%= link_to show_path(item.product_type, item.item_tour )  do %>
                       <p class="cart-item-title"><%= item.item_title %></p>
                     <% end %>
-                    <%= link_to "×", cart_item_path(item), method: :delete, class: 'delete-cart-item' %>
+                    <%= link_to "×", favorite_item_path(item), method: :delete, class: 'delete-cart-item' %>
                   </div>
                   <div class="total-price-container">
                     <p><span class="item-<%= item.product_id %>-total-price-<%= item.product_type %>"></span>฿</p>
@@ -185,7 +188,11 @@
 
                   </div>
 
-                  <button>В Корзину</button>
+                  <% if check_carts_items(item) %>
+                    <button class="cart from-favorites">В Корзину</button>
+                  <% else %>
+                    <button class="cart from-favorites" disabled="true">В Корзине</button>
+                  <% end %>
 
                 </div>
               </div>
