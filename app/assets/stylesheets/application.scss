@@ -32,3 +32,11 @@
   margin-top: 16px;
   margin-left: 15px;
 }
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
