@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190313101828) do
+ActiveRecord::Schema.define(version: 20190314064246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_tours", force: :cascade do |t|
+    t.string "title"
+    t.string "short_content"
+    t.string "content"
+    t.integer "adult_price"
+    t.integer "child_price"
+    t.json "images"
+    t.integer "order_number"
+    t.boolean "popular", default: false
+    t.integer "duration"
+    t.string "tour_program"
+    t.string "included"
+    t.string "necessary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "avia_tours", force: :cascade do |t|
     t.string "title"

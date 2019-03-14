@@ -35,6 +35,8 @@ class FavoriteItem < ApplicationRecord
       PhuketTour.find(self.product_id)
     when 'AviaTour'
       AviaTour.find(self.product_id)
+    when 'ActiveTour'
+      ActiveTour.find(self.product_id)
     when 'Boat'
       Boat.find(self.product_id)
     when 'Shop'

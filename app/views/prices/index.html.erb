@@ -13,6 +13,19 @@
 
   <% end %>
 
+  <h2>Активные туры</h2>
+  <%= table_for @active_tours, :table_html => { :class => "table table-hover table-bordered price-table" },
+                        :sortable => true,
+                        :data_row_html => {
+                          :id => lambda { |active_tour| "active_tour-#{active_tour.id}" }} do |table| %>
+
+    <% table.column :title, :header => "Название тура", :formatter => lambda { |title| title.upcase }  %>
+    <% table.column :short_content, :header => "Описаине" %>
+    <% table.column :adult_price, :header => "Цена на взрослого" %>
+    <% table.column :child_price, :header => "Цена на ребенка" %>
+
+  <% end %>
+
   <h2>Сухопутные туры</h2>
   <%= table_for @land_tours, :table_html => { :class => "table table-hover table-bordered price-table" },
                         :sortable => true,
