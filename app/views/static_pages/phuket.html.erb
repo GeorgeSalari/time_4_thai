@@ -31,6 +31,10 @@
 				  <input type="checkbox" value="evening_shows" checked="checked">
 				  <span class="checkmark"></span>
 				</label>
+				<label class="container-label">Активные туры
+				  <input type="checkbox" value="active_tours" checked="checked">
+				  <span class="checkmark"></span>
+				</label>
 				<label class="container-label">Индивидуальные
 				  <input type="checkbox" value="individual_tours" checked="checked">
 				  <span class="checkmark"></span>
@@ -81,6 +85,10 @@
 			<div class="evening_shows block-tours-container show">
 				<h2>Вечерние шоу</h2>
 				<%= render partial: 'shared/tours', locals: {all_tours: @evening_shows} %>
+			</div>
+			<div class="active_tours block-tours-container show">
+				<h2>Активные туры</h2>
+				<%= render partial: 'shared/tours', locals: {all_tours: @active_tours} %>
 			</div>
 			<div class="individual_tours block-tours-container show">
 				<h2>Индивидуальные Туры</h2>

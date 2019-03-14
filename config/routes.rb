@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :active_tours
   resources :shops
   resources :boats
   resources :carts, only: :index
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :individual_tours
   resources :evening_shows
   resources :avia_tours
+  resources :active_tours
   resources :land_tours
   resources :phuket_tours
   resources :sea_tours

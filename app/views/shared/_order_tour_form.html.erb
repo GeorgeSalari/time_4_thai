@@ -5,7 +5,11 @@
 
   <div class="order-form-duration">
     <%= show_svg 'clock-regular.svg' %>
-    <%= tour.duration %> часов
+    <% if tour.duration == 1 %>
+      <%= "#{tour.duration} час" %>
+    <% else %>
+      <%= tour.duration < 5 ? "#{tour.duration} часа" : "#{tour.duration} часов" %> 
+    <% end %>
   </div>
 
   <div class="order-form-price">

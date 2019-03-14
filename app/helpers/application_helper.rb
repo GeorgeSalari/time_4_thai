@@ -25,6 +25,8 @@ module ApplicationHelper
       'Shop'
     when 'static_pages'
       'StaticPage'
+    when 'active_tours'
+      'ActiveTour'
     when 'SeaTour'
       'SeaTour'
     when 'LandTour'
@@ -41,6 +43,8 @@ module ApplicationHelper
       'Shop'
     when 'StaticPage'
       'StaticPage'
+    when 'ActiveTour'
+      'ActiveTour'
     end
   end
 
@@ -61,6 +65,8 @@ module ApplicationHelper
 
   def show_path(path, tour)
     case path
+    when 'active_tour_path'
+      active_tour_path(tour)
     when 'sea_tour_path'
       sea_tour_path(tour)
     when 'land_tour_path'
@@ -75,6 +81,8 @@ module ApplicationHelper
       boat_path(tour)
     when 'shop_path'
       shop_path(tour)
+    when 'ActiveTour'
+      active_tour_path(tour)
     when 'SeaTour'
       sea_tour_path(tour)
     when 'LandTour'
@@ -114,17 +122,20 @@ module ApplicationHelper
     shops = Shop.where(popular: true)
     boats = Boat.where(popular: true)
     sea_tours = SeaTour.where(popular: true)
+    active_tours = ActiveTour.where(popular: true)
     land_tours = LandTour.where(popular: true)
     evening_shows = EveningShow.where(popular: true)
     phuket_tours = PhuketTour.where(popular: true)
     avia_tours = AviaTour.where(popular: true)
     individual_tours = IndividualTour.where(popular: true)
-    all_index_tour = shops + boats + sea_tours + land_tours + evening_shows + phuket_tours + avia_tours + individual_tours
+    all_index_tour = shops + boats + sea_tours + land_tours + evening_shows + phuket_tours + avia_tours + individual_tours + active_tours
     all_index_tour
   end
 
   def find_item_tour(product_id, product_type)
     case product_type
+    when 'ActiveTour'
+      ActiveTour.find(product_id)
     when 'SeaTour'
       SeaTour.find(product_id)
     when 'LandTour'
