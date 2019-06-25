@@ -4,11 +4,13 @@
   <%= f.hidden_field :product_id, value: product_id %>
 
   <div class="order-form-duration">
-    <%= show_svg 'clock-regular.svg' %>
-    <% if tour.duration == 1 %>
-      <%= "#{tour.duration} час" %>
-    <% else %>
-      <%= tour.duration < 5 ? "#{tour.duration} часа" : "#{tour.duration} часов" %> 
+    <% if tour.duration %>
+      <%= show_svg 'clock-regular.svg' %>
+      <% if tour.duration == 1 %>
+        <%= "#{tour.duration} час" %>
+      <% else %>
+        <%= tour.duration < 5 ? "#{tour.duration} часа" : "#{tour.duration} часов" %> 
+      <% end %>
     <% end %>
   </div>
 
