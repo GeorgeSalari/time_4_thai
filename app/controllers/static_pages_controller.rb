@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :new_order, :new_call_order, only: [:individual, :realty_rent, :realty_buy, :transfer, :photoshoot, :wedding, :spa, :phuket]
-  rescue_from NoMethodError, :with => :check_error
+  # rescue_from NoMethodError, :with => :check_error
   before_action :set_static_page, only: [:edit, :update]
 
   def individual
