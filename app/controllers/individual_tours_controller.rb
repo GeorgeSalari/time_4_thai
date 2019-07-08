@@ -1,5 +1,7 @@
 class IndividualToursController < ApplicationController
   before_action :set_individual_tour, only: [:show, :edit, :update, :destroy]
+  before_action :new_order, :new_call_order, only: [:index, :show]
+  rescue_from NoMethodError, :with => :check_error
 
   # GET /individual_tours
   # GET /individual_tours.json
@@ -10,6 +12,7 @@ class IndividualToursController < ApplicationController
   # GET /individual_tours/1
   # GET /individual_tours/1.json
   def show
+    @comments = Comment.where(tour_type: "IndividualTour", tour_id: params[:id])
   end
 
   # GET /individual_tours/new
@@ -86,6 +89,11 @@ class IndividualToursController < ApplicationController
   end
 
   private
+    def check_error
+      flash[:success] = 'Что то пошло не так, извините!'
+      redirect_to root_path
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_individual_tour
       @individual_tour = IndividualTour.find(params[:id])
