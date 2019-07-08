@@ -11,6 +11,8 @@ module ApplicationHelper
     case type
     when 'sea_tours'
       'SeaTour'
+    when 'individual_tours'
+      'IndividualTour'
     when 'land_tours'
       'LandTour'
     when 'evening_shows'
@@ -29,6 +31,8 @@ module ApplicationHelper
       'ActiveTour'
     when 'SeaTour'
       'SeaTour'
+    when 'IndividualTour'
+      'IndividualTour'
     when 'LandTour'
       'LandTour'
     when 'EveningShow'
@@ -77,6 +81,8 @@ module ApplicationHelper
       phuket_tour_path(tour)
     when 'avia_tour_path'
       avia_tour_path(tour)
+    when 'individual_tour_path'
+      individual_tour_path(tour)
     when 'boat_path'
       boat_path(tour)
     when 'shop_path'
@@ -97,6 +103,8 @@ module ApplicationHelper
       boat_path(tour)
     when 'Shop'
       shop_path(tour)
+    when 'IndividualTour'
+      individual_tour_path(tour)
     else
       sea_tour_path(tour)
     end
@@ -152,6 +160,8 @@ module ApplicationHelper
       Shop.find(product_id)
     when 'StaticPage'
       StaticPage.find(product_id)
+    when 'IndividualTour'
+      IndividualTour.find(product_id)
     end
   end
   
