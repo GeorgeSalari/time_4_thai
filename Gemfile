@@ -36,7 +36,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 # Use carrierwave to upload file
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 # Use minimagick to resize upload file
 gem "mini_magick"
 # Use fog for upload to aws
